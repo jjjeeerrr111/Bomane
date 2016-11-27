@@ -296,6 +296,7 @@
 				572E68811DEB3EE7001DB239 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

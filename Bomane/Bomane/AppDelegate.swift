@@ -27,10 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //A user has not been created or logged in yet - show log in screen
         let signUpVC = SignUpViewController()
-        let navigationController = UINavigationController(rootViewController: signUpVC)
-        window?.rootViewController = navigationController
+        window?.rootViewController = signUpVC
     
-
         self.window?.makeKeyAndVisible()
     }
 
