@@ -32,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let signUpVC = SignUpViewController()
 //        window?.rootViewController = signUpVC
         
-        let screenVC = AboutViewController()//ServicesViewController()//ScreenMenuViewController()
-        //let navController = UINavigationController(rootViewController: screenVC)
-        window?.rootViewController = screenVC
+        let screenVC = ServicesViewController()//ScreenMenuViewController()
+        let navController = UINavigationController(rootViewController: screenVC)
+        window?.rootViewController = navController
     
         self.window?.makeKeyAndVisible()
     }
@@ -42,6 +42,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showLogin() {
         let signUpVC = SignUpViewController()
         window?.rootViewController = signUpVC
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func showAboutVC() {
+        let aboutVC = AboutViewController()
+        window?.rootViewController = aboutVC
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func showServices() {
+        let screenVC = ServicesViewController()
+        let navController = UINavigationController(rootViewController: screenVC)
+        window?.rootViewController = navController
         self.window?.makeKeyAndVisible()
     }
 

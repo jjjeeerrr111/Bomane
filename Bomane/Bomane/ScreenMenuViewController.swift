@@ -14,7 +14,7 @@ class ScreenMenuViewController: UIViewController {
     var tableView:UITableView!
     var logOutButton:UIButton!
     
-    var menuTitles:[String] = ["Book Appointment","Services","Portfolio","Profile","Contact","Pay"]
+    var menuTitles:[String] = ["Book Appointment","Services","Portfolio","Profile","Contact","About","Pay"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
