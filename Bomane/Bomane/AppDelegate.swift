@@ -32,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let signUpVC = SignUpViewController()
 //        window?.rootViewController = signUpVC
         
-        let screenVC = ServicesViewController()//ScreenMenuViewController()
-        let navController = UINavigationController(rootViewController: screenVC)
-        window?.rootViewController = navController
+        let screenVC = AboutViewController()//ServicesViewController()//ScreenMenuViewController()
+        //let navController = UINavigationController(rootViewController: screenVC)
+        window?.rootViewController = screenVC
     
         self.window?.makeKeyAndVisible()
     }
