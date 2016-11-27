@@ -13,6 +13,10 @@
 		572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572E68791DEB3EE7001DB239 /* LaunchScreen.storyboard */; };
 		572E68841DEB3F2C001DB239 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E68821DEB3F2C001DB239 /* SignUpViewController.swift */; };
 		572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 572E68831DEB3F2C001DB239 /* SignUpViewController.xib */; };
+		5772315A1DEB4DF900A94A7B /* ScreenMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577231591DEB4DF900A94A7B /* ScreenMenuViewController.swift */; };
+		5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */; };
+		5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */; };
+		577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315F1DEB563500A94A7B /* TableView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		572E687C1DEB3EE7001DB239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		572E68821DEB3F2C001DB239 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		572E68831DEB3F2C001DB239 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		577231591DEB4DF900A94A7B /* ScreenMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenMenuViewController.swift; sourceTree = "<group>"; };
+		5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		5772315F1DEB563500A94A7B /* TableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,10 @@
 				572E68821DEB3F2C001DB239 /* SignUpViewController.swift */,
 				572E68831DEB3F2C001DB239 /* SignUpViewController.xib */,
 				572E68721DEB3EE7001DB239 /* ViewController.swift */,
+				577231591DEB4DF900A94A7B /* ScreenMenuViewController.swift */,
+				5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */,
+				5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */,
+				5772315F1DEB563500A94A7B /* TableView+Extensions.swift */,
 				572E68771DEB3EE7001DB239 /* Assets.xcassets */,
 				572E68791DEB3EE7001DB239 /* LaunchScreen.storyboard */,
 				572E687C1DEB3EE7001DB239 /* Info.plist */,
@@ -129,6 +141,7 @@
 			files = (
 				572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */,
 				572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */,
+				5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */,
 				572E68781DEB3EE7001DB239 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,8 +154,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				572E68841DEB3F2C001DB239 /* SignUpViewController.swift in Sources */,
+				577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */,
+				5772315A1DEB4DF900A94A7B /* ScreenMenuViewController.swift in Sources */,
 				572E68731DEB3EE7001DB239 /* ViewController.swift in Sources */,
 				572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */,
+				5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    class func shared() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,9 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initWindow() {
         
         //A user has not been created or logged in yet - show log in screen
+//        let signUpVC = SignUpViewController()
+//        window?.rootViewController = signUpVC
+        
+        let screenVC = ScreenMenuViewController()
+        let navController = UINavigationController(rootViewController: screenVC)
+        window?.rootViewController = navController
+    
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func showLogin() {
         let signUpVC = SignUpViewController()
         window?.rootViewController = signUpVC
-    
         self.window?.makeKeyAndVisible()
     }
 
