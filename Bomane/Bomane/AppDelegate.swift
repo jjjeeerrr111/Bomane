@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.black
-        initWindow()
+        showLogin()//initWindow()
         return true
     }
     
@@ -41,7 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func showLogin() {
         let signUpVC = SignUpViewController()
-        window?.rootViewController = signUpVC
+        let navigationController = UINavigationController(rootViewController: signUpVC)
+        window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
     

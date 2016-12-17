@@ -22,6 +22,8 @@
 		5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */; };
 		5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */; };
 		577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315F1DEB563500A94A7B /* TableView+Extensions.swift */; };
+		57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D851E05E8DD003207D2 /* LoginViewController.swift */; };
+		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		5772315F1DEB563500A94A7B /* TableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView+Extensions.swift"; sourceTree = "<group>"; };
+		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 		572E686F1DEB3EE7001DB239 /* Bomane */ = {
 			isa = PBXGroup;
 			children = (
+				57DB7D871E05EF65003207D2 /* Helpers/Extensions */,
+				57DB7D841E05E8C5003207D2 /* Login VC */,
 				572E68701DEB3EE7001DB239 /* AppDelegate.swift */,
 				5751D25B1DEB9D10009A4612 /* Sign up VC */,
 				5751D2621DEB9EA2009A4612 /* Services VC */,
@@ -124,6 +130,22 @@
 				5751D2651DEBA243009A4612 /* AboutViewController.xib */,
 			);
 			name = "About VC";
+			sourceTree = "<group>";
+		};
+		57DB7D841E05E8C5003207D2 /* Login VC */ = {
+			isa = PBXGroup;
+			children = (
+				57DB7D851E05E8DD003207D2 /* LoginViewController.swift */,
+			);
+			name = "Login VC";
+			sourceTree = "<group>";
+		};
+		57DB7D871E05EF65003207D2 /* Helpers/Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				57DB7D881E05EF72003207D2 /* Extensions.swift */,
+			);
+			name = Helpers/Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +232,8 @@
 				577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */,
 				5772315A1DEB4DF900A94A7B /* ScreenMenuViewController.swift in Sources */,
 				572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */,
+				57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */,
+				57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */,
 				5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

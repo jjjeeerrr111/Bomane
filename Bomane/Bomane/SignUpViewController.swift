@@ -19,16 +19,33 @@ class SignUpViewController: UIViewController {
         facebookButton.contentHorizontalAlignment = .left
         createAccountButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
         facebookButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+        
+        setUpNavBar()
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setUpNavBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        setUpNavBar()
+//    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+//    }
+    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        print("login pressed")
+        let loginVC = LoginViewController()
+        navigationController?.pushViewController(loginVC, animated: true)
     }
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
