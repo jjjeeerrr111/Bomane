@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
         setUpNavigationBar()
         setUpUI()
         setUpNotifications()
+        setUpTapGesture()
     }
 
     func setUpNotifications() {
@@ -75,18 +76,29 @@ class LoginViewController: UIViewController {
         hello.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(hello)
         
+        let again = UILabel()
+        again.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(again)
+        
         let constraints:[NSLayoutConstraint] = [
-            hello.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 10),
+            hello.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0),
             hello.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            hello.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+            again.topAnchor.constraint(equalTo: hello.bottomAnchor, constant: -20),
+            again.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ]
         NSLayoutConstraint.activate(constraints)
         
-        hello.text = "Hello\nagain"
+        hello.text = "Hello"
         hello.textAlignment = .center
         hello.font = UIFont(name: "AvenirNext-Regular", size: 50)
         hello.textColor = UIColor(red: 210/255, green: 185/255, blue: 163/255, alpha: 1)
         hello.numberOfLines = 2
+        
+        again.text = "again"
+        again.textAlignment = .center
+        again.font = UIFont(name: "AvenirNext-Regular", size: 50)
+        again.textColor = UIColor(red: 210/255, green: 185/255, blue: 163/255, alpha: 1)
+        again.numberOfLines = 2
         
         emailField = UITextField()
         emailField.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +119,7 @@ class LoginViewController: UIViewController {
         let secConstraints:[NSLayoutConstraint] = [
             emailField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
             emailField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
-            emailField.topAnchor.constraint(equalTo: hello.bottomAnchor, constant: 20),
+            emailField.topAnchor.constraint(equalTo: again.bottomAnchor, constant: 5),
             emailField.heightAnchor.constraint(equalToConstant: 44),
             separator1.topAnchor.constraint(equalTo: emailField.bottomAnchor),
             separator1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
@@ -136,6 +148,19 @@ class LoginViewController: UIViewController {
         emailField.placeholderColor = UIColor.white
         passwordField.placeholderColor = UIColor.white
         
+        emailField.delegate = self
+        emailField.clearButtonMode = .whileEditing
+        emailField.returnKeyType = .next
+        emailField.autocorrectionType = .no
+        emailField.autocapitalizationType = .none
+        
+        passwordField.delegate = self
+        passwordField.isSecureTextEntry = true
+        passwordField.clearButtonMode = .whileEditing
+        passwordField.returnKeyType = .done
+        passwordField.autocorrectionType = .no
+        passwordField.autocapitalizationType = .none
+        
         separator1.backgroundColor = UIColor.white
         separator2.backgroundColor = UIColor.white
         
@@ -157,7 +182,49 @@ class LoginViewController: UIViewController {
         loginButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 18)
         loginButton.setTitleColor(UIColor.black, for: .normal)
         loginButton.backgroundColor = UIColor.white
+        loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         
     }
+    
+    func loginButtonPressed() {
+        if (emailField.text?.isEmpty)! {
+            //showErrorAlert(title: "Email required", body: "Please enter your email to continue.")
+            return
+        } else if (passwordField.text?.isEmpty)! {
+            //showErrorAlert(title: "Password required", body: "Please enter your password to continue.")
+            return
+        }
+        resignKeyboard()
+        //login(email: email.text!, password: password.text!)
+    }
+    
+    func setUpTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tap(sender:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func tap(sender: UITapGestureRecognizer) {
+        resignKeyboard()
+    }
+    
+    func resignKeyboard() {
+        if emailField.isFirstResponder {
+            emailField.resignFirstResponder()
+        } else if passwordField.isFirstResponder {
+            passwordField.resignFirstResponder()
+        }
+    }
 
+}
+
+extension LoginViewController:UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if emailField.isFirstResponder {
+            passwordField.becomeFirstResponder()
+        } else if passwordField.isFirstResponder {
+            resignKeyboard()
+            loginButtonPressed()
+        }
+        return true
+    }
 }
