@@ -1,0 +1,6 @@
+framework module Pods_Bomane {
+  umbrella header "Pods-Bomane-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -188,10 +188,10 @@ class LoginViewController: UIViewController {
     
     func loginButtonPressed() {
         if (emailField.text?.isEmpty)! {
-            //showErrorAlert(title: "Email required", body: "Please enter your email to continue.")
+            showErrorAlert(title: "Email required", body: "Please enter your email to continue.")
             return
         } else if (passwordField.text?.isEmpty)! {
-            //showErrorAlert(title: "Password required", body: "Please enter your password to continue.")
+            showErrorAlert(title: "Password required", body: "Please enter your password to continue.")
             return
         }
         resignKeyboard()

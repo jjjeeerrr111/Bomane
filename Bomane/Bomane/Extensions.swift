@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-//import PopUpDialog
+import PopupDialog
 
 extension Int {
     func formattedNumberString() -> String {
@@ -105,18 +105,18 @@ extension UITabBar {
 }
 
 extension UIViewController {
-//    func showErrorAlert(title: String, body: String) {
-//        let alert = PopupDialog(title: title, message: body)
-//        
-//        let buttonOne = CancelButton(title: "OK") {
-//            
-//        }
-//        
-//        alert.addButtons([buttonOne])
-//        alert.transitionStyle = .zoomIn
-//        // Present dialog
-//        self.present(alert, animated: true, completion: nil)
-//    }
+    func showErrorAlert(title: String, body: String) {
+        let alert = PopupDialog(title: title, message: body)
+        
+        let buttonOne = CancelButton(title: "OK") {
+            
+        }
+        
+        alert.addButtons([buttonOne])
+        alert.transitionStyle = .zoomIn
+        // Present dialog
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension UITextField

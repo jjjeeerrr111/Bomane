@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B2EE0690BCBB3162698AC7B /* Pods_Bomane.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F404D100361E9220C5910C /* Pods_Bomane.framework */; };
 		572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E68701DEB3EE7001DB239 /* AppDelegate.swift */; };
 		572E68781DEB3EE7001DB239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 572E68771DEB3EE7001DB239 /* Assets.xcassets */; };
 		572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572E68791DEB3EE7001DB239 /* LaunchScreen.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C956D884B01D4F42724B35F /* Pods-Bomane.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomane.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bomane/Pods-Bomane.release.xcconfig"; sourceTree = "<group>"; };
 		572E686D1DEB3EE7001DB239 /* Bomane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bomane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E68701DEB3EE7001DB239 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		572E68771DEB3EE7001DB239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,6 +48,8 @@
 		5772315F1DEB563500A94A7B /* TableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView+Extensions.swift"; sourceTree = "<group>"; };
 		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		94F404D100361E9220C5910C /* Pods_Bomane.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bomane.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF43739748D54866A86D1B61 /* Pods-Bomane.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomane.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bomane/Pods-Bomane.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +57,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B2EE0690BCBB3162698AC7B /* Pods_Bomane.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36F5C6894B04EDDD3D9F37AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AF43739748D54866A86D1B61 /* Pods-Bomane.debug.xcconfig */,
+				4C956D884B01D4F42724B35F /* Pods-Bomane.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		572E68641DEB3EE7001DB239 = {
 			isa = PBXGroup;
 			children = (
 				572E686F1DEB3EE7001DB239 /* Bomane */,
 				572E686E1DEB3EE7001DB239 /* Products */,
+				36F5C6894B04EDDD3D9F37AD /* Pods */,
+				DC5598A2EF91DCC5C35CB54B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +164,14 @@
 			name = Helpers/Extensions;
 			sourceTree = "<group>";
 		};
+		DC5598A2EF91DCC5C35CB54B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94F404D100361E9220C5910C /* Pods_Bomane.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,9 +179,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 572E687F1DEB3EE7001DB239 /* Build configuration list for PBXNativeTarget "Bomane" */;
 			buildPhases = (
+				F1FDA6B96E9E950F7412C3EF /* [CP] Check Pods Manifest.lock */,
 				572E68691DEB3EE7001DB239 /* Sources */,
 				572E686A1DEB3EE7001DB239 /* Frameworks */,
 				572E686B1DEB3EE7001DB239 /* Resources */,
+				D27B7792404F6CD6508F1071 /* [CP] Embed Pods Frameworks */,
+				BC1FB4B94123C08E0ED01B00 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -175,12 +202,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = com.bomane;
 				TargetAttributes = {
 					572E686C1DEB3EE7001DB239 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = ZT7XTJFS6A;
+						DevelopmentTeam = 4FPZSW958T;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -218,6 +245,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BC1FB4B94123C08E0ED01B00 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bomane/Pods-Bomane-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D27B7792404F6CD6508F1071 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bomane/Pods-Bomane-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1FDA6B96E9E950F7412C3EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		572E68691DEB3EE7001DB239 /* Sources */ = {
@@ -270,6 +345,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -319,6 +395,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -345,12 +422,14 @@
 		};
 		572E68801DEB3EE7001DB239 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF43739748D54866A86D1B61 /* Pods-Bomane.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZT7XTJFS6A;
+				DEVELOPMENT_TEAM = 4FPZSW958T;
 				INFOPLIST_FILE = Bomane/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bomane.Bomane;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bomane.BomaneApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -358,12 +437,14 @@
 		};
 		572E68811DEB3EE7001DB239 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C956D884B01D4F42724B35F /* Pods-Bomane.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZT7XTJFS6A;
+				DEVELOPMENT_TEAM = 4FPZSW958T;
 				INFOPLIST_FILE = Bomane/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bomane.Bomane;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bomane.BomaneApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
