@@ -25,6 +25,7 @@
 		577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315F1DEB563500A94A7B /* TableView+Extensions.swift */; };
 		57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D851E05E8DD003207D2 /* LoginViewController.swift */; };
 		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
+		57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		5772315F1DEB563500A94A7B /* TableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView+Extensions.swift"; sourceTree = "<group>"; };
 		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountNameViewController.swift; sourceTree = "<group>"; };
 		94F404D100361E9220C5910C /* Pods_Bomane.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bomane.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF43739748D54866A86D1B61 /* Pods-Bomane.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomane.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bomane/Pods-Bomane.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 		572E686F1DEB3EE7001DB239 /* Bomane */ = {
 			isa = PBXGroup;
 			children = (
+				57EFC28D1E060D66006783D3 /* Create Account VCs */,
 				57DB7D871E05EF65003207D2 /* Helpers/Extensions */,
 				57DB7D841E05E8C5003207D2 /* Login VC */,
 				572E68701DEB3EE7001DB239 /* AppDelegate.swift */,
@@ -162,6 +165,14 @@
 				57DB7D881E05EF72003207D2 /* Extensions.swift */,
 			);
 			name = Helpers/Extensions;
+			sourceTree = "<group>";
+		};
+		57EFC28D1E060D66006783D3 /* Create Account VCs */ = {
+			isa = PBXGroup;
+			children = (
+				57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */,
+			);
+			name = "Create Account VCs";
 			sourceTree = "<group>";
 		};
 		DC5598A2EF91DCC5C35CB54B /* Frameworks */ = {
@@ -304,6 +315,7 @@
 				5751D25E1DEB9D29009A4612 /* ServicesTableViewCell.swift in Sources */,
 				5751D2661DEBA243009A4612 /* AboutViewController.swift in Sources */,
 				5751D2591DEB9AC1009A4612 /* ServicesViewController.swift in Sources */,
+				57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */,
 				577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */,
 				5772315A1DEB4DF900A94A7B /* ScreenMenuViewController.swift in Sources */,
 				572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */,

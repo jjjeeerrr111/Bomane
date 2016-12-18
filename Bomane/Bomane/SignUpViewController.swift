@@ -33,23 +33,14 @@ class SignUpViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        setUpNavBar()
-//    }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-//    }
-    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         let loginVC = LoginViewController()
         navigationController?.pushViewController(loginVC, animated: true)
     }
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
-        print("create pressed")
+        let createVC = CreateAccountNameViewController()
+        navigationController?.pushViewController(createVC, animated: true)
     }
 
     @IBAction func facebookButtonPressed(_ sender: UIButton) {

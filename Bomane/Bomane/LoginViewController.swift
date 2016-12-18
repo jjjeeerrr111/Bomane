@@ -90,13 +90,13 @@ class LoginViewController: UIViewController {
         
         hello.text = "Hello"
         hello.textAlignment = .center
-        hello.font = UIFont(name: "AvenirNext-Regular", size: 50)
+        hello.font = UIFont(name: "AvenirNext-Regular", size: 40)
         hello.textColor = UIColor(red: 210/255, green: 185/255, blue: 163/255, alpha: 1)
         hello.numberOfLines = 2
         
         again.text = "again"
         again.textAlignment = .center
-        again.font = UIFont(name: "AvenirNext-Regular", size: 50)
+        again.font = UIFont(name: "AvenirNext-Regular", size: 40)
         again.textColor = UIColor(red: 210/255, green: 185/255, blue: 163/255, alpha: 1)
         again.numberOfLines = 2
         
@@ -120,19 +120,19 @@ class LoginViewController: UIViewController {
             emailField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
             emailField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
             emailField.topAnchor.constraint(equalTo: again.bottomAnchor, constant: 5),
-            emailField.heightAnchor.constraint(equalToConstant: 44),
+            emailField.heightAnchor.constraint(equalToConstant: 40),
             separator1.topAnchor.constraint(equalTo: emailField.bottomAnchor),
             separator1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
             separator1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
-            separator1.heightAnchor.constraint(equalToConstant: 1),
+            separator1.heightAnchor.constraint(equalToConstant: 0.5),
             passwordField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
             passwordField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
             passwordField.topAnchor.constraint(equalTo: separator1.bottomAnchor, constant: 10),
-            passwordField.heightAnchor.constraint(equalToConstant: 44),
+            passwordField.heightAnchor.constraint(equalToConstant: 40),
             separator2.topAnchor.constraint(equalTo: passwordField.bottomAnchor),
             separator2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
             separator2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
-            separator2.heightAnchor.constraint(equalToConstant: 1),
+            separator2.heightAnchor.constraint(equalToConstant: 0.5),
         ]
         NSLayoutConstraint.activate(secConstraints)
         
@@ -163,6 +163,8 @@ class LoginViewController: UIViewController {
         
         separator1.backgroundColor = UIColor.white
         separator2.backgroundColor = UIColor.white
+        separator1.alpha = 0.5
+        separator2.alpha = 0.5
         
         loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
