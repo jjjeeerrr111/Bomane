@@ -25,7 +25,7 @@ class ScreenMenuViewController: UIViewController {
         setUpLogOutButton()
         setUpTableView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barTintColor = UIColor.black
@@ -96,6 +96,10 @@ class ScreenMenuViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.backgroundColor = UIColor.black
         tableView.separatorStyle = .none
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
 }

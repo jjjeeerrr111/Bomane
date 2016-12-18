@@ -33,6 +33,10 @@ class ServicesViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     func setUpServices() {
         for _ in 0...3 {
             let sub = "Aenean sagittis porttitor dolor,ac pretium eros tincidunt suscipit. Nunc ultrices arcu vel muris egestas mattis. Fusce metus velit, auctor sit amet ullamcorper in, vehicula ut nibh. Duis ut urna nulla. Sed eu luctus leo. Proin ut odio volutpat risus."

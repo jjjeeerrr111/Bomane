@@ -19,17 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UIApplication.shared.statusBarStyle = .lightContent
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.black
-        //initWindow()
-        showServices()
+        //showLogin()
+        initWindow(controller: "Services")
         return true
     }
     
     func initWindow(controller: String) {
         
-        let controllerDic = ["About" : AboutViewController.shared, "Services":ServicesViewController.shared]
+        let controllerDic = ["About" : AboutViewController.shared, "Services":ServicesViewController.shared, "Portfolio" : ProtfolioViewController.shared]
         
         guard let vc = controllerDic[controller] else {return}
         let navController = UINavigationController(rootViewController: vc)
