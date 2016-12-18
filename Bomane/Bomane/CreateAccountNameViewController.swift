@@ -214,7 +214,7 @@ class CreateAccountNameViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(btnConstraints)
         
-        nextButton.setTitle("Log in", for: .normal)
+        nextButton.setTitle("Next", for: .normal)
         nextButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 18)
         nextButton.setTitleColor(UIColor.black, for: .normal)
         nextButton.backgroundColor = UIColor.white
@@ -234,6 +234,9 @@ class CreateAccountNameViewController: UIViewController {
             return
         }
         resignKeyboard()
+        
+        let passVC = CreateAccountPasswordViewController()
+        navigationController?.pushViewController(passVC, animated: true)
     }
     
     func setUpTapGesture() {
