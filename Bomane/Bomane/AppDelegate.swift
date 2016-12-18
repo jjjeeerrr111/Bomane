@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.black
-        showLogin()//initWindow()
+        //initWindow()
+        showServices()
         return true
     }
     
@@ -32,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let signUpVC = SignUpViewController()
 //        window?.rootViewController = signUpVC
         
-        let screenVC = ServicesViewController()//ScreenMenuViewController()
+        let screenVC = ScreenMenuViewController()
         let navController = UINavigationController(rootViewController: screenVC)
         window?.rootViewController = navController
     

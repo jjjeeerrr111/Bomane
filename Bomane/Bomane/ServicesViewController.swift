@@ -74,7 +74,11 @@ class ServicesViewController: UIViewController {
     }
     
     func menuButtonPressed(sender: UIBarButtonItem) {
-        print("menu pressed")
+        let menu = ScreenMenuViewController()
+        let navVC = UINavigationController(rootViewController: menu)
+        navVC.transitioningDelegate = self
+        navVC.modalPresentationStyle = .overFullScreen
+        self.present(navVC, animated: true, completion: nil)
     }
     
     func setUpTableView() {
@@ -123,6 +127,18 @@ extension ServicesViewController:UITableViewDataSource {
         cell.titleLabel.text = services[indexPath.row].name
         cell.subtitleLabel.text = services[indexPath.row].description
         return cell
+    }
+}
+
+extension ServicesViewController:UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = SlideAnimator()
+        animator.presenting = false
+        return animator
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideAnimator()
     }
 }
 

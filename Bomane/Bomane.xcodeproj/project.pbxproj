@@ -27,6 +27,7 @@
 		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
 		57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */; };
 		57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */; };
+		57EFC2931E0617DB006783D3 /* Animators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2921E0617DB006783D3 /* Animators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountNameViewController.swift; sourceTree = "<group>"; };
 		57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPasswordViewController.swift; sourceTree = "<group>"; };
+		57EFC2921E0617DB006783D3 /* Animators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animators.swift; sourceTree = "<group>"; };
 		94F404D100361E9220C5910C /* Pods_Bomane.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bomane.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF43739748D54866A86D1B61 /* Pods-Bomane.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomane.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bomane/Pods-Bomane.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				57DB7D881E05EF72003207D2 /* Extensions.swift */,
+				57EFC2921E0617DB006783D3 /* Animators.swift */,
 			);
 			name = Helpers/Extensions;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				5751D2611DEB9E7C009A4612 /* Service.swift in Sources */,
 				5751D25E1DEB9D29009A4612 /* ServicesTableViewCell.swift in Sources */,
 				5751D2661DEBA243009A4612 /* AboutViewController.swift in Sources */,
+				57EFC2931E0617DB006783D3 /* Animators.swift in Sources */,
 				5751D2591DEB9AC1009A4612 /* ServicesViewController.swift in Sources */,
 				57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */,
 				57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */,
