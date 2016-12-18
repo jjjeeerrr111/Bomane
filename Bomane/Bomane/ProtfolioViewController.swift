@@ -62,7 +62,7 @@ class ProtfolioViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
         
-        guard let url = URL(string: "www.apple.com") else {return}
+        guard let url = URL(string: "https://instagram.com/JeremySha/") else {return}
        
         let request = URLRequest(url: url)
         webview.loadRequest(request)
