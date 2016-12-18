@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     class func shared() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
@@ -27,14 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func initWindow() {
+    func initWindow(controller: String) {
         
-        //A user has not been created or logged in yet - show log in screen
-//        let signUpVC = SignUpViewController()
-//        window?.rootViewController = signUpVC
+        let controllerDic = ["About" : AboutViewController.shared, "Services":ServicesViewController.shared]
         
-        let screenVC = ScreenMenuViewController()
-        let navController = UINavigationController(rootViewController: screenVC)
+        guard let vc = controllerDic[controller] else {return}
+        let navController = UINavigationController(rootViewController: vc)
         window?.rootViewController = navController
     
         self.window?.makeKeyAndVisible()
@@ -54,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showServices() {
-        let screenVC = ServicesViewController()
+        let screenVC = ServicesViewController.shared
         let navController = UINavigationController(rootViewController: screenVC)
         window?.rootViewController = navController
         self.window?.makeKeyAndVisible()

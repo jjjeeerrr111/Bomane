@@ -10,6 +10,8 @@ import UIKit
 
 class ScreenMenuViewController: UIViewController {
     
+    static let shared = ScreenMenuViewController()
+    
     var closeButton:UIButton!
     var tableView:UITableView!
     var logOutButton:UIButton!
@@ -24,9 +26,11 @@ class ScreenMenuViewController: UIViewController {
         setUpTableView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Baskerville", size: 20)!]
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     func setUpLogOutButton() {
@@ -98,7 +102,11 @@ class ScreenMenuViewController: UIViewController {
 
 extension ScreenMenuViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("cell selected")
+        //["Book Appointment","Services","Portfolio","Profile","Contact","About","Pay"]
+        guard let cell = tableView.cellForRow(at: indexPath) as? MenuTableViewCell, let title = cell.titleLabel.text else {return}
+        
+        AppDelegate.shared().initWindow(controller: title)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

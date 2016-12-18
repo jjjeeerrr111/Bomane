@@ -10,6 +10,8 @@ import UIKit
 
 class ServicesViewController: UIViewController {
     
+    static let shared = ServicesViewController()
+    
     var tableView:UITableView!
     var bookButton:UIButton!
     
@@ -22,6 +24,13 @@ class ServicesViewController: UIViewController {
         setUpNavBar()
         setUpBookButton()
         setUpTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black, NSFontAttributeName:UIFont(name: "Baskerville", size: 20)!]
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     func setUpServices() {
@@ -74,7 +83,7 @@ class ServicesViewController: UIViewController {
     }
     
     func menuButtonPressed(sender: UIBarButtonItem) {
-        let menu = ScreenMenuViewController()
+        let menu = ScreenMenuViewController.shared
         let navVC = UINavigationController(rootViewController: menu)
         navVC.transitioningDelegate = self
         navVC.modalPresentationStyle = .overFullScreen
