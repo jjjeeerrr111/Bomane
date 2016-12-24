@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.black
         //showLogin()
-        initWindow(controller: "Services")
+        initWindow(controller: "Book Appointment")
         return true
     }
     
