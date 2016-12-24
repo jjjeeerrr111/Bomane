@@ -153,7 +153,7 @@ extension BookAppointmentViewController: CVCalendarViewDelegate, CVCalendarMenuV
     }
     
     func shouldShowWeekdaysOut() -> Bool {
-        return shouldShowDaysOut
+        return false
     }
     
     func shouldAnimateResizing() -> Bool {
