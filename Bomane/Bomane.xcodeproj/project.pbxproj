@@ -29,6 +29,8 @@
 		57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */; };
 		57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */; };
 		57EFC2931E0617DB006783D3 /* Animators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2921E0617DB006783D3 /* Animators.swift */; };
+		57FF1DEA1E0F1126003D1686 /* BookAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FF1DE81E0F1126003D1686 /* BookAppointmentViewController.swift */; };
+		57FF1DEB1E0F1126003D1686 /* BookAppointmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57FF1DE91E0F1126003D1686 /* BookAppointmentViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountNameViewController.swift; sourceTree = "<group>"; };
 		57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPasswordViewController.swift; sourceTree = "<group>"; };
 		57EFC2921E0617DB006783D3 /* Animators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animators.swift; sourceTree = "<group>"; };
+		57FF1DE81E0F1126003D1686 /* BookAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookAppointmentViewController.swift; sourceTree = "<group>"; };
+		57FF1DE91E0F1126003D1686 /* BookAppointmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookAppointmentViewController.xib; sourceTree = "<group>"; };
 		94F404D100361E9220C5910C /* Pods_Bomane.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bomane.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF43739748D54866A86D1B61 /* Pods-Bomane.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomane.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bomane/Pods-Bomane.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				572E68701DEB3EE7001DB239 /* AppDelegate.swift */,
+				57FF1DE71E0F10C9003D1686 /* Book Appointment VCs */,
 				57EFC28D1E060D66006783D3 /* Create Account VCs */,
 				57DB7D871E05EF65003207D2 /* Helpers/Extensions */,
 				57DB7D841E05E8C5003207D2 /* Login VC */,
@@ -192,6 +197,15 @@
 			name = "Create Account VCs";
 			sourceTree = "<group>";
 		};
+		57FF1DE71E0F10C9003D1686 /* Book Appointment VCs */ = {
+			isa = PBXGroup;
+			children = (
+				57FF1DE81E0F1126003D1686 /* BookAppointmentViewController.swift */,
+				57FF1DE91E0F1126003D1686 /* BookAppointmentViewController.xib */,
+			);
+			name = "Book Appointment VCs";
+			sourceTree = "<group>";
+		};
 		DC5598A2EF91DCC5C35CB54B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +283,7 @@
 				5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */,
 				5751D2671DEBA243009A4612 /* AboutViewController.xib in Resources */,
 				572E68781DEB3EE7001DB239 /* Assets.xcassets in Resources */,
+				57FF1DEB1E0F1126003D1686 /* BookAppointmentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +357,7 @@
 				57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */,
 				57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */,
 				5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */,
+				57FF1DEA1E0F1126003D1686 /* BookAppointmentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

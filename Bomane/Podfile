@@ -15,5 +15,6 @@ target 'Bomane' do
   pod 'FacebookShare'
   pod 'ReachabilitySwift', '~> 3'
   pod 'SwiftMessages'
+  pod 'CVCalendar', '~> 1.4'
 
 end

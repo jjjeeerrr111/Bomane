@@ -6,6 +6,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - CVCalendar (1.4.1)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
@@ -33,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - CVCalendar (~> 1.4)
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -45,6 +47,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  CVCalendar: 61912eb5dc39c3bcfe22a731147a559a696fbc15
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
@@ -57,6 +60,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 1216ea6bdf8d92ff0f6f98a23e5442711b1e71ac
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: 594a45d1ec5363f20bb4d1ddb12fc1c041a6a3d0
+PODFILE CHECKSUM: 52f698e0b3a4546a3202e120981888973db6e422
 
 COCOAPODS: 1.1.1

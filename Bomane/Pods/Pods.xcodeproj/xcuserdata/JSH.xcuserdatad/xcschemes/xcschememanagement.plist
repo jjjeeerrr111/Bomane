@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CVCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,17 +87,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>09ABCB0DC2CF80722CF75A8F78C6A59E</key>
+		<key>103B4A5315BE19A11359533D019FB0F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>149C3118130C50D34DF9491BCA855E34</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1896892D8EA60503F8E5B52D274A2448</key>
+		<key>19A1449AD4A98EA4C161DD21E5CFCA54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,12 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>31418D425B97E292FFAFC566D79FC144</key>
+		<key>23B054E356BF76A9519889DB01782467</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>47654BCFF53EADC5DEFDA249FC8094B0</key>
+		<key>31418D425B97E292FFAFC566D79FC144</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -118,11 +118,6 @@
 			<true/>
 		</dict>
 		<key>5A0A28913A1212C2D1EACECBA1E58AC0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7773C46CA420C513B19505DDAC45B506</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,7 +137,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9E6C9CC092C19682A5C52106A5C58A95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A8F77DC39F7D0CFE46DAA5C135D96A80</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C36C1F0103409FD2664C9296EA18DCAD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C6A93D87B60FB442208C01AEEB0B3DDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,7 +162,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F32D277B9E7CF667495D39C411679C27</key>
+		<key>E5AB88E8333B9568826C9AA252037278</key>
 		<dict>
 			<key>primary</key>
 			<true/>

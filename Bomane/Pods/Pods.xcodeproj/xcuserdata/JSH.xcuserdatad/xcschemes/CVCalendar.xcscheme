@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "103B4A5315BE19A11359533D019FB0F6"
-               BuildableName = "SwiftMessages.framework"
-               BlueprintName = "SwiftMessages"
+               BlueprintIdentifier = "E5AB88E8333B9568826C9AA252037278"
+               BuildableName = "CVCalendar.framework"
+               BlueprintName = "CVCalendar"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "103B4A5315BE19A11359533D019FB0F6"
-            BuildableName = "SwiftMessages.framework"
-            BlueprintName = "SwiftMessages"
+            BlueprintIdentifier = "E5AB88E8333B9568826C9AA252037278"
+            BuildableName = "CVCalendar.framework"
+            BlueprintName = "CVCalendar"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
