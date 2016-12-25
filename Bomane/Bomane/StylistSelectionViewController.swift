@@ -161,9 +161,7 @@ class StylistSelectionViewController: UIViewController {
             self.showErrorAlert(title: "Select a stylist", body: "Please select a stylist to continue.")
             return
         }
-        
-        //todo: delegate methods
-        print(sty)
+        delegate?.getStylistSelection(stylist: sty)
         self.dismissView()
     }
     
@@ -229,7 +227,6 @@ extension StylistSelectionViewController:UITableViewDelegate {
         cell.setSelected()
         previouslySelectedIndexPath = indexPath
         selectedStylist = cell.serviceLabel.text
-        delegate?.getStylistSelection(stylist: self.selectedStylist!)
     }
 }
 

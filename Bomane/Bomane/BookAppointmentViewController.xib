@@ -14,6 +14,7 @@
                 <outlet property="calendarView" destination="HhN-Z8-4Tw" id="I1w-E9-N5K"/>
                 <outlet property="menuView" destination="ylM-Qz-nNx" id="jkW-51-mYM"/>
                 <outlet property="monthLabel" destination="fbv-10-DRT" id="fYn-p3-AHB"/>
+                <outlet property="selectedDateLabel" destination="BhA-4e-9ve" id="PYa-Bm-Cg6"/>
                 <outlet property="serviceLabel" destination="PGt-pD-q9K" id="OT6-0b-Fhq"/>
                 <outlet property="stylistLabel" destination="xqk-lm-bTH" id="sU2-if-Hx8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -106,6 +107,12 @@
                         <action selector="selectServiceTapped:" destination="-1" eventType="touchUpInside" id="LBH-vY-tcz"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhA-4e-9ve">
+                    <rect key="frame" x="188" y="479" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                    <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
@@ -127,6 +134,7 @@
                 <constraint firstItem="ylM-Qz-nNx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Ryz-h2-IJv"/>
                 <constraint firstItem="fbv-10-DRT" firstAttribute="top" secondItem="ylM-Qz-nNx" secondAttribute="bottom" constant="7" id="TtT-f2-xPF"/>
                 <constraint firstItem="uPq-GM-Ymk" firstAttribute="top" secondItem="PGt-pD-q9K" secondAttribute="bottom" constant="5" id="WDW-gr-z9N"/>
+                <constraint firstItem="BhA-4e-9ve" firstAttribute="top" secondItem="HhN-Z8-4Tw" secondAttribute="bottom" constant="20" id="YS4-aW-UrE"/>
                 <constraint firstItem="xqk-lm-bTH" firstAttribute="centerY" secondItem="s3d-Lf-fIe" secondAttribute="centerY" id="YVp-iz-Hch"/>
                 <constraint firstAttribute="trailing" secondItem="PZ9-aH-HWg" secondAttribute="trailing" constant="20" id="aOx-6V-CLZ"/>
                 <constraint firstItem="kda-5t-IsU" firstAttribute="leading" secondItem="PGt-pD-q9K" secondAttribute="leading" id="b5k-fJ-a3u"/>
@@ -135,6 +143,7 @@
                 <constraint firstAttribute="trailing" secondItem="UTB-g0-qSh" secondAttribute="trailing" id="dXm-5W-J6Q"/>
                 <constraint firstItem="xqk-lm-bTH" firstAttribute="leading" secondItem="kda-5t-IsU" secondAttribute="leading" id="fCD-Ke-Vop"/>
                 <constraint firstItem="fbv-10-DRT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kVQ-zM-HNL"/>
+                <constraint firstItem="BhA-4e-9ve" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lU4-Wc-HQ7"/>
                 <constraint firstItem="PZ9-aH-HWg" firstAttribute="centerY" secondItem="PGt-pD-q9K" secondAttribute="centerY" id="mug-9C-ffc"/>
                 <constraint firstItem="kda-5t-IsU" firstAttribute="top" secondItem="xqk-lm-bTH" secondAttribute="bottom" constant="5" id="oUF-5o-xPB"/>
                 <constraint firstAttribute="trailing" secondItem="HhN-Z8-4Tw" secondAttribute="trailing" constant="20" id="ooo-Cc-tge"/>

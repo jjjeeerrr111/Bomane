@@ -29,6 +29,7 @@ class BookAppointmentViewController: UIViewController {
     @IBOutlet var calendarView: CVCalendarView!
     @IBOutlet var menuView: CVCalendarMenuView!
 
+    @IBOutlet weak var selectedDateLabel: UILabel!
     
     var selectedStylist:String?
     var selectedService:String?
@@ -36,7 +37,11 @@ class BookAppointmentViewController: UIViewController {
     var shouldShowDaysOut = true
     var animationFinished = true
     
-    var selectedDay:DayView!
+    var selectedDay:DayView! {
+        didSet {
+            self.selectedDateLabel.text = selectedDay.date!.commonDescription
+        }
+    }
     
     var currentCalendar: Calendar?
     
@@ -139,6 +144,11 @@ class BookAppointmentViewController: UIViewController {
         
         guard let service = self.selectedService else {
             self.showErrorAlert(title: "Select a service", body: "Please select a service to view available appointments.")
+            return
+        }
+        
+        guard let date = selectedDay else {
+            self.showErrorAlert(title: "Select a date", body: "Please select a date to view available appointments.")
             return
         }
         
@@ -404,9 +414,9 @@ extension BookAppointmentViewController: CVCalendarViewAppearanceDelegate {
         case (_, .selected, _), (_, .highlighted,_):
             return UIColor.white
         case (.sunday, .in, _):
-            return Color.sundayText
+            return UIColor.black//Color.sundayText
         case (.sunday, _, _):
-            return Color.sundayTextDisabled
+            return UIColor.black//Color.sundayTextDisabled
         case (_, .in, _):
             return Color.text
         default:
@@ -416,8 +426,8 @@ extension BookAppointmentViewController: CVCalendarViewAppearanceDelegate {
     
     func dayLabelBackgroundColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
         switch (weekDay, status, present) {
-        case (.sunday, .selected, _), (.sunday, .highlighted, _):
-            return Color.sundaySelectionBackground
+//        case (.sunday, .selected, _), (.sunday, .highlighted, _):
+//            return Color.sundaySelectionBackground
         case (_, .selected, _), (_, .highlighted, _):
             return UIColor(red: 210/255, green: 186/255, blue: 162/255, alpha: 1)
         default: return nil

@@ -160,8 +160,7 @@ class ServiceSelectionViewController: UIViewController {
             self.showErrorAlert(title: "Select a service", body: "Please select a service to continue.")
             return
         }
-        
-        print(serv)
+        delegate?.getServiceSelection(service: serv)
         self.dismissView()
     }
     
@@ -227,7 +226,6 @@ extension ServiceSelectionViewController:UITableViewDelegate {
         cell.setSelected()
         previouslySelectedIndexPath = indexPath
         self.selectedService = cell.serviceLabel.text
-        delegate?.getServiceSelection(service: self.selectedService!)
     }
 }
 
