@@ -116,7 +116,7 @@ class PresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         if let toVC = transitionContext.viewController(forKey: .to) as? TimeSelectionViewController {
             if let fromView = transitionContext.view(forKey: .from) ?? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)?.view {
                 UIView.animate(withDuration: 0.2, animations: {
-                    fromView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+                    //fromView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
                 }, completion: nil)
                 
             }
@@ -133,7 +133,7 @@ class PresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         } else if let toVC = transitionContext.viewController(forKey: .to) as? StylistSelectionViewController {
             if let fromView = transitionContext.view(forKey: .from) ?? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)?.view {
                 UIView.animate(withDuration: 0.2, animations: {
-                    fromView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+                    //fromView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
                 }, completion: nil)
                 
             }
@@ -150,7 +150,7 @@ class PresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         } else if let toVC = transitionContext.viewController(forKey: .to) as? ServiceSelectionViewController {
             if let fromView = transitionContext.view(forKey: .from) ?? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)?.view {
                 UIView.animate(withDuration: 0.2, animations: {
-                    fromView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+                    //fromView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
                 }, completion: nil)
                 
             }

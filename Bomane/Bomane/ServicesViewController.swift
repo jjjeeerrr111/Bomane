@@ -69,7 +69,7 @@ class ServicesViewController: UIViewController {
     }
     
     func bookButtonPressed(sender: UIButton) {
-       print("book pressed")
+       AppDelegate.shared().initWindow(controller: "Book Appointment")
     }
     
     func setUpNavBar() {
