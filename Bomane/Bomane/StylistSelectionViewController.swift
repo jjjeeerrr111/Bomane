@@ -10,6 +10,7 @@ import UIKit
 
 class StylistSelectionViewController: UIViewController {
     
+    var delegate:StylistSelectionDelegate?
     private var titleLabel = UILabel()
     var closeButton:UIButton!
     var applyButton:UIButton!
@@ -21,6 +22,8 @@ class StylistSelectionViewController: UIViewController {
     
     var stylists:[String] = ["Stephanie","Jane","Erica","Monica","Andrea","Susan","Debbie","Kelly"]
     var previouslySelectedIndexPath:IndexPath?
+    
+    var selectedStylist:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,7 +157,14 @@ class StylistSelectionViewController: UIViewController {
     }
     
     func applyButtonPressed(sender: UIButton) {
+        guard let sty = self.selectedStylist else {
+            self.showErrorAlert(title: "Select a stylist", body: "Please select a stylist to continue.")
+            return
+        }
         
+        //todo: delegate methods
+        print(sty)
+        self.dismissView()
     }
     
     func dismissView() {
@@ -218,6 +228,12 @@ extension StylistSelectionViewController:UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
         cell.setSelected()
         previouslySelectedIndexPath = indexPath
+        selectedStylist = cell.serviceLabel.text
+        delegate?.getStylistSelection(stylist: self.selectedStylist!)
     }
+}
+
+protocol StylistSelectionDelegate {
+    func getStylistSelection(stylist:String)
 }
 

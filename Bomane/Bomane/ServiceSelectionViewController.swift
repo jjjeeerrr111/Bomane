@@ -10,6 +10,7 @@ import UIKit
 
 class ServiceSelectionViewController: UIViewController {
     
+    var delegate:ServiceSelectionDelegate?
     private var titleLabel = UILabel()
     var closeButton:UIButton!
     var applyButton:UIButton!
@@ -21,6 +22,8 @@ class ServiceSelectionViewController: UIViewController {
     
     var services:[String] = ["Haircut","Blowdry"]
     var previouslySelectedIndexPath:IndexPath?
+    var selectedService:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
@@ -153,7 +156,13 @@ class ServiceSelectionViewController: UIViewController {
     }
     
     func applyButtonPressed(sender: UIButton) {
+        guard let serv = self.selectedService else {
+            self.showErrorAlert(title: "Select a service", body: "Please select a service to continue.")
+            return
+        }
         
+        print(serv)
+        self.dismissView()
     }
     
     func dismissView() {
@@ -217,5 +226,11 @@ extension ServiceSelectionViewController:UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
         cell.setSelected()
         previouslySelectedIndexPath = indexPath
+        self.selectedService = cell.serviceLabel.text
+        delegate?.getServiceSelection(service: self.selectedService!)
     }
+}
+
+protocol ServiceSelectionDelegate {
+    func getServiceSelection(service:String)
 }

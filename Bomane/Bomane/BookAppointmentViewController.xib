@@ -14,6 +14,8 @@
                 <outlet property="calendarView" destination="HhN-Z8-4Tw" id="I1w-E9-N5K"/>
                 <outlet property="menuView" destination="ylM-Qz-nNx" id="jkW-51-mYM"/>
                 <outlet property="monthLabel" destination="fbv-10-DRT" id="fYn-p3-AHB"/>
+                <outlet property="serviceLabel" destination="PGt-pD-q9K" id="OT6-0b-Fhq"/>
+                <outlet property="stylistLabel" destination="xqk-lm-bTH" id="sU2-if-Hx8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

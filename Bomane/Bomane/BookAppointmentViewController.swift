@@ -23,6 +23,8 @@ class BookAppointmentViewController: UIViewController {
     
     static let shared = BookAppointmentViewController()
 
+    @IBOutlet weak var serviceLabel: UILabel!
+    @IBOutlet weak var stylistLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet var calendarView: CVCalendarView!
     @IBOutlet var menuView: CVCalendarMenuView!
@@ -114,6 +116,7 @@ class BookAppointmentViewController: UIViewController {
     
     @IBAction func selectStylistPressed(_ sender: UIButton) {
         let stylistVC = StylistSelectionViewController()
+        stylistVC.delegate = self
         stylistVC.transitioningDelegate = self
         stylistVC.modalPresentationStyle = .overFullScreen
         self.present(stylistVC, animated: true, completion: nil)
@@ -121,24 +124,26 @@ class BookAppointmentViewController: UIViewController {
     
     @IBAction func selectServiceTapped(_ sender: UIButton) {
         let serviceVC = ServiceSelectionViewController()
+        serviceVC.delegate = self
         serviceVC.transitioningDelegate = self
         serviceVC.modalPresentationStyle = .overFullScreen
         self.present(serviceVC, animated: true, completion: nil)
     }
     
     @IBAction func viewAvailableAppointmentsPressed(_ sender: UIButton) {
-//        
-//        guard let stylist = self.selectedStylist else {
-//            self.showErrorAlert(title: "Select a stylist", body: "Please select a stylist to view available appointments.")
-//            return
-//        }
-//        
-//        guard let service = self.selectedService else {
-//            self.showErrorAlert(title: "Select a service", body: "Please select a service to view available appointments.")
-//            return
-//        }
+        
+        guard let stylist = self.selectedStylist else {
+            self.showErrorAlert(title: "Select a stylist", body: "Please select a stylist to view available appointments.")
+            return
+        }
+        
+        guard let service = self.selectedService else {
+            self.showErrorAlert(title: "Select a service", body: "Please select a service to view available appointments.")
+            return
+        }
         
         let timeVC = TimeSelectionViewController()
+        timeVC.delegate = self
         timeVC.transitioningDelegate = self
         timeVC.modalPresentationStyle = .overFullScreen
         self.present(timeVC, animated: true, completion: nil)
@@ -417,6 +422,22 @@ extension BookAppointmentViewController: CVCalendarViewAppearanceDelegate {
             return UIColor(red: 210/255, green: 186/255, blue: 162/255, alpha: 1)
         default: return nil
         }
+    }
+}
+
+extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionDelegate, StylistSelectionDelegate {
+    func getTimeSelection(time: String) {
+        
+    }
+    
+    func getServiceSelection(service: String) {
+        self.selectedService = service
+        self.serviceLabel.text = service
+    }
+    
+    func getStylistSelection(stylist: String) {
+        self.selectedStylist = stylist
+        self.stylistLabel.text = stylist
     }
 }
 

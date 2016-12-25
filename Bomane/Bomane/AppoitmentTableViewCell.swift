@@ -26,7 +26,6 @@ class AppoitmentTableViewCell: UITableViewCell {
     }
     
     func setSelected() {
-        print("called")
         selectionButton.isSelected = !selectionButton.isSelected
     }
     
