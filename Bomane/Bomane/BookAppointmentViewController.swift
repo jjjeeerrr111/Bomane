@@ -27,6 +27,10 @@ class BookAppointmentViewController: UIViewController {
     @IBOutlet var calendarView: CVCalendarView!
     @IBOutlet var menuView: CVCalendarMenuView!
 
+    
+    var selectedStylist:String?
+    var selectedService:String?
+    
     var shouldShowDaysOut = true
     var animationFinished = true
     
@@ -107,6 +111,32 @@ class BookAppointmentViewController: UIViewController {
         navVC.modalPresentationStyle = .overFullScreen
         self.present(navVC, animated: true, completion: nil)
     }
+    
+    @IBAction func selectStylistPressed(_ sender: UIButton) {
+        let stylistVC = StylistSelectionViewController()
+        self.present(stylistVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func selectServiceTapped(_ sender: UIButton) {
+        let serviceVC = ServiceSelectionViewController()
+        self.present(serviceVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func viewAvailableAppointmentsPressed(_ sender: UIButton) {
+        
+        guard let stylist = self.selectedStylist else {
+            self.showErrorAlert(title: "Select a stylist", body: "Please select a stylist to view available appointments.")
+            return
+        }
+        
+        guard let service = self.selectedService else {
+            self.showErrorAlert(title: "Select a service", body: "Please select a service to view available appointments.")
+            return
+        }
+        
+        
+    }
+    
 }
 
 extension BookAppointmentViewController:UIViewControllerTransitioningDelegate {

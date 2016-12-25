@@ -13,6 +13,11 @@
 		572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572E68791DEB3EE7001DB239 /* LaunchScreen.storyboard */; };
 		572E68841DEB3F2C001DB239 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E68821DEB3F2C001DB239 /* SignUpViewController.swift */; };
 		572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 572E68831DEB3F2C001DB239 /* SignUpViewController.xib */; };
+		574D3D0E1E102BE000D0D2C2 /* AppoitmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D3D0C1E102BE000D0D2C2 /* AppoitmentTableViewCell.swift */; };
+		574D3D0F1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574D3D0D1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib */; };
+		574D3D111E10332B00D0D2C2 /* StylistSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D3D101E10332B00D0D2C2 /* StylistSelectionViewController.swift */; };
+		574D3D131E10333A00D0D2C2 /* ServiceSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D3D121E10333A00D0D2C2 /* ServiceSelectionViewController.swift */; };
+		574D3D151E10336200D0D2C2 /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574D3D141E10336200D0D2C2 /* TimeSelectionViewController.swift */; };
 		5751D2591DEB9AC1009A4612 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5751D2581DEB9AC1009A4612 /* ServicesViewController.swift */; };
 		5751D25E1DEB9D29009A4612 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5751D25C1DEB9D29009A4612 /* ServicesTableViewCell.swift */; };
 		5751D25F1DEB9D29009A4612 /* ServicesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5751D25D1DEB9D29009A4612 /* ServicesTableViewCell.xib */; };
@@ -42,6 +47,11 @@
 		572E687C1DEB3EE7001DB239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		572E68821DEB3F2C001DB239 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		572E68831DEB3F2C001DB239 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		574D3D0C1E102BE000D0D2C2 /* AppoitmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppoitmentTableViewCell.swift; sourceTree = "<group>"; };
+		574D3D0D1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppoitmentTableViewCell.xib; sourceTree = "<group>"; };
+		574D3D101E10332B00D0D2C2 /* StylistSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StylistSelectionViewController.swift; sourceTree = "<group>"; };
+		574D3D121E10333A00D0D2C2 /* ServiceSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectionViewController.swift; sourceTree = "<group>"; };
+		574D3D141E10336200D0D2C2 /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewController.swift; sourceTree = "<group>"; };
 		5751D2581DEB9AC1009A4612 /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		5751D25C1DEB9D29009A4612 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewCell.swift; sourceTree = "<group>"; };
 		5751D25D1DEB9D29009A4612 /* ServicesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesTableViewCell.xib; sourceTree = "<group>"; };
@@ -116,7 +126,6 @@
 				5751D2631DEBA227009A4612 /* About VC */,
 				5751D25A1DEB9D07009A4612 /* Menu VC */,
 				578F22171E07172D00CBF23C /* Portfolio VC */,
-				5772315F1DEB563500A94A7B /* TableView+Extensions.swift */,
 				572E68771DEB3EE7001DB239 /* Assets.xcassets */,
 				572E68791DEB3EE7001DB239 /* LaunchScreen.storyboard */,
 				572E687C1DEB3EE7001DB239 /* Info.plist */,
@@ -182,6 +191,7 @@
 		57DB7D871E05EF65003207D2 /* Helpers/Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5772315F1DEB563500A94A7B /* TableView+Extensions.swift */,
 				57DB7D881E05EF72003207D2 /* Extensions.swift */,
 				57EFC2921E0617DB006783D3 /* Animators.swift */,
 			);
@@ -202,6 +212,11 @@
 			children = (
 				57FF1DE81E0F1126003D1686 /* BookAppointmentViewController.swift */,
 				57FF1DE91E0F1126003D1686 /* BookAppointmentViewController.xib */,
+				574D3D0C1E102BE000D0D2C2 /* AppoitmentTableViewCell.swift */,
+				574D3D0D1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib */,
+				574D3D101E10332B00D0D2C2 /* StylistSelectionViewController.swift */,
+				574D3D121E10333A00D0D2C2 /* ServiceSelectionViewController.swift */,
+				574D3D141E10336200D0D2C2 /* TimeSelectionViewController.swift */,
 			);
 			name = "Book Appointment VCs";
 			sourceTree = "<group>";
@@ -277,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				574D3D0F1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib in Resources */,
 				572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */,
 				572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */,
 				5751D25F1DEB9D29009A4612 /* ServicesTableViewCell.xib in Resources */,
@@ -350,8 +366,12 @@
 				5751D2591DEB9AC1009A4612 /* ServicesViewController.swift in Sources */,
 				57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */,
 				578F22191E07174200CBF23C /* ProtfolioViewController.swift in Sources */,
+				574D3D0E1E102BE000D0D2C2 /* AppoitmentTableViewCell.swift in Sources */,
+				574D3D131E10333A00D0D2C2 /* ServiceSelectionViewController.swift in Sources */,
 				57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */,
+				574D3D111E10332B00D0D2C2 /* StylistSelectionViewController.swift in Sources */,
 				577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */,
+				574D3D151E10336200D0D2C2 /* TimeSelectionViewController.swift in Sources */,
 				5772315A1DEB4DF900A94A7B /* ScreenMenuViewController.swift in Sources */,
 				572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */,
 				57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */,
