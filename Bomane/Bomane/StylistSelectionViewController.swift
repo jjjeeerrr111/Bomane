@@ -20,6 +20,7 @@ class StylistSelectionViewController: UIViewController {
     var backgroundView:UIView!
     
     var stylists:[String] = ["Stephanie","Jane","Erica","Monica","Andrea","Susan","Debbie","Kelly"]
+    var previouslySelectedIndexPath:IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -211,7 +212,12 @@ extension StylistSelectionViewController:UITableViewDataSource {
 
 extension StylistSelectionViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row")
+        if let lastIndexPath = previouslySelectedIndexPath,let previousCell = tableView.cellForRow(at: lastIndexPath) as? AppoitmentTableViewCell {
+            previousCell.setSelected()
+        }
+        let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
+        cell.setSelected()
+        previouslySelectedIndexPath = indexPath
     }
 }
 

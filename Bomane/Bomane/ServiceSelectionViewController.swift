@@ -20,7 +20,7 @@ class ServiceSelectionViewController: UIViewController {
     var backgroundView:UIView!
     
     var services:[String] = ["Haircut","Blowdry"]
-    
+    var previouslySelectedIndexPath:IndexPath?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
@@ -211,6 +211,11 @@ extension ServiceSelectionViewController:UITableViewDataSource {
 
 extension ServiceSelectionViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row")
+        if let lastIndexPath = previouslySelectedIndexPath,let previousCell = tableView.cellForRow(at: lastIndexPath) as? AppoitmentTableViewCell {
+            previousCell.setSelected()
+        }
+        let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
+        cell.setSelected()
+        previouslySelectedIndexPath = indexPath
     }
 }

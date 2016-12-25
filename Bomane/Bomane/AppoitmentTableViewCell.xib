@@ -31,9 +31,6 @@
                         <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                         <state key="normal" image="UnselectedOval"/>
                         <state key="selected" image="SelectedOval"/>
-                        <connections>
-                            <action selector="buttonSelected:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Es-zR-iw6"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>

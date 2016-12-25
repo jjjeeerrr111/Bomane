@@ -19,6 +19,8 @@ class TimeSelectionViewController: UIViewController {
     var containerView:UIView!
     var backgroundView:UIView!
     
+    var previouslySelectedIndexPath:IndexPath?
+    
     var times:[String] = ["8:45-9:45am","10-11am","1:30-2:30pm","4:15-5:15pm"]
     
     override func viewDidLoad() {
@@ -211,6 +213,12 @@ extension TimeSelectionViewController:UITableViewDataSource {
 
 extension TimeSelectionViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row")
+        if let lastIndexPath = previouslySelectedIndexPath,let previousCell = tableView.cellForRow(at: lastIndexPath) as? AppoitmentTableViewCell {
+            previousCell.setSelected() 
+        }
+        let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
+        cell.setSelected()
+        previouslySelectedIndexPath = indexPath
+        
     }
 }
