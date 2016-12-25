@@ -114,11 +114,15 @@ class BookAppointmentViewController: UIViewController {
     
     @IBAction func selectStylistPressed(_ sender: UIButton) {
         let stylistVC = StylistSelectionViewController()
+        stylistVC.transitioningDelegate = self
+        stylistVC.modalPresentationStyle = .overFullScreen
         self.present(stylistVC, animated: true, completion: nil)
     }
     
     @IBAction func selectServiceTapped(_ sender: UIButton) {
         let serviceVC = ServiceSelectionViewController()
+        serviceVC.transitioningDelegate = self
+        serviceVC.modalPresentationStyle = .overFullScreen
         self.present(serviceVC, animated: true, completion: nil)
     }
     
@@ -135,6 +139,8 @@ class BookAppointmentViewController: UIViewController {
 //        }
         
         let timeVC = TimeSelectionViewController()
+        timeVC.transitioningDelegate = self
+        timeVC.modalPresentationStyle = .overFullScreen
         self.present(timeVC, animated: true, completion: nil)
         
     }
@@ -143,14 +149,25 @@ class BookAppointmentViewController: UIViewController {
 
 extension BookAppointmentViewController:UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if dismissed.isKind(of: TimeSelectionViewController.self) || dismissed.isKind(of: StylistSelectionViewController.self) || dismissed.isKind(of: ServiceSelectionViewController.self) {
+            return DimissAnimator()
+        }
+        
         let animator = SlideAnimator()
         animator.presenting = false
         return animator
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        if presented.isKind(of: TimeSelectionViewController.self) || presented.isKind(of: StylistSelectionViewController.self) || presented.isKind(of: ServiceSelectionViewController.self) {
+            let animator = PresentAnimator()
+            return animator
+        }
+        
         return SlideAnimator()
     }
+    
 }
 
 // MARK: - CVCalendarViewDelegate & CVCalendarMenuViewDelegate
@@ -402,3 +419,4 @@ extension BookAppointmentViewController: CVCalendarViewAppearanceDelegate {
         }
     }
 }
+

@@ -14,14 +14,16 @@ class TimeSelectionViewController: UIViewController {
     var closeButton:UIButton!
     var applyButton:UIButton!
     var titleText:String!
+    var bottomConstraint:NSLayoutConstraint!
     var tableView:UITableView!
     var containerView:UIView!
+    var backgroundView:UIView!
     
     var times:[String] = ["8:45-9:45am","10-11am","1:30-2:30pm","4:15-5:15pm"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.clear
         setUpBGView()
         setUpHolderView()
         setUpNavBar()
@@ -35,20 +37,20 @@ class TimeSelectionViewController: UIViewController {
     }
     
     func setUpBGView() {
-        let bg = UIView()
-        bg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bg)
+        backgroundView = UIView()
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backgroundView)
         
         let cons:[NSLayoutConstraint] = [
-            bg.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bg.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bg.topAnchor.constraint(equalTo: view.topAnchor),
-            bg.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
         ]
         NSLayoutConstraint.activate(cons)
         
-        bg.backgroundColor = UIColor.black
-        bg.alpha = 0.4
+        backgroundView.backgroundColor = UIColor.black
+        backgroundView.alpha = 0
     }
     
     func setUpHolderView() {
@@ -56,11 +58,15 @@ class TimeSelectionViewController: UIViewController {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(containerView)
         
+        let height = self.view.frame.size.height
+        
+        bottomConstraint = containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: height)
+        bottomConstraint.isActive = true
+        
         let constraints:[NSLayoutConstraint] = [
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8)
+            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7)
         ]
         
         NSLayoutConstraint.activate(constraints)
@@ -82,7 +88,7 @@ class TimeSelectionViewController: UIViewController {
         let constraints:[NSLayoutConstraint] = [
             titleLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
-            closeButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+            closeButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 5),
             closeButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
@@ -94,10 +100,14 @@ class TimeSelectionViewController: UIViewController {
         closeButton.setImage(#imageLiteral(resourceName: "closeIcon"), for: .normal)
         closeButton.addTarget(self, action: #selector(self.closeButtonPressed), for: .touchUpInside)
         
+        closeButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+       
+        
+        
     }
     
     func closeButtonPressed() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismissView()
     }
     
     func setUpTableView() {
@@ -125,7 +135,7 @@ class TimeSelectionViewController: UIViewController {
     func setUpApplyButton() {
         applyButton = UIButton()
         applyButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(applyButton)
+        containerView.addSubview(applyButton)
         
         let constraints:[NSLayoutConstraint] = [
             applyButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
@@ -144,6 +154,41 @@ class TimeSelectionViewController: UIViewController {
     
     func applyButtonPressed(sender: UIButton) {
         
+    }
+    
+    func dismissView() {
+        animateBackground(presented: false)
+    }
+    
+    func animateStack(presented: Bool) {
+        if presented {
+            self.bottomConstraint.constant = 0
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.5, options: [], animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        } else {
+            self.bottomConstraint.constant = self.view.frame.size.height
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.3, options: [], animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
+    }
+    
+    func animateBackground(presented: Bool) {
+        if presented {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.backgroundView.alpha = 0.75
+            }, completion: { _ in
+                self.animateStack(presented: true)
+            })
+        } else {
+            self.animateStack(presented: false)
+            UIView.animate(withDuration: 0.3, delay: 0.15,animations: {
+                self.backgroundView.alpha = 0
+            }, completion:nil)
+        }
     }
     
 }

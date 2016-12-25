@@ -72,3 +72,103 @@ class SlideAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
 }
+
+class DimissAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    let duration = 0.2
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return duration
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        //1. setup the transition
+        //let container = transitionContext.containerView
+        
+        if let toView = transitionContext.view(forKey: .to) ?? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)?.view {
+            //container.addSubview(toView)
+            UIView.animate(withDuration: duration, animations: {
+                toView.transform = CGAffineTransform.identity
+            }, completion: {_ in
+                //transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            })
+        }
+        
+        
+        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        
+        
+    }
+}
+
+class PresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    let duration = 0.1
+    var originFram = CGRect.zero
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return duration
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        //1. setup the transition
+        let container = transitionContext.containerView
+        
+        if let toVC = transitionContext.viewController(forKey: .to) as? TimeSelectionViewController {
+            if let fromView = transitionContext.view(forKey: .from) ?? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)?.view {
+                UIView.animate(withDuration: 0.2, animations: {
+                    fromView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+                }, completion: nil)
+                
+            }
+            
+            let toView = toVC.view!
+            //toView.alpha = 0
+            
+            
+            container.addSubview(toView)
+            
+            //2. animations
+            toVC.animateBackground(presented:true)
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        } else if let toVC = transitionContext.viewController(forKey: .to) as? StylistSelectionViewController {
+            if let fromView = transitionContext.view(forKey: .from) ?? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)?.view {
+                UIView.animate(withDuration: 0.2, animations: {
+                    fromView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+                }, completion: nil)
+                
+            }
+            
+            let toView = toVC.view!
+            //toView.alpha = 0
+            
+            
+            container.addSubview(toView)
+            
+            //2. animations
+            toVC.animateBackground(presented:true)
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        } else if let toVC = transitionContext.viewController(forKey: .to) as? ServiceSelectionViewController {
+            if let fromView = transitionContext.view(forKey: .from) ?? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)?.view {
+                UIView.animate(withDuration: 0.2, animations: {
+                    fromView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+                }, completion: nil)
+                
+            }
+            
+            let toView = toVC.view!
+            //toView.alpha = 0
+            
+            
+            container.addSubview(toView)
+            
+            //2. animations
+            toVC.animateBackground(presented:true)
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        }
+        
+        
+        
+    }
+    
+}
+
