@@ -123,17 +123,19 @@ class BookAppointmentViewController: UIViewController {
     }
     
     @IBAction func viewAvailableAppointmentsPressed(_ sender: UIButton) {
+//        
+//        guard let stylist = self.selectedStylist else {
+//            self.showErrorAlert(title: "Select a stylist", body: "Please select a stylist to view available appointments.")
+//            return
+//        }
+//        
+//        guard let service = self.selectedService else {
+//            self.showErrorAlert(title: "Select a service", body: "Please select a service to view available appointments.")
+//            return
+//        }
         
-        guard let stylist = self.selectedStylist else {
-            self.showErrorAlert(title: "Select a stylist", body: "Please select a stylist to view available appointments.")
-            return
-        }
-        
-        guard let service = self.selectedService else {
-            self.showErrorAlert(title: "Select a service", body: "Please select a service to view available appointments.")
-            return
-        }
-        
+        let timeVC = TimeSelectionViewController()
+        self.present(timeVC, animated: true, completion: nil)
         
     }
     

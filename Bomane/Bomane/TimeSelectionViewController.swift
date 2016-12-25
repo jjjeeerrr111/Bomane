@@ -22,6 +22,7 @@ class TimeSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        setUpBGView()
         setUpHolderView()
         setUpNavBar()
         setUpApplyButton()
@@ -31,6 +32,23 @@ class TimeSelectionViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setUpBGView() {
+        let bg = UIView()
+        bg.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bg)
+        
+        let cons:[NSLayoutConstraint] = [
+            bg.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bg.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bg.topAnchor.constraint(equalTo: view.topAnchor),
+            bg.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
+        ]
+        NSLayoutConstraint.activate(cons)
+        
+        bg.backgroundColor = UIColor.black
+        bg.alpha = 0.4
     }
     
     func setUpHolderView() {
@@ -54,17 +72,17 @@ class TimeSelectionViewController: UIViewController {
     func setUpNavBar() {
         titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(titleLabel)
+        containerView.addSubview(titleLabel)
         
         closeButton = UIButton()
         closeButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(closeButton)
+        containerView.addSubview(closeButton)
         
         
         let constraints:[NSLayoutConstraint] = [
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
-            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            titleLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
+            closeButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
             closeButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
@@ -85,12 +103,12 @@ class TimeSelectionViewController: UIViewController {
     func setUpTableView() {
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
+        containerView.addSubview(tableView)
         
         let constraints:[NSLayoutConstraint] = [
             tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: applyButton.topAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
@@ -110,10 +128,10 @@ class TimeSelectionViewController: UIViewController {
         view.addSubview(applyButton)
         
         let constraints:[NSLayoutConstraint] = [
-            applyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            applyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            applyButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            applyButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             applyButton.heightAnchor.constraint(equalToConstant: 50),
-            applyButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
+            applyButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
         
