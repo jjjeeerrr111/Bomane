@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initWindow(controller: String) {
         
-        let controllerDic = ["About" : AboutViewController.shared, "Services":ServicesViewController.shared, "Portfolio" : ProtfolioViewController.shared, "Book Appointment" : BookAppointmentViewController.shared, "Profile" : ProfileViewController.shared]
+        let controllerDic = ["About" : AboutViewController.shared, "Services":ServicesViewController.shared, "Portfolio" : ProtfolioViewController.shared, "Book Appointment" : BookAppointmentViewController.shared, "Profile" : ProfileViewController.shared, "Contact" : ContactViewController.shared]
         
         guard let vc = controllerDic[controller] else {return}
         let navController = UINavigationController(rootViewController: vc)

@@ -31,6 +31,8 @@
 		578F22191E07174200CBF23C /* ProtfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578F22181E07174200CBF23C /* ProtfolioViewController.swift */; };
 		57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */; };
 		57968FFF1E214CD40080DCF3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */; };
+		579690031E215B140080DCF3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579690011E215B140080DCF3 /* ContactViewController.swift */; };
+		579690041E215B140080DCF3 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 579690021E215B140080DCF3 /* ContactViewController.xib */; };
 		57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D851E05E8DD003207D2 /* LoginViewController.swift */; };
 		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
 		57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */; };
@@ -67,6 +69,8 @@
 		578F22181E07174200CBF23C /* ProtfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtfolioViewController.swift; sourceTree = "<group>"; };
 		57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		579690011E215B140080DCF3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		579690021E215B140080DCF3 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
 		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountNameViewController.swift; sourceTree = "<group>"; };
@@ -121,8 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				572E68701DEB3EE7001DB239 /* AppDelegate.swift */,
-				57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */,
-				57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */,
+				579690011E215B140080DCF3 /* ContactViewController.swift */,
+				579690021E215B140080DCF3 /* ContactViewController.xib */,
+				579690001E215AF90080DCF3 /* Profile VCs */,
 				57FF1DE71E0F10C9003D1686 /* Book Appointment VCs */,
 				57EFC28D1E060D66006783D3 /* Create Account VCs */,
 				57DB7D871E05EF65003207D2 /* Helpers/Extensions */,
@@ -184,6 +189,15 @@
 				578F22181E07174200CBF23C /* ProtfolioViewController.swift */,
 			);
 			name = "Portfolio VC";
+			sourceTree = "<group>";
+		};
+		579690001E215AF90080DCF3 /* Profile VCs */ = {
+			isa = PBXGroup;
+			children = (
+				57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */,
+				57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */,
+			);
+			name = "Profile VCs";
 			sourceTree = "<group>";
 		};
 		57DB7D841E05E8C5003207D2 /* Login VC */ = {
@@ -299,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57968FFF1E214CD40080DCF3 /* ProfileViewController.xib in Resources */,
+				579690041E215B140080DCF3 /* ContactViewController.xib in Resources */,
 				574D3D0F1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib in Resources */,
 				572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */,
 				572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */,
@@ -382,6 +397,7 @@
 				5772315A1DEB4DF900A94A7B /* ScreenMenuViewController.swift in Sources */,
 				572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */,
 				57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */,
+				579690031E215B140080DCF3 /* ContactViewController.swift in Sources */,
 				57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */,
 				57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */,
 				5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */,
