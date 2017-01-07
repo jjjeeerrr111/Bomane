@@ -29,6 +29,8 @@
 		5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */; };
 		577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315F1DEB563500A94A7B /* TableView+Extensions.swift */; };
 		578F22191E07174200CBF23C /* ProtfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578F22181E07174200CBF23C /* ProtfolioViewController.swift */; };
+		57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */; };
+		57968FFF1E214CD40080DCF3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */; };
 		57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D851E05E8DD003207D2 /* LoginViewController.swift */; };
 		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
 		57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */; };
@@ -63,6 +65,8 @@
 		5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		5772315F1DEB563500A94A7B /* TableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView+Extensions.swift"; sourceTree = "<group>"; };
 		578F22181E07174200CBF23C /* ProtfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtfolioViewController.swift; sourceTree = "<group>"; };
+		57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountNameViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				572E68701DEB3EE7001DB239 /* AppDelegate.swift */,
+				57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */,
+				57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */,
 				57FF1DE71E0F10C9003D1686 /* Book Appointment VCs */,
 				57EFC28D1E060D66006783D3 /* Create Account VCs */,
 				57DB7D871E05EF65003207D2 /* Helpers/Extensions */,
@@ -292,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57968FFF1E214CD40080DCF3 /* ProfileViewController.xib in Resources */,
 				574D3D0F1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib in Resources */,
 				572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */,
 				572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */,
@@ -376,6 +383,7 @@
 				572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */,
 				57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */,
 				57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */,
+				57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */,
 				5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */,
 				57FF1DEA1E0F1126003D1686 /* BookAppointmentViewController.swift in Sources */,
 			);

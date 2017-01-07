@@ -11,6 +11,8 @@ import UIKit
 class ProtfolioViewController: UIViewController {
     
     static let shared = ProtfolioViewController()
+    
+    var activityIndicator:UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +56,21 @@ class ProtfolioViewController: UIViewController {
         webview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(webview)
         
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
         let constraints:[NSLayoutConstraint] = [
             webview.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
             webview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             webview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            webview.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
+            webview.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
         
-        guard let url = URL(string: "https://instagram.com/JeremySha/") else {return}
+        guard let url = URL(string: "https://instagram.com/Bomanesalon/") else {return}
        
         let request = URLRequest(url: url)
         webview.loadRequest(request)
@@ -79,10 +87,12 @@ class ProtfolioViewController: UIViewController {
 extension ProtfolioViewController:UIWebViewDelegate {
     func webViewDidStartLoad(_ webView: UIWebView) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        activityIndicator.startAnimating()
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        activityIndicator.stopAnimating()
     }
 }
 
