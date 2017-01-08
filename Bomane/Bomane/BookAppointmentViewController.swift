@@ -93,10 +93,6 @@ class BookAppointmentViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
-    }
-    
     func setUpNavBar() {
         navigationController?.navigationBar.barTintColor = UIColor.white
         navigationItem.title = "BOOK APPOINTMENT"

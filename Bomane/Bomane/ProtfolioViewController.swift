@@ -78,10 +78,6 @@ class ProtfolioViewController: UIViewController {
         
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
-    }
-
 }
 
 extension ProtfolioViewController:UIWebViewDelegate {

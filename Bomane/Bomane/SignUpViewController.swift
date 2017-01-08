@@ -23,10 +23,6 @@ class SignUpViewController: UIViewController {
         setUpNavBar()
 
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     func setUpNavBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

@@ -40,10 +40,6 @@ class ContactViewController: UIViewController {
         
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     func menuButtonPressed(sender: UIBarButtonItem) {
         let menu = ScreenMenuViewController.shared
         let navVC = UINavigationController(rootViewController: menu)

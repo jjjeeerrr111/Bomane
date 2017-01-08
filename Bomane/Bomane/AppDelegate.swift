@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.black
-        //showLogin()
         initWindow(controller: "Book Appointment")
         return true
     }
@@ -29,6 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initWindow(controller: String) {
         
         let controllerDic = ["About" : AboutViewController.shared, "Services":ServicesViewController.shared, "Portfolio" : ProtfolioViewController.shared, "Book Appointment" : BookAppointmentViewController.shared, "Profile" : ProfileViewController.shared, "Contact" : ContactViewController.shared]
+        
+        if controller == "Book Appointment" || controller == "Services" || controller == "Portfolio" || controller == "Profile" {
+            UIApplication.shared.statusBarStyle = .default
+        } else {
+            UIApplication.shared.statusBarStyle = .lightContent
+        }
         
         guard let vc = controllerDic[controller] else {return}
         let navController = UINavigationController(rootViewController: vc)
@@ -38,25 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showLogin() {
+        UIApplication.shared.statusBarStyle = .lightContent
         let signUpVC = SignUpViewController()
         let navigationController = UINavigationController(rootViewController: signUpVC)
         window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
-    
-    func showAboutVC() {
-        let aboutVC = AboutViewController()
-        window?.rootViewController = aboutVC
-        self.window?.makeKeyAndVisible()
-    }
-    
-    func showServices() {
-        let screenVC = ServicesViewController.shared
-        let navController = UINavigationController(rootViewController: screenVC)
-        window?.rootViewController = navController
-        self.window?.makeKeyAndVisible()
-    }
-
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

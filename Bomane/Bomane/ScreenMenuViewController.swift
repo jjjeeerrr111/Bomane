@@ -97,10 +97,6 @@ class ScreenMenuViewController: UIViewController {
         tableView.backgroundColor = UIColor.black
         tableView.separatorStyle = .none
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
 }
 

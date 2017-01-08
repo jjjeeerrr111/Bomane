@@ -24,10 +24,6 @@ class LoginViewController: UIViewController {
         setUpNotifications()
         setUpTapGesture()
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     func setUpNotifications() {
         //add nsnotification center listener for keyboard popping up

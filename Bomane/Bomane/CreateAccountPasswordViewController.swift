@@ -25,10 +25,6 @@ class CreateAccountPasswordViewController: UIViewController {
         setUpTapGesture()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     func setUpNotifications() {
         //add nsnotification center listener for keyboard popping up
         NotificationCenter.default.addObserver(self, selector:#selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -217,7 +213,7 @@ class CreateAccountPasswordViewController: UIViewController {
                 //everything is good here
                 resignKeyboard()
                 //this is where you push log in and create user
-                AppDelegate.shared().showServices()
+                AppDelegate.shared().initWindow(controller: "Book Appointment")
             }
             
         }

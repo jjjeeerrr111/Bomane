@@ -26,10 +26,6 @@ class CreateAccountNameViewController: UIViewController {
         setUpTapGesture()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     func setUpNotifications() {
         //add nsnotification center listener for keyboard popping up
         NotificationCenter.default.addObserver(self, selector:#selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
