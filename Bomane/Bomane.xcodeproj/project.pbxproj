@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B2EE0690BCBB3162698AC7B /* Pods_Bomane.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F404D100361E9220C5910C /* Pods_Bomane.framework */; };
+		5721091A1E229AD600E253AC /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572109181E229AD600E253AC /* EditProfileViewController.swift */; };
+		5721091B1E229AD600E253AC /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 572109191E229AD600E253AC /* EditProfileViewController.xib */; };
 		572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E68701DEB3EE7001DB239 /* AppDelegate.swift */; };
 		572E68781DEB3EE7001DB239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 572E68771DEB3EE7001DB239 /* Assets.xcassets */; };
 		572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572E68791DEB3EE7001DB239 /* LaunchScreen.storyboard */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		4C956D884B01D4F42724B35F /* Pods-Bomane.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomane.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bomane/Pods-Bomane.release.xcconfig"; sourceTree = "<group>"; };
+		572109181E229AD600E253AC /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		572109191E229AD600E253AC /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		572E686D1DEB3EE7001DB239 /* Bomane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bomane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E68701DEB3EE7001DB239 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		572E68771DEB3EE7001DB239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 			children = (
 				57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */,
 				57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */,
+				572109181E229AD600E253AC /* EditProfileViewController.swift */,
+				572109191E229AD600E253AC /* EditProfileViewController.xib */,
 			);
 			name = "Profile VCs";
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				574D3D0F1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib in Resources */,
 				572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */,
 				572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */,
+				5721091B1E229AD600E253AC /* EditProfileViewController.xib in Resources */,
 				5751D25F1DEB9D29009A4612 /* ServicesTableViewCell.xib in Resources */,
 				5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */,
 				5751D2671DEBA243009A4612 /* AboutViewController.xib in Resources */,
@@ -390,6 +397,7 @@
 				578F22191E07174200CBF23C /* ProtfolioViewController.swift in Sources */,
 				574D3D0E1E102BE000D0D2C2 /* AppoitmentTableViewCell.swift in Sources */,
 				574D3D131E10333A00D0D2C2 /* ServiceSelectionViewController.swift in Sources */,
+				5721091A1E229AD600E253AC /* EditProfileViewController.swift in Sources */,
 				57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */,
 				574D3D111E10332B00D0D2C2 /* StylistSelectionViewController.swift in Sources */,
 				577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */,

@@ -57,7 +57,9 @@ class ProfileViewController: UIViewController {
     }
     
     func editButtonPressed(sender: UIBarButtonItem) {
-        
+        let editVC = EditProfileViewController()
+        editVC.delegate = self
+        self.navigationController?.pushViewController(editVC, animated: true)
     }
     
     @IBAction func addCreditCardButtonPressed(_ sender: UIButton) {
@@ -88,5 +90,12 @@ extension ProfileViewController:UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SlideAnimator()
+    }
+}
+
+extension ProfileViewController:EditProfileDelegate {
+    func updateProfile(name: String, email: String) {
+        nameLabel.text = name
+        emailLabel.text = email
     }
 }
