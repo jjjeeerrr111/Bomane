@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class ContactViewController: UIViewController {
     
@@ -58,8 +59,22 @@ class ContactViewController: UIViewController {
     }
 
     @IBAction func emailButtonPressed(_ sender: UIButton) {
-        
+        composeEmailWith(title: "Inquiry", body: "")
     }
+    
+    func composeEmailWith(title: String, body: String) {
+        
+        //TODO: find correct email for bomane
+        if MFMailComposeViewController.canSendMail() {
+            let mailVC = MFMailComposeViewController()
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients(["support@bomane.com"])
+            mailVC.setSubject(title)
+            mailVC.setMessageBody(body, isHTML: true)
+            self.present(mailVC, animated: true, completion: nil)
+        }
+    }
+
 }
 
 extension ContactViewController:UIViewControllerTransitioningDelegate {
@@ -72,4 +87,12 @@ extension ContactViewController:UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SlideAnimator()
     }
+}
+
+extension ContactViewController:MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
