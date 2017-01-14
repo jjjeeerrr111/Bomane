@@ -77,6 +77,7 @@
 		57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		579690011E215B140080DCF3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		579690021E215B140080DCF3 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
+		57B183B71E2ACB00003A066A /* Bomane-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bomane-Bridging-Header.h"; sourceTree = "<group>"; };
 		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountNameViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 				572E68771DEB3EE7001DB239 /* Assets.xcassets */,
 				572E68791DEB3EE7001DB239 /* LaunchScreen.storyboard */,
 				572E687C1DEB3EE7001DB239 /* Info.plist */,
+				57B183B71E2ACB00003A066A /* Bomane-Bridging-Header.h */,
 			);
 			path = Bomane;
 			sourceTree = "<group>";

@@ -64,6 +64,8 @@ class ProfileViewController: UIViewController {
     
     @IBAction func addCreditCardButtonPressed(_ sender: UIButton) {
         print("add credit card button pressed")
+        let addVC = AddCreditCardViewController()
+        navigationController?.pushViewController(addVC, animated: true)
     }
     
     func menuButtonPressed(sender: UIBarButtonItem) {
