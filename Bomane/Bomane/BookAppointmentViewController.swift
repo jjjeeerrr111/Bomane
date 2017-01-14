@@ -21,7 +21,7 @@ class BookAppointmentViewController: UIViewController {
         static let sundaySelectionBackground = sundayText
     }
     
-    static let shared = BookAppointmentViewController()
+//    static let shared = BookAppointmentViewController()
 
     @IBOutlet weak var serviceLabel: UILabel!
     @IBOutlet weak var stylistLabel: UILabel!

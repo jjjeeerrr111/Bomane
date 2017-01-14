@@ -11,7 +11,7 @@ import MessageUI
 
 class ContactViewController: UIViewController {
     
-    static let shared = ContactViewController()
+//    static let shared = ContactViewController()
 
     @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var callButton: UIButton!

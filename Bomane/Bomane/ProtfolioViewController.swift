@@ -10,7 +10,7 @@ import UIKit
 
 class ProtfolioViewController: UIViewController {
     
-    static let shared = ProtfolioViewController()
+//    static let shared = ProtfolioViewController()
     
     var activityIndicator:UIActivityIndicatorView!
 

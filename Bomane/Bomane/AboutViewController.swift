@@ -10,7 +10,7 @@ import UIKit
 
 class AboutViewController: UIViewController {
     
-    static let shared = AboutViewController()
+//    static let shared = AboutViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,7 +10,7 @@ import UIKit
 
 class ServicesViewController: UIViewController {
     
-    static let shared = ServicesViewController()
+//    static let shared = ServicesViewController()
     
     var tableView:UITableView!
     var bookButton:UIButton!

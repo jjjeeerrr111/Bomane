@@ -13,6 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    let aboutVC = AboutViewController()
+    let servicesVC = ServicesViewController()
+    let portfolioVC = ProtfolioViewController()
+    let bookVC = BookAppointmentViewController()
+    let profileVC = ProfileViewController()
+    let contactVC = ContactViewController()
+    
     class func shared() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
@@ -27,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initWindow(controller: String) {
         
-        let controllerDic = ["About" : AboutViewController.shared, "Services":ServicesViewController.shared, "Portfolio" : ProtfolioViewController.shared, "Book Appointment" : BookAppointmentViewController.shared, "Profile" : ProfileViewController.shared, "Contact" : ContactViewController.shared]
+        let controllerDic = ["About" : aboutVC, "Services":servicesVC, "Portfolio" : portfolioVC, "Book Appointment" : bookVC, "Profile" : profileVC, "Contact" : contactVC]
         
         if controller == "Book Appointment" || controller == "Services" || controller == "Portfolio" || controller == "Profile" {
             UIApplication.shared.statusBarStyle = .default

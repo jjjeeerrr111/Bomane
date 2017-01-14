@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    static let shared = ProfileViewController()
+//    static let shared = ProfileViewController()
 
     @IBOutlet weak var addCreditCardButton: UIButton!
     @IBOutlet weak var creditCardLabel: UILabel!
