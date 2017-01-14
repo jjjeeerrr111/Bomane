@@ -16,5 +16,5 @@ target 'Bomane' do
   pod 'ReachabilitySwift', '~> 3'
   pod 'SwiftMessages'
   pod 'CVCalendar', '~> 1.4'
-
+  pod 'Stripe', '~> 9.3'
 end

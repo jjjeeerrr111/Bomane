@@ -69,6 +69,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Stripe-Stripe.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Stripe.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftMessages-SwiftMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,12 +97,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>103B4A5315BE19A11359533D019FB0F6</key>
+		<key>1562381190AC7DE328F869A515926E33</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>19A1449AD4A98EA4C161DD21E5CFCA54</key>
+		<key>167A8B29F59F4FAA88B1FA19A657E72B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,17 +112,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>23B054E356BF76A9519889DB01782467</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>31418D425B97E292FFAFC566D79FC144</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3A8C288B950A1325D44229DA24701889</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4974CD9652EADA6BB8CCB3B85EDBA9A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>533607A808BC64912197562E016B6085</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>540D5FB33E1DC298C147196FF3C9A472</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,7 +147,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7AE500F62FE9300CD10D66ADDA02D1B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8329B4DD82B7A073B34A61C9527865D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9336ABB9C018BF519F4B39F76FF254AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,22 +167,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9E6C9CC092C19682A5C52106A5C58A95</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>A8F77DC39F7D0CFE46DAA5C135D96A80</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C36C1F0103409FD2664C9296EA18DCAD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C6A93D87B60FB442208C01AEEB0B3DDB</key>
+		<key>BB7044F70E517604814E0F59A58265E1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

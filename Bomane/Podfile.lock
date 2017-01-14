@@ -29,6 +29,7 @@ PODS:
   - Kingfisher (3.2.2)
   - PopupDialog (0.5.0)
   - ReachabilitySwift (3)
+  - Stripe (9.3.0)
   - SwiftMessages (3.1.1)
   - SwiftyJSON (3.1.3)
 
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - Kingfisher (~> 3.1)
   - PopupDialog (~> 0.5)
   - ReachabilitySwift (~> 3)
+  - Stripe (~> 9.3)
   - SwiftMessages
   - SwiftyJSON (~> 3.1)
 
@@ -57,9 +59,10 @@ SPEC CHECKSUMS:
   Kingfisher: 821466474ad7ffc375a4aecadfa05068cfed67b3
   PopupDialog: 9890441b81105b9076757af2afe2b037be682f3e
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  Stripe: 0f41a33a6fa3ac76ee668d7df3e2680c28b8ab1a
   SwiftMessages: 1216ea6bdf8d92ff0f6f98a23e5442711b1e71ac
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: 52f698e0b3a4546a3202e120981888973db6e422
+PODFILE CHECKSUM: 1da06556e25dc548f6be15e7d3e0d3f8c4d7ecba
 
 COCOAPODS: 1.1.1
