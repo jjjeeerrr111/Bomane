@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B2EE0690BCBB3162698AC7B /* Pods_Bomane.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F404D100361E9220C5910C /* Pods_Bomane.framework */; };
+		5713B8671E327A1600D9EC2C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B8661E327A1600D9EC2C /* User.swift */; };
+		5713B8691E327F1F00D9EC2C /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B8681E327F1F00D9EC2C /* DatabaseController.swift */; };
 		5721091A1E229AD600E253AC /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572109181E229AD600E253AC /* EditProfileViewController.swift */; };
 		5721091B1E229AD600E253AC /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 572109191E229AD600E253AC /* EditProfileViewController.xib */; };
 		572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E68701DEB3EE7001DB239 /* AppDelegate.swift */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		4C956D884B01D4F42724B35F /* Pods-Bomane.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomane.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bomane/Pods-Bomane.release.xcconfig"; sourceTree = "<group>"; };
+		5713B8661E327A1600D9EC2C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5713B8681E327F1F00D9EC2C /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		572109181E229AD600E253AC /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		572109191E229AD600E253AC /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		572E686D1DEB3EE7001DB239 /* Bomane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bomane.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +114,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5713B8641E3279E400D9EC2C /* Contact VCs */ = {
+			isa = PBXGroup;
+			children = (
+				579690011E215B140080DCF3 /* ContactViewController.swift */,
+				579690021E215B140080DCF3 /* ContactViewController.xib */,
+			);
+			name = "Contact VCs";
+			sourceTree = "<group>";
+		};
+		5713B8651E327A0900D9EC2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5713B8661E327A1600D9EC2C /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		572E68641DEB3EE7001DB239 = {
 			isa = PBXGroup;
 			children = (
@@ -132,8 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				572E68701DEB3EE7001DB239 /* AppDelegate.swift */,
-				579690011E215B140080DCF3 /* ContactViewController.swift */,
-				579690021E215B140080DCF3 /* ContactViewController.xib */,
+				5713B8681E327F1F00D9EC2C /* DatabaseController.swift */,
+				5713B8651E327A0900D9EC2C /* Models */,
+				5713B8641E3279E400D9EC2C /* Contact VCs */,
 				579690001E215AF90080DCF3 /* Profile VCs */,
 				57FF1DE71E0F10C9003D1686 /* Book Appointment VCs */,
 				57EFC28D1E060D66006783D3 /* Create Account VCs */,
@@ -395,6 +417,7 @@
 				572E68841DEB3F2C001DB239 /* SignUpViewController.swift in Sources */,
 				5751D2611DEB9E7C009A4612 /* Service.swift in Sources */,
 				5751D25E1DEB9D29009A4612 /* ServicesTableViewCell.swift in Sources */,
+				5713B8671E327A1600D9EC2C /* User.swift in Sources */,
 				5751D2661DEBA243009A4612 /* AboutViewController.swift in Sources */,
 				57EFC2931E0617DB006783D3 /* Animators.swift in Sources */,
 				5751D2591DEB9AC1009A4612 /* ServicesViewController.swift in Sources */,
@@ -403,6 +426,7 @@
 				574D3D0E1E102BE000D0D2C2 /* AppoitmentTableViewCell.swift in Sources */,
 				574D3D131E10333A00D0D2C2 /* ServiceSelectionViewController.swift in Sources */,
 				5721091A1E229AD600E253AC /* EditProfileViewController.swift in Sources */,
+				5713B8691E327F1F00D9EC2C /* DatabaseController.swift in Sources */,
 				57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */,
 				574D3D111E10332B00D0D2C2 /* StylistSelectionViewController.swift in Sources */,
 				577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */,

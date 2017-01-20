@@ -28,7 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.black
-        initWindow(controller: "Book Appointment")
+        
+        if DatabaseController.shared.loadUser() != nil {
+            initWindow(controller: "Book Appointment")
+        } else {
+            self.showLogin()
+        }
+        
         return true
     }
     
