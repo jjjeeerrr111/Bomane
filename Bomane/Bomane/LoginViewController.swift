@@ -197,7 +197,18 @@ class LoginViewController: UIViewController {
             return
         }
         resignKeyboard()
-        //login(email: email.text!, password: password.text!)
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        NetworkController.shared.login(email: emailField.text!, password: passwordField.text!) {
+            success in
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            if success {
+                
+            } else {
+                print("failed to log in")
+            }
+        }
     }
     
     func setUpTapGesture() {

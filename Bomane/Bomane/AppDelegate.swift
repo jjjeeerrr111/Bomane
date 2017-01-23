@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             self.showLogin()
         }
-        
         return true
     }
     

@@ -40,6 +40,7 @@
 		579690041E215B140080DCF3 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 579690021E215B140080DCF3 /* ContactViewController.xib */; };
 		57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D851E05E8DD003207D2 /* LoginViewController.swift */; };
 		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
+		57DE02D71E352A6300155BCD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE02D61E352A6300155BCD /* NetworkController.swift */; };
 		57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */; };
 		57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */; };
 		57EFC2931E0617DB006783D3 /* Animators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2921E0617DB006783D3 /* Animators.swift */; };
@@ -84,6 +85,7 @@
 		57B183B71E2ACB00003A066A /* Bomane-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bomane-Bridging-Header.h"; sourceTree = "<group>"; };
 		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		57DE02D61E352A6300155BCD /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountNameViewController.swift; sourceTree = "<group>"; };
 		57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPasswordViewController.swift; sourceTree = "<group>"; };
 		57EFC2921E0617DB006783D3 /* Animators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animators.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				572E68701DEB3EE7001DB239 /* AppDelegate.swift */,
 				5713B8681E327F1F00D9EC2C /* DatabaseController.swift */,
+				57DE02D61E352A6300155BCD /* NetworkController.swift */,
 				5713B8651E327A0900D9EC2C /* Models */,
 				5713B8641E3279E400D9EC2C /* Contact VCs */,
 				579690001E215AF90080DCF3 /* Profile VCs */,
@@ -440,6 +443,7 @@
 				57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */,
 				5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */,
 				57FF1DEA1E0F1126003D1686 /* BookAppointmentViewController.swift in Sources */,
+				57DE02D71E352A6300155BCD /* NetworkController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

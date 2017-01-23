@@ -14,17 +14,16 @@ class User : NSObject, NSCoding {
     var lastName:String!
     var email:String!
     var apiKey:String?
+    var password:String?
+    var customerId:String?
     
-    
-    override init() {
-        
-    }
-    
-    init(first: String, last: String, email: String, apiKey: String?) {
+    init(first: String, last: String, email: String, apiKey: String? = nil, password: String? = nil, customerId: String? = nil) {
         self.firstName = first
         self.lastName = last
         self.email = email
         self.apiKey = apiKey
+        self.password = password
+        self.customerId = customerId
         super.init()
     }
     
@@ -47,6 +46,8 @@ class User : NSObject, NSCoding {
         aCoder.encode(lastName, forKey: PropertyKey.lastName)
         aCoder.encode(email, forKey: PropertyKey.email)
         aCoder.encode(apiKey, forKey: PropertyKey.apiKey)
+        aCoder.encode(password, forKey: PropertyKey.password)
+        aCoder.encode(customerId, forKey: PropertyKey.customerId)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -55,8 +56,9 @@ class User : NSObject, NSCoding {
         let last = aDecoder.decodeObject(forKey: PropertyKey.lastName) as! String
         let email = aDecoder.decodeObject(forKey: PropertyKey.email) as! String
         let apiKey = aDecoder.decodeObject(forKey: PropertyKey.apiKey) as? String
-        
-        self.init(first: first, last: last, email: email, apiKey: apiKey)
+        let password = aDecoder.decodeObject(forKey: PropertyKey.password) as? String
+        let customerId = aDecoder.decodeObject(forKey: PropertyKey.customerId) as? String
+        self.init(first: first, last: last, email: email, apiKey: apiKey, password: password, customerId: customerId)
     }
     
     // MARK: Archiving Paths
@@ -71,4 +73,6 @@ struct PropertyKey {
     static let email = "email"
     static let number = "number"
     static let apiKey = "apiKey"
+    static let password = "password"
+    static let customerId = "customerId"
 }

@@ -14,6 +14,7 @@ class CreateAccountPasswordViewController: UIViewController {
     var password:UITextField!
     var confirmPassword:UITextField!
     var createBottomConstraint:NSLayoutConstraint!
+    var user:User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,14 @@ class CreateAccountPasswordViewController: UIViewController {
         setUpUI()
         setUpNotifications()
         setUpTapGesture()
+        
+        //get an access token first
+        NetworkController.shared.getAccessToken() {
+            optionalToken in
+            
+            guard let token = optionalToken else {return}
+            self.user.apiKey = token
+        }
     }
     
     func setUpNotifications() {
@@ -206,17 +215,54 @@ class CreateAccountPasswordViewController: UIViewController {
                 return
             }
             
+            if !checkForNumberInPass(text: pass1) {
+                showErrorAlert(title: "Error", body: "Make sure your password has at least one number.")
+                return
+            }
+            
             if pass1 != pass2 {
                 showErrorAlert(title: "Passwords do not match", body: "Make sure your passwords match!")
                 return
             } else {
                 //everything is good here
+                createAccount()
                 resignKeyboard()
-                //this is where you push log in and create user
-                AppDelegate.shared().initWindow(controller: "Book Appointment")
+                
             }
             
         }
+    }
+    
+    func checkForNumberInPass(text : String) -> Bool{
+        let numberRegEx  = ".*[0-9]+.*"
+        let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let numberresult = texttest1.evaluate(with: text)
+        return numberresult
+    }
+    
+    func createAccount() {
+        //1. assign the password to the user
+        self.user.password = password.text!
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        NetworkController.shared.createUserAccount(with: self.user) {
+            (success,customerId) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            if success {
+                //this is where you push log in and create user
+                guard let id = customerId else {return}
+                self.user.customerId = id
+                DatabaseController.shared.saveUser(user: self.user)
+                AppDelegate.shared().initWindow(controller: "Book Appointment")
+            } else {
+                if let msg = customerId {
+                    self.showErrorAlert(title: "Error", body: msg)
+                } else {
+                    self.showErrorAlert(title: "Whoops...", body: "Something went wrong while creating your account. Please try again.")
+                }
+            }
+        }
+        
     }
     
     func setUpTapGesture() {

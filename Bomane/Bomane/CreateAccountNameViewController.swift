@@ -15,6 +15,7 @@ class CreateAccountNameViewController: UIViewController {
     var lastName:UITextField!
     var email:UITextField!
     var nextBottomConstraint:NSLayoutConstraint!
+    var user:User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -235,7 +236,10 @@ class CreateAccountNameViewController: UIViewController {
         }
         resignKeyboard()
         
+        self.user = User(first: firstName.text!, last: lastName.text!, email: email.text!)
+        
         let passVC = CreateAccountPasswordViewController()
+        passVC.user = self.user
         navigationController?.pushViewController(passVC, animated: true)
     }
     
