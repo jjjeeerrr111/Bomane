@@ -77,7 +77,14 @@ class BookAppointmentViewController: UIViewController {
         let monthName = DateFormatter().monthSymbols[components - 1]
         monthLabel.text = monthName
         
-        NetworkController.shared.getServices()
+        NetworkController.shared.getEmployees() {
+            optionalStylists in
+            
+            guard let stylists = optionalStylists else {return}
+            print("all stylists")
+            dump(stylists)
+            
+        }
         
     }
     
@@ -135,17 +142,17 @@ class BookAppointmentViewController: UIViewController {
     
     @IBAction func viewAvailableAppointmentsPressed(_ sender: UIButton) {
         
-        guard let stylist = self.selectedStylist else {
+        guard self.selectedStylist != nil else {
             self.showErrorAlert(title: "Select a stylist", body: "Please select a stylist to view available appointments.")
             return
         }
         
-        guard let service = self.selectedService else {
+        guard self.selectedService != nil else {
             self.showErrorAlert(title: "Select a service", body: "Please select a service to view available appointments.")
             return
         }
         
-        guard let date = selectedDay else {
+        guard (selectedDay) != nil else {
             self.showErrorAlert(title: "Select a date", body: "Please select a date to view available appointments.")
             return
         }

@@ -10,7 +10,7 @@ import UIKit
 
 class TimeSelectionViewController: UIViewController {
     
-    var delegate:TimeSelectionDelegate?
+    weak var delegate:TimeSelectionDelegate?
     private var titleLabel = UILabel()
     var closeButton:UIButton!
     var applyButton:UIButton!
@@ -225,6 +225,6 @@ extension TimeSelectionViewController:UITableViewDelegate {
     }
 }
 
-protocol TimeSelectionDelegate {
+protocol TimeSelectionDelegate : class {
     func getTimeSelection(time:String)
 }

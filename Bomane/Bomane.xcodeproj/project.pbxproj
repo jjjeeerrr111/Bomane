@@ -41,6 +41,7 @@
 		57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D851E05E8DD003207D2 /* LoginViewController.swift */; };
 		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
 		57DE02D71E352A6300155BCD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE02D61E352A6300155BCD /* NetworkController.swift */; };
+		57DE02D91E36724200155BCD /* Stylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE02D81E36724200155BCD /* Stylist.swift */; };
 		57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */; };
 		57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */; };
 		57EFC2931E0617DB006783D3 /* Animators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2921E0617DB006783D3 /* Animators.swift */; };
@@ -86,6 +87,7 @@
 		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		57DE02D61E352A6300155BCD /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		57DE02D81E36724200155BCD /* Stylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylist.swift; sourceTree = "<group>"; };
 		57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountNameViewController.swift; sourceTree = "<group>"; };
 		57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPasswordViewController.swift; sourceTree = "<group>"; };
 		57EFC2921E0617DB006783D3 /* Animators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animators.swift; sourceTree = "<group>"; };
@@ -129,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				5713B8661E327A1600D9EC2C /* User.swift */,
+				57DE02D81E36724200155BCD /* Stylist.swift */,
+				5751D2601DEB9E7C009A4612 /* Service.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -202,7 +206,6 @@
 				5751D2581DEB9AC1009A4612 /* ServicesViewController.swift */,
 				5751D25C1DEB9D29009A4612 /* ServicesTableViewCell.swift */,
 				5751D25D1DEB9D29009A4612 /* ServicesTableViewCell.xib */,
-				5751D2601DEB9E7C009A4612 /* Service.swift */,
 			);
 			name = "Services VC";
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				57EFC2931E0617DB006783D3 /* Animators.swift in Sources */,
 				5751D2591DEB9AC1009A4612 /* ServicesViewController.swift in Sources */,
 				57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */,
+				57DE02D91E36724200155BCD /* Stylist.swift in Sources */,
 				578F22191E07174200CBF23C /* ProtfolioViewController.swift in Sources */,
 				574D3D0E1E102BE000D0D2C2 /* AppoitmentTableViewCell.swift in Sources */,
 				574D3D131E10333A00D0D2C2 /* ServiceSelectionViewController.swift in Sources */,

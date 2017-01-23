@@ -273,8 +273,11 @@ class NetworkController {
      }
     **********************************/
     
-    func getServices() {
-        guard let user = DatabaseController.shared.loadUser() else {return}
+    func getServices(completion: @escaping ([Service]?) -> Void) {
+        guard let user = DatabaseController.shared.loadUser() else {
+            completion(nil)
+            return
+        }
         let urlString = getBaseURL() + "treatments"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
@@ -286,11 +289,91 @@ class NetworkController {
             case .success:
                 let json = JSON(data: response.data!)
                 print("SUCESS LOADING SERVICES: ", json)
+                let status = json["IsSuccess"].stringValue
+                if status == "true" {
+                    var services:[Service] = []
+                    let array = json["Treatments"].arrayValue
+                    for item in array {
+                        guard let dic = item.dictionaryObject else {continue}
+                        if let service = Service(dic: dic) {
+                            services.append(service)
+                        }
+                    }
+                    completion(services)
+                } else {
+                    completion(nil)
+                }
+                
                 
             case .failure(let error):
                 let json = JSON(data: response.data!)
                 print("ERROR LOADING SERVICES: ", json)
                 print("ERROR: ",error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    //MARK: GET EMPLOYESS
+    /*********************************
+     
+     Content-Type: application/json; charset=utf-8
+     POST https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/employees
+     {
+     "IgnoreFreelancers": null,
+     "LocationID": 3749,
+     "OnlyIncludeActiveEmployees": null,
+     "PageNumber": 1,
+     "PageSize": 10,
+     "SortBy": [
+     {
+     "SortBy": "LastName",
+     "SortDirection": "Ascending"
+     }
+     ],
+     "TreatmentID": 304032,
+     "UsePaging": true,
+     "access_token": "66282713-c82c-4159-ab2a-63629d62f83d"
+     }
+    **********************************/
+    
+    func getEmployees(completion: @escaping ([Stylist]?) -> Void) {
+        guard let user = DatabaseController.shared.loadUser() else {
+            completion(nil)
+            return
+        }
+        let urlString = getBaseURL() + "employees"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749]
+        Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                print("SUCESS LOADING EMPLOYEES: ", json)
+                let status = json["IsSuccess"].stringValue
+                if status == "true" {
+                    var stylists:[Stylist] = []
+                    let array = json["Results"].arrayValue
+                    for item in array {
+                        guard let dic = item.dictionaryObject else {continue}
+                        if let stylist = Stylist(dic: dic) {
+                            stylists.append(stylist)
+                        }
+                    }
+                    completion(stylists)
+                } else {
+                    completion(nil)
+                }
+                
+                
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR LOADING EMPLOYEES: ", json)
+                print("ERROR: ",error.localizedDescription)
+                completion(nil)
             }
         }
     }

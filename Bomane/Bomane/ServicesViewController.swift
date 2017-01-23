@@ -16,14 +16,20 @@ class ServicesViewController: UIViewController {
     var bookButton:UIButton!
     
     var services:[Service] = []
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ServicesViewController.handleRefresh(sender:)), for: .valueChanged)
+        return refreshControl
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        setUpServices()
         setUpNavBar()
         setUpBookButton()
         setUpTableView()
+        fetchServices()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,12 +39,20 @@ class ServicesViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
     }
     
-    func setUpServices() {
-        for _ in 0...3 {
-            let sub = "Aenean sagittis porttitor dolor,ac pretium eros tincidunt suscipit. Nunc ultrices arcu vel muris egestas mattis. Fusce metus velit, auctor sit amet ullamcorper in, vehicula ut nibh. Duis ut urna nulla. Sed eu luctus leo. Proin ut odio volutpat risus."
-            let nam = "Haircut"
-            let service = Service(name: nam, description: sub)
-            services.append(service)
+    func handleRefresh(sender: UIRefreshControl) {
+        fetchServices()
+    }
+    
+    func fetchServices() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        NetworkController.shared.getServices() {
+            optionalServices in
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            self.refreshControl.endRefreshing()
+            guard let services = optionalServices else {return}
+            self.services = services
+            self.tableView.reloadData()
         }
     }
     
@@ -111,6 +125,7 @@ class ServicesViewController: UIViewController {
         tableView.estimatedRowHeight = 88.0
         tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .none
+        tableView.addSubview(refreshControl)
     }
 
 
@@ -134,7 +149,7 @@ extension ServicesViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ServicesTableViewCell
         cell.titleLabel.text = services[indexPath.row].name
-        cell.subtitleLabel.text = services[indexPath.row].description
+        cell.subtitleLabel.text = services[indexPath.row].description ?? "N/A"
         return cell
     }
 }

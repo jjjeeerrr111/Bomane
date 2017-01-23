@@ -10,7 +10,7 @@ import UIKit
 
 class StylistSelectionViewController: UIViewController {
     
-    var delegate:StylistSelectionDelegate?
+    weak var delegate:StylistSelectionDelegate?
     private var titleLabel = UILabel()
     var closeButton:UIButton!
     var applyButton:UIButton!
@@ -230,7 +230,7 @@ extension StylistSelectionViewController:UITableViewDelegate {
     }
 }
 
-protocol StylistSelectionDelegate {
+protocol StylistSelectionDelegate : class {
     func getStylistSelection(stylist:String)
 }
 

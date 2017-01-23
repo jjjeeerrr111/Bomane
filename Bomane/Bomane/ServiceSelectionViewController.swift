@@ -10,7 +10,7 @@ import UIKit
 
 class ServiceSelectionViewController: UIViewController {
     
-    var delegate:ServiceSelectionDelegate?
+    weak var delegate:ServiceSelectionDelegate?
     private var titleLabel = UILabel()
     var closeButton:UIButton!
     var applyButton:UIButton!
@@ -229,6 +229,6 @@ extension ServiceSelectionViewController:UITableViewDelegate {
     }
 }
 
-protocol ServiceSelectionDelegate {
+protocol ServiceSelectionDelegate : class {
     func getServiceSelection(service:String)
 }
