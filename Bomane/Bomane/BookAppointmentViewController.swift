@@ -77,6 +77,8 @@ class BookAppointmentViewController: UIViewController {
         let monthName = DateFormatter().monthSymbols[components - 1]
         monthLabel.text = monthName
         
+        NetworkController.shared.getServices()
+        
     }
     
     override func viewDidLayoutSubviews() {

@@ -221,5 +221,78 @@ class NetworkController {
             }
         }
     }
+    
+    //MARK: FORGOT PASSWORD
+    
+    /****************************
+     
+     Content-Type: application/json; charset=utf-8
+     POST https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/forgot_password/custom
+     {
+         "BaseUrlOfHost": "http://example.com/reset_password",
+         "BrandID": null,
+         "Email": "testcustomer@booker.com",
+         "Firstname": "Test",
+         "LocationID": 3749,
+         "SupressQueryString": true,
+         "access_token": "66282713-c82c-4159-ab2a-63629d62f83d"
+     }
+    *****************************/
+    
+    
+    //MARK: FIND TREATMENT SERVICES
+    
+    /*********************************
+     Content-Type: application/json; charset=utf-8
+     POST https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/treatments
+     {
+     "AllowOnGiftCertificateSale": null,
+     "CategoryID": 30,
+     "EmployeeID": 58125,
+     "LocationID": 3749,
+     "PageNumber": 1,
+     "PageSize": 10,
+     "SortBy": [
+     {
+     "SortBy": "Name",
+     "SortDirection": "Ascending"
+     }
+     ],
+     "SubCategoryID": 218,
+     "UsePaging": true,
+     "ExcludeClassesAndWorkshops": null,
+     "OnlyClassesAndWorkshops": null,
+     "SkipLoadingRoomsAndEmployees": null,
+     "DurationTypeID": null,
+     "ExcludeCoupleServices": null,
+     "ExcludeMembersOnly": null,
+     "IncludeEmployeeTreatment": true,
+     "RoomID": null,
+     "BrandID": null,
+     "access_token": "66282713-c82c-4159-ab2a-63629d62f83d"
+     }
+    **********************************/
+    
+    func getServices() {
+        guard let user = DatabaseController.shared.loadUser() else {return}
+        let urlString = getBaseURL() + "treatments"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749]
+        Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                print("SUCESS LOADING SERVICES: ", json)
+                
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR LOADING SERVICES: ", json)
+                print("ERROR: ",error.localizedDescription)
+            }
+        }
+    }
 
 }
