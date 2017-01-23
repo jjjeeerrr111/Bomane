@@ -200,14 +200,12 @@ class LoginViewController: UIViewController {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         NetworkController.shared.login(email: emailField.text!, password: passwordField.text!) {
-            success in
+            user in
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            if success {
-                
-            } else {
-                print("failed to log in")
-            }
+            guard let unwrappedUser = user else {return}
+            DatabaseController.shared.saveUser(user: unwrappedUser)
+            AppDelegate.shared().checkIfUserExists()
         }
     }
     

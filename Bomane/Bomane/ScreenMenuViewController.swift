@@ -55,7 +55,7 @@ class ScreenMenuViewController: UIViewController {
     }
     
     func logOutButtonPressed(sender: UIButton) {
-        DatabaseController.shared.deleteUserFile()
+        DatabaseController.shared.logoutUser()
         AppDelegate.shared().showLogin()
     }
     

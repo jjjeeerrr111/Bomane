@@ -32,14 +32,74 @@ class NetworkController {
             switch response.result {
             case .success:
                 let json = JSON(data: response.data!)
-                let token = json["access_token"].stringValue
                 print("SUCESS GETTING API KEY: ", json)
-                completion(token)
+                let status = json["IsSuccess"].stringValue
+                
+                if status == "true" {
+                    let token = json["access_token"].stringValue
+                    completion(token)
+                } else {
+                    completion(nil)
+                }
             case .failure(let error):
                 let json = JSON(data: response.data!)
                 print("ERROR GETTING API KEY: ", json)
                 print("ERROR: ",error.localizedDescription)
                 completion(nil)
+            }
+        }
+    }
+    
+    //MARK: FIND LOCATIONS
+    
+    /*************************
+     
+     Content-Type: application/json; charset=utf-8
+     POST https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/locations
+     {
+     "BrandAccountName": "",
+     "BrandID": null,
+     "BusinessName": "",
+     "FeatureLevel": null,
+     "PageNumber": 1,
+     "PageSize": 5,
+     "SortBy": [
+     {
+     "SortBy": "Name",
+     "SortDirection": 0
+     }
+     ],
+     "UsePaging": true,
+     "access_token": "3edb7157-1e34-4bf5-aa16-e18c1772042b"
+     }
+    **************************/
+    
+    func findLocations(with token: String, completion: @escaping (Bool) -> Void) {
+        let urlString = getBaseURL() + "locations"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        
+        let params:Parameters = ["access_token":token]
+        Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                let status = json["IsSuccess"].stringValue
+                print("SUCESS GETTING LOCATIONS: ", json)
+                if status == "true" {
+                    //let customerId = json["CustomerID"].stringValue
+                    completion(true)
+                } else {
+                    //let errorMsg = json["ErrorMessage"].stringValue
+                    completion(false)
+                }
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR GETTING LOCATIONS: ", json)
+                print("ERROR: ",error.localizedDescription)
+                completion(false)
             }
         }
     }
@@ -82,15 +142,18 @@ class NetworkController {
      }
     ***************************/
     
-    func createUserAccount(with user: User, completion: @escaping (Bool,String?) -> Void) {
+    func createUserAccount(with user: User, completion: @escaping (Bool,Int?,String?) -> Void) {
         
         let urlString = getBaseURL() + "customer/account"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
         ]
         
+        guard let token = user.apiKey else {
+            completion(false,nil,"No API key")
+            return}
         //location ID and home phone are required fields. lets just add wtvr
-        let params:Parameters = ["Email" : user.email, "FirstName" : user.firstName, "LastName" : user.lastName, "access_token":user.apiKey!, "Password":user.password!, "LocationID" : 3749, "HomePhone":"1234567890"]
+        let params:Parameters = ["Email" : user.email, "FirstName" : user.firstName, "LastName" : user.lastName, "access_token":token, "Password":user.password!, "LocationID" : 3749, "HomePhone":"1234567890"]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -99,17 +162,17 @@ class NetworkController {
                 let status = json["IsSuccess"].stringValue
                 print("SUCESS CREATING USER: ", json)
                 if status == "true" {
-                    let customerId = json["CustomerID"].stringValue
-                    completion(true,customerId)
+                    let customerId = json["CustomerID"].intValue
+                    completion(true,customerId,nil)
                 } else {
                     let errorMsg = json["ErrorMessage"].stringValue
-                    completion(false,errorMsg)
+                    completion(false,nil,errorMsg)
                 }
             case .failure(let error):
                 let json = JSON(data: response.data!)
                 print("ERROR CREATING USER: ", json)
                 print("ERROR: ",error.localizedDescription)
-                completion(false,nil)
+                completion(false,nil,nil)
             }
         }
     }
@@ -130,24 +193,31 @@ class NetworkController {
      }
     ************************/
     
-    func login(email: String, password: String, completion: @escaping (Bool) -> Void) {
+    func login(email: String, password: String, completion: @escaping (User?) -> Void) {
         let urlString = getBaseURL() + "customer/login"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["Email" : email, "Password":password,"client_id":Constants.clientId, "client_secret":Constants.clientSecret]
+        let params:Parameters = ["Email" : email, "Password":password,"client_id":Constants.clientId, "client_secret":Constants.clientSecret, "LocationID" : 3749]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
             case .success:
-                let json = JSON(data: response.data!)
+                guard let json = JSON(data: response.data!).dictionaryObject else {
+                    completion(nil)
+                    return
+                }
                 print("SUCESS LOGGING IN USER: ", json)
-                completion(true)
+                guard let user = User(dictionary: json) else {
+                    completion(nil)
+                    return
+                }
+                completion(user)
             case .failure(let error):
                 let json = JSON(data: response.data!)
                 print("ERROR LOGGING IN USER: ", json)
                 print("ERROR: ",error.localizedDescription)
-                completion(false)
+                completion(nil)
             }
         }
     }

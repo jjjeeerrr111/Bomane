@@ -26,11 +26,25 @@ class CreateAccountPasswordViewController: UIViewController {
         setUpTapGesture()
         
         //get an access token first
+        fetchAPIKey()
+    }
+    
+    func fetchAPIKey() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         NetworkController.shared.getAccessToken() {
             optionalToken in
-            
-            guard let token = optionalToken else {return}
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            guard let token = optionalToken else {
+                self.showNoAPIKeyAlert()
+                return
+            }
             self.user.apiKey = token
+        }
+    }
+    
+    func showNoAPIKeyAlert() {
+        self.showAlertWithClosure(title: "Error", body: "Failed to get API key, need to try again.") {
+            self.fetchAPIKey()
         }
     }
     
@@ -246,7 +260,7 @@ class CreateAccountPasswordViewController: UIViewController {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         NetworkController.shared.createUserAccount(with: self.user) {
-            (success,customerId) in
+            (success,customerId,errormsg) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if success {
                 //this is where you push log in and create user
@@ -255,7 +269,7 @@ class CreateAccountPasswordViewController: UIViewController {
                 DatabaseController.shared.saveUser(user: self.user)
                 AppDelegate.shared().initWindow(controller: "Book Appointment")
             } else {
-                if let msg = customerId {
+                if let msg = errormsg {
                     self.showErrorAlert(title: "Error", body: msg)
                 } else {
                     self.showErrorAlert(title: "Whoops...", body: "Something went wrong while creating your account. Please try again.")

@@ -117,6 +117,19 @@ extension UIViewController {
         // Present dialog
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func showAlertWithClosure(title: String, body: String, completion: @escaping () -> ()) {
+        let alert = PopupDialog(title: title, message: body)
+        
+        let buttonOne = CancelButton(title: "OK") {
+            completion()
+        }
+        
+        alert.addButtons([buttonOne])
+        alert.transitionStyle = .zoomIn
+        // Present dialog
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension UITextField

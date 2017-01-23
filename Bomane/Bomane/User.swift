@@ -15,9 +15,9 @@ class User : NSObject, NSCoding {
     var email:String!
     var apiKey:String?
     var password:String?
-    var customerId:String?
+    var customerId:Int?
     
-    init(first: String, last: String, email: String, apiKey: String? = nil, password: String? = nil, customerId: String? = nil) {
+    init(first: String, last: String, email: String, apiKey: String? = nil, password: String? = nil, customerId: Int? = nil) {
         self.firstName = first
         self.lastName = last
         self.email = email
@@ -27,15 +27,14 @@ class User : NSObject, NSCoding {
         super.init()
     }
     
-    init(dictionary: [String:Any], apiKey: String?) {
-        guard let first = dictionary["first_name"] as? String, let last = dictionary["last_name"] as? String, let email = dictionary["email"] as? String else {return}
+    init?(dictionary: [String:Any]) {
+        guard let token = dictionary["access_token"] as? String else {return nil}
+        guard let customer = dictionary["Customer"] as? [String:Any], let customerId = customer["CustomerID"] as? Int, let customerDic = customer["Customer"] as? [String:Any], let first = customerDic["FirstName"] as? String, let last = customerDic["LastName"] as? String, let email = customerDic["Email"] as? String else {return nil}
         self.firstName = first
         self.lastName = last
         self.email = email
-        
-        if let key = apiKey {
-            self.apiKey = key
-        }
+        self.apiKey = token
+        self.customerId = customerId
     }
     
     //MARK: NSCoding
@@ -57,7 +56,7 @@ class User : NSObject, NSCoding {
         let email = aDecoder.decodeObject(forKey: PropertyKey.email) as! String
         let apiKey = aDecoder.decodeObject(forKey: PropertyKey.apiKey) as? String
         let password = aDecoder.decodeObject(forKey: PropertyKey.password) as? String
-        let customerId = aDecoder.decodeObject(forKey: PropertyKey.customerId) as? String
+        let customerId = aDecoder.decodeObject(forKey: PropertyKey.customerId) as? Int
         self.init(first: first, last: last, email: email, apiKey: apiKey, password: password, customerId: customerId)
     }
     
