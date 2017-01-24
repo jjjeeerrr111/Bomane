@@ -119,7 +119,7 @@ class ServicesViewController: UIViewController {
         
         tableView.register(ServicesTableViewCell.self)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.delegate = self
+        //tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 88.0
@@ -131,11 +131,11 @@ class ServicesViewController: UIViewController {
 
 }
 
-extension ServicesViewController:UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("cell selected")
-    }
-}
+//extension ServicesViewController:UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        
+//    }
+//}
 
 extension ServicesViewController:UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
