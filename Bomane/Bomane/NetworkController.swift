@@ -23,6 +23,42 @@ class NetworkController {
         return "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
     }
     
+    //MARK: Check if access token is valid
+    /*************************
+     Content-Type: application/json; charset=utf-8
+     POST https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/authenticate?access_token={access_token}
+     {
+     "access_token": "66282713-c82c-4159-ab2a-63629d62f83d"
+     }
+    *************************/
+    
+    func checkIfTokenValid(token: String, completion: @escaping (Bool) -> Void) {
+        let urlString = getBaseURL() + "authenticate?access_token=\(token)"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        
+        let params:Parameters = ["access_token":token]
+        Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                let status = json["IsSuccess"].stringValue
+                
+                if status == "true" {
+                    //access token still valid
+                    completion(true)
+                } else {
+                    //access token invalid
+                    completion(false)
+                }
+            case .failure(let error):
+                completion(false)
+            }
+        }
+    }
+    
     func getAccessToken(completion: @escaping (String?) -> Void) {
         let urlString =  getBaseURL() + "access_token?client_id=FGytHvpskaBZ&client_secret=DjlPU5LNHHzI&grant_type=client_credentials"
         let headers: HTTPHeaders = [
