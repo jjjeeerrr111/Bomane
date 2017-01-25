@@ -214,12 +214,7 @@ extension TimeSelectionViewController:UITableViewDataSource {
 
 extension TimeSelectionViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let lastIndexPath = previouslySelectedIndexPath,let previousCell = tableView.cellForRow(at: lastIndexPath) as? AppoitmentTableViewCell {
-            previousCell.setSelected() 
-        }
-        let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
-        cell.setSelected()
-        previouslySelectedIndexPath = indexPath
+
         
         
     }

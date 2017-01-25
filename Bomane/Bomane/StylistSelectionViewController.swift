@@ -244,6 +244,11 @@ extension StylistSelectionViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AppoitmentTableViewCell
         cell.serviceLabel.text = stylists[indexPath.row].firstName + " " + stylists[indexPath.row].lastName
+        if let serv = self.selectedStylist, serv.id == self.stylists[indexPath.row].id {
+            cell.configure(sender: true)
+        } else {
+            cell.configure(sender: false)
+        }
         return cell
     }
 }
@@ -251,10 +256,10 @@ extension StylistSelectionViewController:UITableViewDataSource {
 extension StylistSelectionViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let lastIndexPath = previouslySelectedIndexPath,let previousCell = tableView.cellForRow(at: lastIndexPath) as? AppoitmentTableViewCell {
-            previousCell.setSelected()
+            previousCell.configure(sender: false)
         }
         let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
-        cell.setSelected()
+        cell.configure(sender: true)
         previouslySelectedIndexPath = indexPath
         selectedStylist = self.stylists[indexPath.row]
     }

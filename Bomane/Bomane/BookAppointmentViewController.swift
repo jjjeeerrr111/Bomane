@@ -32,7 +32,7 @@ class BookAppointmentViewController: UIViewController {
     @IBOutlet weak var selectedDateLabel: UILabel!
     
     var selectedStylist:Stylist?
-    var selectedService:String?
+    var selectedService:Service?
     
     var shouldShowDaysOut = true
     var animationFinished = true
@@ -460,9 +460,9 @@ extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionD
         
     }
     
-    func getServiceSelection(service: String) {
+    func getServiceSelection(service: Service) {
         self.selectedService = service
-        self.serviceLabel.text = service
+        self.serviceLabel.text = service.name
     }
     
     func getStylistSelection(stylist: Stylist) {

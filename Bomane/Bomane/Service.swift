@@ -14,6 +14,7 @@ struct Service {
     var duration:Int?
     var price:Double?
     var id:Int?
+    var isSelected = false
 
     init(name: String, description: String? = nil, duration: Int? = nil, price: Double? = nil, id: Int? = nil) {
         self.name = name

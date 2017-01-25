@@ -20,9 +20,10 @@ class ServiceSelectionViewController: UIViewController {
     var containerView:UIView!
     var backgroundView:UIView!
     
-    var services:[String] = ["Haircut","Blowdry"]
+    var services:[Service] = []
     var previouslySelectedIndexPath:IndexPath?
-    var selectedService:String?
+    var selectedService:Service?
+    var activityIndicator:UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +33,35 @@ class ServiceSelectionViewController: UIViewController {
         setUpNavBar()
         setUpApplyButton()
         setUpTableView()
+        setUpActivityIndicator()
+        fetchServices()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setUpActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
+        let const:[NSLayoutConstraint] = [
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(const)
+    }
+    
+    func fetchServices() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        activityIndicator.startAnimating()
+        NetworkController.shared.getServices() {
+            optionalServices in
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            guard let servs = optionalServices else {return}
+            self.services = servs
+            self.tableView.reloadData()
+            
+        }
     }
     
     func setUpBGView() {
@@ -212,7 +237,12 @@ extension ServiceSelectionViewController:UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AppoitmentTableViewCell
-        cell.serviceLabel.text = services[indexPath.row]
+        cell.serviceLabel.text = services[indexPath.row].name
+        if let serv = self.selectedService, serv.id == self.services[indexPath.row].id {
+            cell.configure(sender: true)
+        } else {
+            cell.configure(sender: false)
+        }
         return cell
     }
 }
@@ -220,15 +250,15 @@ extension ServiceSelectionViewController:UITableViewDataSource {
 extension ServiceSelectionViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let lastIndexPath = previouslySelectedIndexPath,let previousCell = tableView.cellForRow(at: lastIndexPath) as? AppoitmentTableViewCell {
-            previousCell.setSelected()
+            previousCell.configure(sender: false)
         }
         let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
-        cell.setSelected()
+        cell.configure(sender: true)
         previouslySelectedIndexPath = indexPath
-        self.selectedService = cell.serviceLabel.text
+        selectedService = self.services[indexPath.row]
     }
 }
 
 protocol ServiceSelectionDelegate : class {
-    func getServiceSelection(service:String)
+    func getServiceSelection(service:Service)
 }

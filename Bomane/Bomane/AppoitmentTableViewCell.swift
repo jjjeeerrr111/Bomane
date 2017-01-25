@@ -25,8 +25,12 @@ class AppoitmentTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setSelected() {
-        selectionButton.isSelected = !selectionButton.isSelected
+    func configure(sender: Bool) {
+        if sender {
+            selectionButton.setImage(#imageLiteral(resourceName: "SelectedOval"), for: .normal)
+        } else {
+            selectionButton.setImage(#imageLiteral(resourceName: "UnselectedOval"), for: .normal)
+        }
     }
     
 }
