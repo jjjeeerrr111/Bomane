@@ -33,14 +33,8 @@ class NetworkController {
             case .success:
                 let json = JSON(data: response.data!)
                 print("SUCESS GETTING API KEY: ", json)
-                let status = json["IsSuccess"].stringValue
-                
-                if status == "true" {
-                    let token = json["access_token"].stringValue
-                    completion(token)
-                } else {
-                    completion(nil)
-                }
+                let token = json["access_token"].stringValue
+                completion(token)
             case .failure(let error):
                 let json = JSON(data: response.data!)
                 print("ERROR GETTING API KEY: ", json)
@@ -166,6 +160,10 @@ class NetworkController {
                     completion(true,customerId,nil)
                 } else {
                     let errorMsg = json["ErrorMessage"].stringValue
+                    if errorMsg == "invalid access token" {
+                        DatabaseController.shared.logoutUser()
+                        AppDelegate.shared().showLogin()
+                    }
                     completion(false,nil,errorMsg)
                 }
             case .failure(let error):
@@ -301,6 +299,11 @@ class NetworkController {
                     }
                     completion(services)
                 } else {
+                    let msg = json["ErrorMessage"].stringValue
+                    if msg == "invalid access token" {
+                        DatabaseController.shared.logoutUser()
+                        AppDelegate.shared().showLogin()
+                    }
                     completion(nil)
                 }
                 
@@ -365,6 +368,11 @@ class NetworkController {
                     }
                     completion(stylists)
                 } else {
+                    let errorMsg = json["ErrorMessage"].stringValue
+                    if errorMsg == "invalid access token" {
+                        DatabaseController.shared.logoutUser()
+                        AppDelegate.shared().showLogin()
+                    }
                     completion(nil)
                 }
                 

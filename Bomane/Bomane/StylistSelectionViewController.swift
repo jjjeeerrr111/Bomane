@@ -20,10 +20,11 @@ class StylistSelectionViewController: UIViewController {
     var containerView:UIView!
     var backgroundView:UIView!
     
-    var stylists:[String] = ["Stephanie","Jane","Erica","Monica","Andrea","Susan","Debbie","Kelly"]
     var previouslySelectedIndexPath:IndexPath?
+    var activityIndicator:UIActivityIndicatorView!
     
-    var selectedStylist:String?
+    var selectedStylist:Stylist?
+    var stylists:[Stylist] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,35 @@ class StylistSelectionViewController: UIViewController {
         setUpNavBar()
         setUpApplyButton()
         setUpTableView()
+        setUpActivityIndicator()
+        fetchStylists()
+    }
+    
+    func setUpActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
+        let const:[NSLayoutConstraint] = [
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(const)
+    }
+    
+    func fetchStylists() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        activityIndicator.startAnimating()
+        NetworkController.shared.getEmployees() {
+            optionalStylists in
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            guard let theStylists = optionalStylists else {return}
+            self.stylists = theStylists
+            self.tableView.reloadData()
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -213,7 +243,7 @@ extension StylistSelectionViewController:UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AppoitmentTableViewCell
-        cell.serviceLabel.text = stylists[indexPath.row]
+        cell.serviceLabel.text = stylists[indexPath.row].firstName + " " + stylists[indexPath.row].lastName
         return cell
     }
 }
@@ -226,11 +256,11 @@ extension StylistSelectionViewController:UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
         cell.setSelected()
         previouslySelectedIndexPath = indexPath
-        selectedStylist = cell.serviceLabel.text
+        selectedStylist = self.stylists[indexPath.row]
     }
 }
 
 protocol StylistSelectionDelegate : class {
-    func getStylistSelection(stylist:String)
+    func getStylistSelection(stylist:Stylist)
 }
 

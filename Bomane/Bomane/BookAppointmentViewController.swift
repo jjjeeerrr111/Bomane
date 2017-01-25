@@ -31,7 +31,7 @@ class BookAppointmentViewController: UIViewController {
 
     @IBOutlet weak var selectedDateLabel: UILabel!
     
-    var selectedStylist:String?
+    var selectedStylist:Stylist?
     var selectedService:String?
     
     var shouldShowDaysOut = true
@@ -76,15 +76,6 @@ class BookAppointmentViewController: UIViewController {
         let components = calendar.component(.month, from: date)
         let monthName = DateFormatter().monthSymbols[components - 1]
         monthLabel.text = monthName
-        
-        NetworkController.shared.getEmployees() {
-            optionalStylists in
-            
-            guard let stylists = optionalStylists else {return}
-            print("all stylists")
-            dump(stylists)
-            
-        }
         
     }
     
@@ -450,9 +441,9 @@ extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionD
         self.serviceLabel.text = service
     }
     
-    func getStylistSelection(stylist: String) {
+    func getStylistSelection(stylist: Stylist) {
         self.selectedStylist = stylist
-        self.stylistLabel.text = stylist
+        self.stylistLabel.text = stylist.firstName + " " + stylist.lastName
     }
 }
 
