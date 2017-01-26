@@ -10,7 +10,10 @@ import UIKit
 
 class AppoitmentTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var selectionButton: UIButton!
+    
+    
+    @IBOutlet weak var selectedOvalImage: UIImageView!
+    @IBOutlet weak var unselectedImage: UIImageView!
     
     @IBOutlet weak var serviceLabel: UILabel!
     
@@ -27,9 +30,9 @@ class AppoitmentTableViewCell: UITableViewCell {
     
     func configure(sender: Bool) {
         if sender {
-            selectionButton.setImage(#imageLiteral(resourceName: "SelectedOval"), for: .normal)
+            self.selectedOvalImage.isHidden = false
         } else {
-            selectionButton.setImage(#imageLiteral(resourceName: "UnselectedOval"), for: .normal)
+            self.selectedOvalImage.isHidden = true
         }
     }
     

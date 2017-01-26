@@ -81,22 +81,20 @@ class BookAppointmentViewController: UIViewController {
         //check if the users access token is still valid
         NetworkController.shared.checkIfTokenValid(token: token) {
             valid in
-            
-            if !valid {
-                DatabaseController.shared.deleteUserFile()
-                AppDelegate.shared().showLogin()
-            } else {
-                self.updateUserToken()
-            }
+            self.updateUserToken()
         }
-        
     }
     
     func updateUserToken() {
         NetworkController.shared.getAccessToken() {
             string in
             
-            guard let token = string else {return}
+            guard let token = string else {
+                //if this fails then relogin
+                DatabaseController.shared.deleteUserFile()
+                AppDelegate.shared().showLogin()
+                return
+            }
             guard let user = DatabaseController.shared.loadUser() else {return}
             user.apiKey = token
             DatabaseController.shared.saveUser(user: user)
