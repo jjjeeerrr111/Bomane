@@ -22,6 +22,10 @@ class TimeSelectionViewController: UIViewController {
     
     var previouslySelectedIndexPath:IndexPath?
     
+    var stylist:Stylist?
+    var service:Service?
+    var selectedDate:Date?
+    
     var times:[String] = ["8:45-9:45am","10-11am","1:30-2:30pm","4:15-5:15pm"]
     
     override func viewDidLoad() {
@@ -32,6 +36,15 @@ class TimeSelectionViewController: UIViewController {
         setUpNavBar()
         setUpApplyButton()
         setUpTableView()
+        
+        guard let sty = stylist, let serv = service, let date = selectedDate else {return}
+        
+        NetworkController.shared.getAvailableTimeslots(stylist: sty, service: serv, date: date) {
+            _ in
+            
+        }
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

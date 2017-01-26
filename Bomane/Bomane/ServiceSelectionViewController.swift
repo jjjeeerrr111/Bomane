@@ -25,6 +25,8 @@ class ServiceSelectionViewController: UIViewController {
     var selectedService:Service?
     var activityIndicator:UIActivityIndicatorView!
     
+    var stylist:Stylist?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
@@ -52,16 +54,31 @@ class ServiceSelectionViewController: UIViewController {
     func fetchServices() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         activityIndicator.startAnimating()
-        NetworkController.shared.getServices() {
-            optionalServices in
-            
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            guard let servs = optionalServices else {return}
-            self.services = servs
-            self.tableView.reloadData()
-            
+        
+        if let sty = stylist {
+            NetworkController.shared.getServices(employeeId: sty.id!) {
+                optionalServices in
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                guard let servs = optionalServices else {return}
+                self.services = servs
+                self.tableView.reloadData()
+                
+            }
+        } else {
+            NetworkController.shared.getServices() {
+                optionalServices in
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                guard let servs = optionalServices else {return}
+                self.services = servs
+                self.tableView.reloadData()
+                
+            }
         }
+        
     }
     
     func setUpBGView() {

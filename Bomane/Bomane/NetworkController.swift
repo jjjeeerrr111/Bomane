@@ -307,7 +307,7 @@ class NetworkController {
      }
     **********************************/
     
-    func getServices(completion: @escaping ([Service]?) -> Void) {
+    func getServices(employeeId: Int? = nil, completion: @escaping ([Service]?) -> Void) {
         guard let user = DatabaseController.shared.loadUser() else {
             completion(nil)
             return
@@ -316,7 +316,7 @@ class NetworkController {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749]
+        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749, "EmployeeID" : employeeId ?? nil]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -351,6 +351,7 @@ class NetworkController {
             }
         }
     }
+    
     
     
     //MARK: GET EMPLOYESS
@@ -421,5 +422,87 @@ class NetworkController {
             }
         }
     }
+    
+    //MARK: GET AVAILABLE TIMES
+    /*********************************
+     
+     
+     Content-Type: application/json; charset=utf-8
+     POST https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/availability/multiservice
+     {
+     "EndDateTime": "/Date(1337223600000-0400)/",
+     "Itineraries": [
+     {
+     "IsPackage": false,
+     "PackageID": null,
+     "Treatments": [
+     {
+     "Employee2ID": null,
+     "EmployeeGenderID": null,
+     "EmployeeID": 58125,
+     "TreatmentID": 304032
+     }
+     ],
+     "IncludeCutOffTimes": true
+     }
+     ],
+     "LocationID": 3749,
+     "MaxTimesPerDay": 5,
+     "StartDateTime": "/Date(1337004000000-0400)/",
+     "IsTreatmentFlexDuration": true,
+     "ReturnAllSlots": true,
+     "access_token": "3edb7157-1e34-4bf5-aa16-e18c1772042b"
+     }
+     **********************************/
+    
+    func getAvailableTimeslots(stylist: Stylist, service: Service, date: Date, completion: @escaping ([Stylist]?) -> Void) {
+        guard let user = DatabaseController.shared.loadUser() else {
+            completion(nil)
+            return
+        }
+        let urlString = getBaseURL() + "availability/multiservice"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        
+        var milliStart = date.startOfDay.timeIntervalSince1970
+        milliStart = milliStart * 1000
+        var milliEnd = date.endOfDay!.timeIntervalSince1970
+        milliEnd = milliEnd * 1000
+        let startDate = "/Date(\(Int(milliStart)))/"
+        let endDate = "/Date(\(Int(milliEnd)))/"
+        let employeeId = stylist.id!
+        let treatmentId = service.id!
+        let treatments = [["TreatmentID" : treatmentId, "EmployeeID":employeeId]]
+        let itinerary = [["Treatments":treatments]]
+        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749, "Itineraries":itinerary, "StartDateTime":startDate, "EndDateTime":endDate]
+        dump(params)
+        Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                print("SUCESS LOADING AVAILABLE TIMES: ", json)
+                let status = json["IsSuccess"].stringValue
+                if status == "true" {
 
+                } else {
+                    let errorMsg = json["ErrorMessage"].stringValue
+                    if errorMsg == "invalid access token" {
+                        DatabaseController.shared.logoutUser()
+                        AppDelegate.shared().showLogin()
+                    }
+                    completion(nil)
+                }
+                
+                
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR LOADING AVAILABLE TIMES: ", json)
+                print("ERROR: ",error.localizedDescription)
+                completion(nil)
+            }
+        }
+
+    }
 }

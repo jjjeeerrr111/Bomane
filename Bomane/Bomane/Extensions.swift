@@ -10,6 +10,19 @@ import Foundation
 import UIKit
 import PopupDialog
 
+extension Date {
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    var endOfDay: Date? {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)
+    }
+}
+
 extension Int {
     func formattedNumberString() -> String {
         if self < 1000 {

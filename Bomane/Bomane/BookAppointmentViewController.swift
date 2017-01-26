@@ -148,6 +148,9 @@ class BookAppointmentViewController: UIViewController {
     @IBAction func selectServiceTapped(_ sender: UIButton) {
         let serviceVC = ServiceSelectionViewController()
         serviceVC.delegate = self
+        if let sty = self.selectedStylist {
+            serviceVC.stylist = sty
+        }
         serviceVC.transitioningDelegate = self
         serviceVC.modalPresentationStyle = .overFullScreen
         self.present(serviceVC, animated: true, completion: nil)
@@ -172,6 +175,9 @@ class BookAppointmentViewController: UIViewController {
         
         let timeVC = TimeSelectionViewController()
         timeVC.delegate = self
+        timeVC.stylist = self.selectedStylist
+        timeVC.service = self.selectedService
+        timeVC.selectedDate = self.selectedDay.date.date
         timeVC.transitioningDelegate = self
         timeVC.modalPresentationStyle = .overFullScreen
         self.present(timeVC, animated: true, completion: nil)
