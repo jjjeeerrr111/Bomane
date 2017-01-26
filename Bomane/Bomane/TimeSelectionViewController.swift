@@ -26,7 +26,8 @@ class TimeSelectionViewController: UIViewController {
     var service:Service?
     var selectedDate:Date?
     
-    var times:[String] = ["8:45-9:45am","10-11am","1:30-2:30pm","4:15-5:15pm"]
+    var times:[TimeSlot] = []
+    var activityIndicator:UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +37,41 @@ class TimeSelectionViewController: UIViewController {
         setUpNavBar()
         setUpApplyButton()
         setUpTableView()
+        setUpActivityIndicator()
+        fetchTimeSlots()
+        
+        
+    }
+    
+    func setUpActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
+        let const:[NSLayoutConstraint] = [
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(const)
+    }
+    
+    func fetchTimeSlots() {
         
         guard let sty = stylist, let serv = service, let date = selectedDate else {return}
         
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        activityIndicator.startAnimating()
         NetworkController.shared.getAvailableTimeslots(stylist: sty, service: serv, date: date) {
-            _ in
+            optionalTimes in
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            guard let times = optionalTimes else {return}
+            self.times = times
+            self.tableView.reloadData()
             
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -215,12 +242,23 @@ extension TimeSelectionViewController:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if times.isEmpty {
+            return 1
+        }
+        
         return times.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if times.isEmpty {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "No available times"
+            cell.textLabel?.font = UIFont(name: "AvenirNext-Regular", size: 18)
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AppoitmentTableViewCell
-        cell.serviceLabel.text = times[indexPath.row]
+        cell.serviceLabel.text = times[indexPath.row].startDateTime
         return cell
     }
 }

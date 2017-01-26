@@ -455,7 +455,7 @@ class NetworkController {
      }
      **********************************/
     
-    func getAvailableTimeslots(stylist: Stylist, service: Service, date: Date, completion: @escaping ([Stylist]?) -> Void) {
+    func getAvailableTimeslots(stylist: Stylist, service: Service, date: Date, completion: @escaping ([TimeSlot]?) -> Void) {
         guard let user = DatabaseController.shared.loadUser() else {
             completion(nil)
             return
@@ -485,7 +485,24 @@ class NetworkController {
                 print("SUCESS LOADING AVAILABLE TIMES: ", json)
                 let status = json["IsSuccess"].stringValue
                 if status == "true" {
-
+                    var timeslots:[TimeSlot] = []
+                    let array = json["ItineraryTimeSlotsLists"].arrayValue
+                    guard let dicItem = array.first?.dictionary, let dicArray = dicItem["ItineraryTimeSlots"]?.arrayValue else {
+                        completion(nil)
+                        return
+                    }
+                    for item in dicArray {
+                        let treatmentSlot = item["TreatmentTimeSlots"].arrayValue
+                        guard let treatment = treatmentSlot.first?.dictionaryObject else {
+                            completion(nil)
+                            return
+                        }
+                        if let time = TimeSlot(dic: treatment) {
+                            timeslots.append(time)
+                        }
+                    }
+                    
+                    completion(timeslots)
                 } else {
                     let errorMsg = json["ErrorMessage"].stringValue
                     if errorMsg == "invalid access token" {

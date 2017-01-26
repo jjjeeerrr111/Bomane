@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B2EE0690BCBB3162698AC7B /* Pods_Bomane.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F404D100361E9220C5910C /* Pods_Bomane.framework */; };
+		570E8EA71E3A51A200C7A8E1 /* TimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570E8EA61E3A51A200C7A8E1 /* TimeSlot.swift */; };
 		5713B8671E327A1600D9EC2C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B8661E327A1600D9EC2C /* User.swift */; };
 		5713B8691E327F1F00D9EC2C /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B8681E327F1F00D9EC2C /* DatabaseController.swift */; };
 		5721091A1E229AD600E253AC /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572109181E229AD600E253AC /* EditProfileViewController.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		4C956D884B01D4F42724B35F /* Pods-Bomane.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bomane.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bomane/Pods-Bomane.release.xcconfig"; sourceTree = "<group>"; };
+		570E8EA61E3A51A200C7A8E1 /* TimeSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlot.swift; sourceTree = "<group>"; };
 		5713B8661E327A1600D9EC2C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5713B8681E327F1F00D9EC2C /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		572109181E229AD600E253AC /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				5713B8661E327A1600D9EC2C /* User.swift */,
 				57DE02D81E36724200155BCD /* Stylist.swift */,
 				5751D2601DEB9E7C009A4612 /* Service.swift */,
+				570E8EA61E3A51A200C7A8E1 /* TimeSlot.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				578F22191E07174200CBF23C /* ProtfolioViewController.swift in Sources */,
 				574D3D0E1E102BE000D0D2C2 /* AppoitmentTableViewCell.swift in Sources */,
 				574D3D131E10333A00D0D2C2 /* ServiceSelectionViewController.swift in Sources */,
+				570E8EA71E3A51A200C7A8E1 /* TimeSlot.swift in Sources */,
 				5721091A1E229AD600E253AC /* EditProfileViewController.swift in Sources */,
 				5713B8691E327F1F00D9EC2C /* DatabaseController.swift in Sources */,
 				57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */,
