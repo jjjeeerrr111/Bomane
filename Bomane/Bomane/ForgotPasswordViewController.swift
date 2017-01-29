@@ -1,21 +1,20 @@
 //
-//  LoginViewController.swift
+//  ForgotPasswordViewController.swift
 //  Bomane
 //
-//  Created by Jeremy Sharvit on 2016-12-17.
-//  Copyright © 2016 com.bomane. All rights reserved.
+//  Created by Jeremy Sharvit on 2017-01-29.
+//  Copyright © 2017 com.bomane. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
-    
-    var loginButton:UIButton!
-    var emailField:UITextField!
-    var passwordField:UITextField!
-    var loginBottomConstraint:NSLayoutConstraint!
-    var forgotPassButton:UIButton!
+class ForgotPasswordViewController: UIViewController {
 
+    var sendButton:UIButton!
+    var nameField:UITextField!
+    var emailField:UITextField!
+    var loginBottomConstraint:NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
@@ -25,7 +24,7 @@ class LoginViewController: UIViewController {
         setUpNotifications()
         setUpTapGesture()
     }
-
+    
     func setUpNotifications() {
         //add nsnotification center listener for keyboard popping up
         NotificationCenter.default.addObserver(self, selector:#selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -61,9 +60,9 @@ class LoginViewController: UIViewController {
         })
     }
     
-
+    
     func setUpNavigationBar() {
-        navigationItem.title = "LOG IN"
+        navigationItem.title = "RESET"
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Baskerville", size: 20)!]
         
         
@@ -86,119 +85,105 @@ class LoginViewController: UIViewController {
             hello.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             again.topAnchor.constraint(equalTo: hello.bottomAnchor, constant: -20),
             again.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ]
+            ]
         NSLayoutConstraint.activate(constraints)
         
-        hello.text = "Hello"
+        hello.text = "Forgot"
         hello.textAlignment = .center
         hello.font = UIFont(name: "AvenirNext-Regular", size: 40)
         hello.textColor = UIColor(red: 210/255, green: 185/255, blue: 163/255, alpha: 1)
         hello.numberOfLines = 2
         
-        again.text = "again"
+        again.text = "Password"
         again.textAlignment = .center
         again.font = UIFont(name: "AvenirNext-Regular", size: 40)
         again.textColor = UIColor(red: 210/255, green: 185/255, blue: 163/255, alpha: 1)
         again.numberOfLines = 2
         
-        emailField = UITextField()
-        emailField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(emailField)
+        nameField = UITextField()
+        nameField.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(nameField)
         
         let separator1 = UIView()
         separator1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(separator1)
         
-        passwordField = UITextField()
-        passwordField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(passwordField)
+        emailField = UITextField()
+        emailField.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(emailField)
         
         let separator2 = UIView()
         separator2.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(separator2)
         
-        forgotPassButton = UIButton()
-        forgotPassButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(forgotPassButton)
-        
         let secConstraints:[NSLayoutConstraint] = [
-            emailField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
-            emailField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
-            emailField.topAnchor.constraint(equalTo: again.bottomAnchor, constant: 5),
-            emailField.heightAnchor.constraint(equalToConstant: 40),
-            separator1.topAnchor.constraint(equalTo: emailField.bottomAnchor),
+            nameField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
+            nameField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
+            nameField.topAnchor.constraint(equalTo: again.bottomAnchor, constant: 5),
+            nameField.heightAnchor.constraint(equalToConstant: 40),
+            separator1.topAnchor.constraint(equalTo: nameField.bottomAnchor),
             separator1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
             separator1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
             separator1.heightAnchor.constraint(equalToConstant: 0.5),
-            passwordField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
-            passwordField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
-            passwordField.topAnchor.constraint(equalTo: separator1.bottomAnchor, constant: 10),
-            passwordField.heightAnchor.constraint(equalToConstant: 40),
-            separator2.topAnchor.constraint(equalTo: passwordField.bottomAnchor),
+            emailField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
+            emailField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
+            emailField.topAnchor.constraint(equalTo: separator1.bottomAnchor, constant: 10),
+            emailField.heightAnchor.constraint(equalToConstant: 40),
+            separator2.topAnchor.constraint(equalTo: emailField.bottomAnchor),
             separator2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
             separator2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
-            separator2.heightAnchor.constraint(equalToConstant: 0.5),
-            forgotPassButton.topAnchor.constraint(equalTo: separator2.bottomAnchor, constant: 5),
-            forgotPassButton.trailingAnchor.constraint(equalTo: separator2.trailingAnchor)
+            separator2.heightAnchor.constraint(equalToConstant: 0.5)
         ]
         NSLayoutConstraint.activate(secConstraints)
         
+        nameField.placeholder = "Name"
         emailField.placeholder = "Email"
-        passwordField.placeholder = "Password"
         
+        nameField.font = UIFont(name: "AvenirNext-Regular", size: 18)
         emailField.font = UIFont(name: "AvenirNext-Regular", size: 18)
-        passwordField.font = UIFont(name: "AvenirNext-Regular", size: 18)
         
+        nameField.textColor = UIColor.white
         emailField.textColor = UIColor.white
-        passwordField.textColor = UIColor.white
         
+        nameField.placeholderColor = UIColor.white
         emailField.placeholderColor = UIColor.white
-        passwordField.placeholderColor = UIColor.white
+        
+        nameField.delegate = self
+        nameField.clearButtonMode = .whileEditing
+        nameField.returnKeyType = .next
+        nameField.autocorrectionType = .no
+        nameField.autocapitalizationType = .words
         
         emailField.delegate = self
         emailField.clearButtonMode = .whileEditing
-        emailField.returnKeyType = .next
+        emailField.returnKeyType = .done
         emailField.autocorrectionType = .no
         emailField.autocapitalizationType = .none
-        
-        passwordField.delegate = self
-        passwordField.isSecureTextEntry = true
-        passwordField.clearButtonMode = .whileEditing
-        passwordField.returnKeyType = .done
-        passwordField.autocorrectionType = .no
-        passwordField.autocapitalizationType = .none
         
         separator1.backgroundColor = UIColor.white
         separator2.backgroundColor = UIColor.white
         separator1.alpha = 0.5
         separator2.alpha = 0.5
         
-        loginButton = UIButton()
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(loginButton)
+        sendButton = UIButton()
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(sendButton)
         
-        loginBottomConstraint = loginButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
+        loginBottomConstraint = sendButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
         loginBottomConstraint.isActive = true
         
         let btnConstraints:[NSLayoutConstraint] = [
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            loginButton.heightAnchor.constraint(equalToConstant: 54)
+            sendButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            sendButton.heightAnchor.constraint(equalToConstant: 54)
         ]
         NSLayoutConstraint.activate(btnConstraints)
         
-        loginButton.setTitle("Log in", for: .normal)
-        loginButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 18)
-        loginButton.setTitleColor(UIColor.black, for: .normal)
-        loginButton.backgroundColor = UIColor.white
-        loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
-        
-        forgotPassButton.setTitle("Forgot Password?", for: .normal)
-        forgotPassButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 18)
-        forgotPassButton.setTitleColor(UIColor.white, for: .normal)
-        forgotPassButton.backgroundColor = UIColor.clear
-        forgotPassButton.addTarget(self, action: #selector(forgotPasswordButtonPressed(sender:)), for: .touchUpInside)
-        
+        sendButton.setTitle("Send email", for: .normal)
+        sendButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 18)
+        sendButton.setTitleColor(UIColor.black, for: .normal)
+        sendButton.backgroundColor = UIColor.white
+        sendButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
     }
     
     func forgotPasswordButtonPressed(sender: UIButton) {
@@ -207,27 +192,35 @@ class LoginViewController: UIViewController {
     }
     
     func loginButtonPressed() {
-        if (emailField.text?.isEmpty)! {
-            showErrorAlert(title: "Email required", body: "Please enter your email to continue.")
+        if (nameField.text?.isEmpty)! {
+            showErrorAlert(title: "Name required", body: "Please enter your name to continue.")
             return
-        } else if (passwordField.text?.isEmpty)! {
-            showErrorAlert(title: "Password required", body: "Please enter your password to continue.")
+        } else if (emailField.text?.isEmpty)! {
+            showErrorAlert(title: "Email required", body: "Please enter your email to continue.")
             return
         }
         resignKeyboard()
-        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        NetworkController.shared.login(email: emailField.text!, password: passwordField.text!) {
-            user in
+        NetworkController.shared.getAccessToken() {
+            optToken in
             
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            guard let unwrappedUser = user else {
+            guard let token = optToken else {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                return
+            }
+            NetworkController.shared.forgotPassword(email: self.emailField.text!, token: token,name: self.nameField.text!) {
+                success in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
-                self.showErrorAlert(title: "Login failed", body: "The email or password you entered is incorrect, please try again.")
-                return}
-            DatabaseController.shared.saveUser(user: unwrappedUser)
-            AppDelegate.shared().checkIfUserExists()
+                if success {
+                    self.showErrorAlert(title: "Email sent", body: "A password reset email was sent to you. Check your inbox and follow the steps to reset your account password.")
+                } else {
+                    self.showErrorAlert(title: "Error", body: "An error has occured while trying to send you a password reset email. Please try again.")
+                }
+            }
         }
+        
+        
     }
     
     func setUpTapGesture() {
@@ -240,20 +233,19 @@ class LoginViewController: UIViewController {
     }
     
     func resignKeyboard() {
-        if emailField.isFirstResponder {
+        if nameField.isFirstResponder {
+            nameField.resignFirstResponder()
+        } else if emailField.isFirstResponder {
             emailField.resignFirstResponder()
-        } else if passwordField.isFirstResponder {
-            passwordField.resignFirstResponder()
         }
     }
-
 }
 
-extension LoginViewController:UITextFieldDelegate {
+extension ForgotPasswordViewController:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if emailField.isFirstResponder {
-            passwordField.becomeFirstResponder()
-        } else if passwordField.isFirstResponder {
+        if nameField.isFirstResponder {
+            emailField.becomeFirstResponder()
+        } else if emailField.isFirstResponder {
             resignKeyboard()
             loginButtonPressed()
         }

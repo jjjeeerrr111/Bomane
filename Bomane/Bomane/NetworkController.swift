@@ -537,12 +537,12 @@ class NetworkController {
      }
     ***************************/
     
-    func forgotPassword(email: String,token: String, completion: @escaping (Bool) -> Void) {
+    func forgotPassword(email: String,token: String,name: String, completion: @escaping (Bool) -> Void) {
         let urlString = getBaseURL() + "forgot_password"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["Email" : email, "Firstname":"test", "LocationID" : 3749, "access_token": token]
+        let params:Parameters = ["Email" : email, "Firstname":name, "LocationID" : 3749, "access_token": token]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {

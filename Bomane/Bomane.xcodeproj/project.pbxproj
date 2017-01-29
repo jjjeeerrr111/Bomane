@@ -33,6 +33,7 @@
 		5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */; };
 		5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */; };
 		577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315F1DEB563500A94A7B /* TableView+Extensions.swift */; };
+		5779923A1E3E9E71000A3D52 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577992391E3E9E71000A3D52 /* ForgotPasswordViewController.swift */; };
 		5781BA791E2AC9D100E0F7D2 /* AddCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5781BA781E2AC9D100E0F7D2 /* AddCreditCardViewController.swift */; };
 		578F22191E07174200CBF23C /* ProtfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578F22181E07174200CBF23C /* ProtfolioViewController.swift */; };
 		57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */; };
@@ -79,6 +80,7 @@
 		5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		5772315F1DEB563500A94A7B /* TableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView+Extensions.swift"; sourceTree = "<group>"; };
+		577992391E3E9E71000A3D52 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5781BA781E2AC9D100E0F7D2 /* AddCreditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewController.swift; sourceTree = "<group>"; };
 		578F22181E07174200CBF23C /* ProtfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtfolioViewController.swift; sourceTree = "<group>"; };
 		57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				57DB7D851E05E8DD003207D2 /* LoginViewController.swift */,
+				577992391E3E9E71000A3D52 /* ForgotPasswordViewController.swift */,
 			);
 			name = "Login VC";
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				5781BA791E2AC9D100E0F7D2 /* AddCreditCardViewController.swift in Sources */,
 				57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */,
 				57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */,
+				5779923A1E3E9E71000A3D52 /* ForgotPasswordViewController.swift in Sources */,
 				5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */,
 				57FF1DEA1E0F1126003D1686 /* BookAppointmentViewController.swift in Sources */,
 				57DE02D71E352A6300155BCD /* NetworkController.swift in Sources */,
