@@ -11,14 +11,11 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         createAccountButton.contentHorizontalAlignment = .left
-        facebookButton.contentHorizontalAlignment = .left
         createAccountButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
-        facebookButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
         
         setUpNavBar()
 
@@ -41,9 +38,5 @@ class SignUpViewController: UIViewController {
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
         let createVC = CreateAccountNameViewController()
         navigationController?.pushViewController(createVC, animated: true)
-    }
-
-    @IBAction func facebookButtonPressed(_ sender: UIButton) {
-        print("facebook pressed")
     }
 }

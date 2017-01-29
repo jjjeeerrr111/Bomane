@@ -17,8 +17,16 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var user:User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let aUser = DatabaseController.shared.loadUser() {
+            self.user = aUser
+            self.nameLabel.text = self.user!.firstName + " " + self.user!.lastName
+            self.emailLabel.text = self.user!.email
+        }
         setUpNavBar()
         // Do any additional setup after loading the view.
         creditCardLabel.text = ""

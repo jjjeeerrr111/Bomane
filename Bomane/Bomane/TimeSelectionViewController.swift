@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwifterSwift
 
 class TimeSelectionViewController: UIViewController {
     
@@ -25,6 +26,7 @@ class TimeSelectionViewController: UIViewController {
     var stylist:Stylist?
     var service:Service?
     var selectedDate:Date?
+    var selectedTimeSlot:TimeSlot?
     
     var times:[TimeSlot] = []
     var activityIndicator:UIActivityIndicatorView!
@@ -196,7 +198,12 @@ class TimeSelectionViewController: UIViewController {
     }
     
     func applyButtonPressed(sender: UIButton) {
-        
+        guard let serv = self.selectedTimeSlot else {
+            self.showErrorAlert(title: "Select a time", body: "Please select a time to continue.")
+            return
+        }
+        delegate?.getTimeSelection(time:serv)
+        self.dismissView()
     }
     
     func dismissView() {
@@ -258,19 +265,30 @@ extension TimeSelectionViewController:UITableViewDataSource {
         }
         
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AppoitmentTableViewCell
-        cell.serviceLabel.text = times[indexPath.row].startDateTime
+        if let date = times[indexPath.row].startDate {
+            cell.serviceLabel.text = date.timeString(ofStyle: .short)
+        }
+        if let serv = self.selectedTimeSlot, serv.startDate == self.times[indexPath.row].startDate {
+            cell.configure(sender: true)
+        } else {
+            cell.configure(sender: false)
+        }
         return cell
     }
 }
 
 extension TimeSelectionViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        
-        
+        if let lastIndexPath = previouslySelectedIndexPath,let previousCell = tableView.cellForRow(at: lastIndexPath) as? AppoitmentTableViewCell {
+            previousCell.configure(sender: false)
+        }
+        let cell = tableView.cellForRow(at: indexPath) as! AppoitmentTableViewCell
+        cell.configure(sender: true)
+        previouslySelectedIndexPath = indexPath
+        selectedTimeSlot = self.times[indexPath.row]
     }
 }
 
 protocol TimeSelectionDelegate : class {
-    func getTimeSelection(time:String)
+    func getTimeSelection(time:TimeSlot)
 }

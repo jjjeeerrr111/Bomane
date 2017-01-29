@@ -33,7 +33,7 @@ class BookAppointmentViewController: UIViewController {
     
     var selectedStylist:Stylist?
     var selectedService:Service?
-    
+    var selectedTimeSlot:TimeSlot?
     var shouldShowDaysOut = true
     var animationFinished = true
     
@@ -460,8 +460,8 @@ extension BookAppointmentViewController: CVCalendarViewAppearanceDelegate {
 }
 
 extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionDelegate, StylistSelectionDelegate {
-    func getTimeSelection(time: String) {
-        
+    func getTimeSelection(time: TimeSlot) {
+        self.selectedTimeSlot = time
     }
     
     func getServiceSelection(service: Service) {

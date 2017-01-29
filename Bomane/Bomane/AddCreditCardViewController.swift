@@ -148,8 +148,8 @@ class AddCreditCardViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
         
-        addCardButton.setTitle("ADD CARD", for: .normal)
-        addCardButton.setTitle("ENTER CARD NUMBER", for: .disabled)
+        addCardButton.setTitle("Add Card", for: .normal)
+        addCardButton.setTitle("Enter Card Number", for: .disabled)
         addCardButton.backgroundColor = UIColor.black
         addCardButton.setTitleColor(UIColor.white, for: .normal)
         addCardButton.setTitleColor(UIColor(red:245/255, green: 245/255, blue:245/255, alpha:1), for: .disabled)

@@ -14,6 +14,7 @@ struct TimeSlot {
     var duraton:Int?
     var startDateTime:String?
     var startDate:Date?
+    var isSelected = false
     
     init?(dic: [String:Any]) {
         guard let empID = dic["EmployeeID"] as? Int, let treatId = dic["TreatmentID"] as? Int, let startString = dic["StartDateTime"] as? String, let dur = dic["Duration"] as? Int  else {return nil}
@@ -27,12 +28,13 @@ struct TimeSlot {
         dateString = dateString.replacingOccurrences(of: "/", with: "")
         dateString = dateString.replacingOccurrences(of: "(", with: "")
         dateString = dateString.replacingOccurrences(of: ")", with: "")
-        dateString = dateString.replacingOccurrences(of: "-", with: "")
-        print("Date string: \(dateString)")
+        dateString = dateString.replacingOccurrences(of: "-0500", with: "")
+        
         if let dateInt = Int(dateString) {
             let secondsInt = dateInt/1000
-            self.startDate = Date(timeIntervalSinceNow: TimeInterval(secondsInt))
-            print("the start date is: \(self.startDate)")
+            
+            self.startDate = Date(timeIntervalSince1970: Double(secondsInt))
+            
         }
         
     }
