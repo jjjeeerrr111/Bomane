@@ -202,6 +202,7 @@ class LoginViewController: UIViewController {
     }
     
     func forgotPasswordButtonPressed(sender: UIButton) {
+        resignKeyboard()
         let forgotVC = ForgotPasswordViewController()
         self.navigationController?.pushViewController(forgotVC, animated: true)
     }
