@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func checkIfUserExists() {
         if DatabaseController.shared.loadUser() != nil {
+            dump(DatabaseController.shared.loadUser()!)
             initWindow(controller: "Book Appointment")
         } else {
             self.showLogin()

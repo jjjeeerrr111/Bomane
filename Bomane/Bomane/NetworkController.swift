@@ -522,4 +522,46 @@ class NetworkController {
         }
 
     }
+    
+    //MARK: FORGOT PASSWORD
+    
+    /**************************
+     Content-Type: application/json; charset=utf-8
+     POST https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/forgot_password
+     {
+     "Email": "testcustomer@booker.com",
+     "Firstname": "Test",
+     "LocationID": 3749,
+     "BrandID": null,
+     "access_token": "66282713-c82c-4159-ab2a-63629d62f83d"
+     }
+    ***************************/
+    
+    func forgotPassword(email: String,token: String, completion: @escaping (Bool) -> Void) {
+        let urlString = getBaseURL() + "forgot_password"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        let params:Parameters = ["Email" : email, "Firstname":"test", "LocationID" : 3749, "access_token": token]
+        Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                print("SUCESS FORGOT PASSWORD: ", json)
+                let status = json["IsSuccess"].stringValue
+                if status == "true" {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+                
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR FORGOT PASSWORD: ", json)
+                print("ERROR: ",error.localizedDescription)
+                completion(false)
+            }
+        }
+    }
 }
