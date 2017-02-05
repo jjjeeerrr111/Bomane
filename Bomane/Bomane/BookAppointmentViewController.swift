@@ -23,6 +23,7 @@ class BookAppointmentViewController: UIViewController {
     
 //    static let shared = BookAppointmentViewController()
 
+    @IBOutlet weak var selectedTimeLabel: UILabel!
     @IBOutlet weak var serviceLabel: UILabel!
     @IBOutlet weak var stylistLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
@@ -126,7 +127,30 @@ class BookAppointmentViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "hamburgerIcon"), style: .plain, target: self, action: #selector(self.menuButtonPressed(sender:)))
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        let rightButton = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(self.nextButtonPressed(sender:)))
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.black, NSFontAttributeName:UIFont(name: "AvenirNext-Regular", size: 15)!], for: .normal)
+    }
+    
+    func nextButtonPressed(sender: UIBarButtonItem) {
+        if self.selectedStylist == nil || self.selectedTimeSlot == nil || self.selectedService == nil {
+            self.showErrorAlert(title: "Missing info", body: "Make sure to select all appointment information before continuing.")
+            return
+        }
         
+        guard let stylist = self.selectedStylist, let service = self.selectedService, let time = self.selectedTimeSlot else {return}
+        
+        if time.employeeId! != stylist.id {
+            self.showErrorAlert(title: "Error", body: "The time you selected conflicts with the selected stylist.")
+            return
+        }
+        
+        if time.treatmentId! != service.id! {
+            self.showErrorAlert(title: "Error", body: "The service you selected is not available at this time.")
+            return
+        }
+        
+        print("Next button went through")
     }
     
     func menuButtonPressed(sender: UIBarButtonItem) {
@@ -462,6 +486,7 @@ extension BookAppointmentViewController: CVCalendarViewAppearanceDelegate {
 extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionDelegate, StylistSelectionDelegate {
     func getTimeSelection(time: TimeSlot) {
         self.selectedTimeSlot = time
+        self.selectedTimeLabel.text = time.startDate!.timeString(ofStyle: .short)
     }
     
     func getServiceSelection(service: Service) {

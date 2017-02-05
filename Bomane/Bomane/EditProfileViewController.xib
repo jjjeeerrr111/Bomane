@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="Bomane" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="f3K-9V-71m" id="LHf-tW-KWp"/>
+                <outlet property="lastNameTextField" destination="iZt-OB-8gD" id="vnC-Iv-ZcF"/>
                 <outlet property="nameTextField" destination="UaI-E7-7ZD" id="XcF-T0-9ui"/>
                 <outlet property="removeCardButton" destination="fdw-H8-NMc" id="b2F-4P-kmc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,19 +23,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQD-L9-VAP">
-                    <rect key="frame" x="16" y="50" width="36" height="19"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQD-L9-VAP">
+                    <rect key="frame" x="16" y="50" width="64" height="19"/>
                     <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iou-JQ-D27">
-                    <rect key="frame" x="16" y="121" width="36" height="19"/>
-                    <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="16"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Jane Customer" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UaI-E7-7ZD">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Jane" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UaI-E7-7ZD">
                     <rect key="frame" x="16" y="77" width="343" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="R4S-eC-OuC"/>
@@ -46,8 +41,46 @@
                         <outlet property="delegate" destination="-1" id="diQ-aN-aRA"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="jane@gmail.com" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="f3K-9V-71m">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br6-M2-vIC">
+                    <rect key="frame" x="16" y="112" width="343" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="BUu-mT-zTP"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0l-zd-R4g">
+                    <rect key="frame" x="16" y="121" width="62" height="19"/>
+                    <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Customer" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iZt-OB-8gD">
                     <rect key="frame" x="16" y="148" width="343" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="1Ed-Q6-VrG"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="uZt-W8-6Lb"/>
+                    </connections>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hma-ob-TP1">
+                    <rect key="frame" x="16" y="183" width="343" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="fen-sG-bNH"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iou-JQ-D27">
+                    <rect key="frame" x="16" y="192" width="36" height="19"/>
+                    <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="jane@gmail.com" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="f3K-9V-71m">
+                    <rect key="frame" x="16" y="219" width="343" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="z4F-Fx-cU8"/>
                     </constraints>
@@ -58,15 +91,8 @@
                         <outlet property="delegate" destination="-1" id="c14-2R-9Lx"/>
                     </connections>
                 </textField>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="br6-M2-vIC">
-                    <rect key="frame" x="16" y="112" width="343" height="1"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="0.5" id="BUu-mT-zTP"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxt-1f-gfZ">
-                    <rect key="frame" x="16" y="183" width="343" height="1"/>
+                    <rect key="frame" x="16" y="254" width="343" height="1"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="ey3-MN-0rg"/>
@@ -74,7 +100,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdw-H8-NMc">
-                    <rect key="frame" x="16" y="214" width="343" height="50"/>
+                    <rect key="frame" x="16" y="285" width="343" height="50"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="400" id="4fa-lm-LHd"/>
@@ -113,7 +139,9 @@
                 <constraint firstItem="Iou-JQ-D27" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Bff-Ml-fYZ">
                     <variation key="widthClass=regular" constant="184"/>
                 </constraint>
+                <constraint firstItem="c0l-zd-R4g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="D0M-zg-SFC"/>
                 <constraint firstItem="dxt-1f-gfZ" firstAttribute="top" secondItem="f3K-9V-71m" secondAttribute="bottom" constant="5" id="Le1-a5-tSW"/>
+                <constraint firstItem="iZt-OB-8gD" firstAttribute="top" secondItem="c0l-zd-R4g" secondAttribute="bottom" constant="8" id="N8v-hV-GHb"/>
                 <constraint firstAttribute="trailing" secondItem="dxt-1f-gfZ" secondAttribute="trailing" constant="16" id="Pb4-ww-4Ha">
                     <variation key="widthClass=regular" constant="184"/>
                 </constraint>
@@ -127,22 +155,28 @@
                     <variation key="widthClass=regular" constant="184"/>
                 </constraint>
                 <constraint firstItem="f3K-9V-71m" firstAttribute="top" secondItem="Iou-JQ-D27" secondAttribute="bottom" constant="8" id="Tpq-02-c6v"/>
+                <constraint firstItem="c0l-zd-R4g" firstAttribute="top" secondItem="br6-M2-vIC" secondAttribute="bottom" constant="8" id="VGf-5b-Keo"/>
                 <constraint firstItem="UaI-E7-7ZD" firstAttribute="top" secondItem="iQD-L9-VAP" secondAttribute="bottom" constant="8" id="Z99-HL-Rqh"/>
                 <constraint firstItem="f3K-9V-71m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="blO-3D-zPx">
                     <variation key="widthClass=regular" constant="184"/>
                 </constraint>
+                <constraint firstItem="iZt-OB-8gD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="c1C-Lt-0bC"/>
                 <constraint firstItem="iQD-L9-VAP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="cpg-WU-BsK">
                     <variation key="widthClass=regular" constant="265"/>
                 </constraint>
+                <constraint firstAttribute="trailing" secondItem="hma-ob-TP1" secondAttribute="trailing" constant="16" id="dlV-Bg-FBd"/>
                 <constraint firstItem="fdw-H8-NMc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="fEw-Ub-fxO"/>
-                <constraint firstItem="Iou-JQ-D27" firstAttribute="top" secondItem="br6-M2-vIC" secondAttribute="bottom" constant="8" id="jq4-S8-Qlz"/>
+                <constraint firstItem="hma-ob-TP1" firstAttribute="top" secondItem="iZt-OB-8gD" secondAttribute="bottom" constant="5" id="hn8-dK-DbB"/>
+                <constraint firstItem="Iou-JQ-D27" firstAttribute="top" secondItem="br6-M2-vIC" secondAttribute="bottom" constant="79" id="jq4-S8-Qlz"/>
                 <constraint firstItem="br6-M2-vIC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="kut-R7-9bO">
                     <variation key="widthClass=regular" constant="184"/>
                 </constraint>
                 <constraint firstAttribute="trailing" secondItem="br6-M2-vIC" secondAttribute="trailing" constant="16" id="nbN-8c-Df4">
                     <variation key="widthClass=regular" constant="184"/>
                 </constraint>
+                <constraint firstItem="hma-ob-TP1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="pwQ-qm-4zn"/>
                 <constraint firstItem="fdw-H8-NMc" firstAttribute="top" secondItem="dxt-1f-gfZ" secondAttribute="bottom" constant="30" id="tAT-7f-2vH"/>
+                <constraint firstAttribute="trailing" secondItem="iZt-OB-8gD" secondAttribute="trailing" constant="16" id="yRa-4m-oCo"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">

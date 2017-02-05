@@ -564,4 +564,46 @@ class NetworkController {
             }
         }
     }
+    
+    //MARK: UPDATE USER DATA
+    
+    /***********************
+     Content-Type: application/json; charset=utf-8
+     PUT https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/customer/{CustomerID}
+     {
+     "Address": {
+     "City": "New York",
+     "Country": {
+     "ID": 1,
+     "Name": ""
+     ....}}
+     **************************/
+    
+    func updateUser(with id: Int, firstName: String,lastName: String, email: String, token: String, completion: @escaping (Bool) -> Void) {
+        let urlString = getBaseURL() + "customer/\(id)"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        let params:Parameters = [" CustomerID": id, "Email" : email, "Firstname":firstName, "LocationID" : 3749,"HomePhone" : "","LastName":lastName, "access_token": token]
+        Alamofire.request(urlString, method: .put, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                print("SUCESS UPDATE USER DATA: ", json)
+                let status = json["IsSuccess"].stringValue
+                if status == "true" {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+                
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR UPDATE USER DATA: ", json)
+                print("ERROR: ",error.localizedDescription)
+                completion(false)
+            }
+        }
+    }
 }

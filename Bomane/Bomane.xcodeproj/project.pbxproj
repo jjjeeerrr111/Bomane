@@ -29,6 +29,7 @@
 		5751D2611DEB9E7C009A4612 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5751D2601DEB9E7C009A4612 /* Service.swift */; };
 		5751D2661DEBA243009A4612 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5751D2641DEBA243009A4612 /* AboutViewController.swift */; };
 		5751D2671DEBA243009A4612 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5751D2651DEBA243009A4612 /* AboutViewController.xib */; };
+		5752967B1E47A8C000A84F16 /* Proxima Nova Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5752967A1E47A8C000A84F16 /* Proxima Nova Bold.otf */; };
 		5772315A1DEB4DF900A94A7B /* ScreenMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577231591DEB4DF900A94A7B /* ScreenMenuViewController.swift */; };
 		5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */; };
 		5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */; };
@@ -76,6 +77,7 @@
 		5751D2601DEB9E7C009A4612 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5751D2641DEBA243009A4612 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5751D2651DEBA243009A4612 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		5752967A1E47A8C000A84F16 /* Proxima Nova Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Bold.otf"; sourceTree = "<group>"; };
 		577231591DEB4DF900A94A7B /* ScreenMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenMenuViewController.swift; sourceTree = "<group>"; };
 		5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		572E68641DEB3EE7001DB239 = {
 			isa = PBXGroup;
 			children = (
+				575296791E47A88400A84F16 /* Fonts */,
 				572E686F1DEB3EE7001DB239 /* Bomane */,
 				572E686E1DEB3EE7001DB239 /* Products */,
 				36F5C6894B04EDDD3D9F37AD /* Pods */,
@@ -222,6 +225,14 @@
 				5751D2651DEBA243009A4612 /* AboutViewController.xib */,
 			);
 			name = "About VC";
+			sourceTree = "<group>";
+		};
+		575296791E47A88400A84F16 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5752967A1E47A8C000A84F16 /* Proxima Nova Bold.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		578F22171E07172D00CBF23C /* Portfolio VC */ = {
@@ -366,6 +377,7 @@
 				5751D25F1DEB9D29009A4612 /* ServicesTableViewCell.xib in Resources */,
 				5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */,
 				5751D2671DEBA243009A4612 /* AboutViewController.xib in Resources */,
+				5752967B1E47A8C000A84F16 /* Proxima Nova Bold.otf in Resources */,
 				572E68781DEB3EE7001DB239 /* Assets.xcassets in Resources */,
 				57FF1DEB1E0F1126003D1686 /* BookAppointmentViewController.xib in Resources */,
 			);

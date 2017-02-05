@@ -18,11 +18,19 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var removeCardButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    var user:User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTapGesture()
         // Do any additional setup after loading the view.
+        if let aUser = DatabaseController.shared.loadUser() {
+            self.user = aUser
+            self.nameTextField.text = self.user!.firstName
+            self.emailTextField.text = self.user!.email
+            self.lastNameTextField.text = self.user!.lastName
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +52,8 @@ class EditProfileViewController: UIViewController {
     }
     
     func saveButtonPressed(sender: UIBarButtonItem) {
-        guard let newName = self.nameTextField.text, newName != "", let newEmail = self.emailTextField.text, newEmail != "" else {
+        guard let newName = self.nameTextField.text, newName != "", let newEmail = self.emailTextField.text, newEmail != "", let newLastName = self.lastNameTextField.text, newLastName != "" else {
+            self.showErrorAlert(title: "Blank fields", body: "Do not leave any blank fields")
             _ = self.navigationController?.popViewController(animated: true)
             return
         }
@@ -54,8 +63,25 @@ class EditProfileViewController: UIViewController {
             return
         }
         
-        delegate?.updateProfile(name: newName, email: newEmail)
-        _ = self.navigationController?.popViewController(animated: true)
+        guard let aUser = self.user else {return}
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        NetworkController.shared.updateUser(with: aUser.customerId!, firstName: newName, lastName: newLastName, email: newEmail, token: aUser.apiKey!) {
+            success in
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            if success {
+                self.user!.firstName = newName
+                self.user!.lastName = newLastName
+                self.user!.email = newEmail
+                DatabaseController.shared.saveUser(user: self.user!)
+                self.delegate?.updateProfile(name: "\(newName) \(newLastName)", email: newEmail)
+                _ = self.navigationController?.popViewController(animated: true)
+            } else {
+                self.showErrorAlert(title: "Error", body: "Something went wrong, please try again.")
+            }
+        }
+        
+        
     }
     
     func setUpTapGesture() {
