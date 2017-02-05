@@ -30,6 +30,9 @@
 		5751D2661DEBA243009A4612 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5751D2641DEBA243009A4612 /* AboutViewController.swift */; };
 		5751D2671DEBA243009A4612 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5751D2651DEBA243009A4612 /* AboutViewController.xib */; };
 		5752967B1E47A8C000A84F16 /* Proxima Nova Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5752967A1E47A8C000A84F16 /* Proxima Nova Bold.otf */; };
+		5752967F1E47B2B000A84F16 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5752967D1E47B2AF00A84F16 /* ConfirmViewController.swift */; };
+		575296801E47B2B000A84F16 /* ConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5752967E1E47B2AF00A84F16 /* ConfirmViewController.xib */; };
+		575296821E47B52100A84F16 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575296811E47B52100A84F16 /* Appointment.swift */; };
 		5772315A1DEB4DF900A94A7B /* ScreenMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577231591DEB4DF900A94A7B /* ScreenMenuViewController.swift */; };
 		5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */; };
 		5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */; };
@@ -78,6 +81,9 @@
 		5751D2641DEBA243009A4612 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5751D2651DEBA243009A4612 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		5752967A1E47A8C000A84F16 /* Proxima Nova Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Bold.otf"; sourceTree = "<group>"; };
+		5752967D1E47B2AF00A84F16 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		5752967E1E47B2AF00A84F16 /* ConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmViewController.xib; sourceTree = "<group>"; };
+		575296811E47B52100A84F16 /* Appointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		577231591DEB4DF900A94A7B /* ScreenMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenMenuViewController.swift; sourceTree = "<group>"; };
 		5772315B1DEB523600A94A7B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		5772315C1DEB523600A94A7B /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 				57DE02D81E36724200155BCD /* Stylist.swift */,
 				5751D2601DEB9E7C009A4612 /* Service.swift */,
 				570E8EA61E3A51A200C7A8E1 /* TimeSlot.swift */,
+				575296811E47B52100A84F16 /* Appointment.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -147,6 +154,7 @@
 		572E68641DEB3EE7001DB239 = {
 			isa = PBXGroup;
 			children = (
+				5752967C1E47B2A000A84F16 /* Confirm VC */,
 				575296791E47A88400A84F16 /* Fonts */,
 				572E686F1DEB3EE7001DB239 /* Bomane */,
 				572E686E1DEB3EE7001DB239 /* Products */,
@@ -233,6 +241,15 @@
 				5752967A1E47A8C000A84F16 /* Proxima Nova Bold.otf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		5752967C1E47B2A000A84F16 /* Confirm VC */ = {
+			isa = PBXGroup;
+			children = (
+				5752967D1E47B2AF00A84F16 /* ConfirmViewController.swift */,
+				5752967E1E47B2AF00A84F16 /* ConfirmViewController.xib */,
+			);
+			name = "Confirm VC";
 			sourceTree = "<group>";
 		};
 		578F22171E07172D00CBF23C /* Portfolio VC */ = {
@@ -368,6 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				575296801E47B2B000A84F16 /* ConfirmViewController.xib in Resources */,
 				57968FFF1E214CD40080DCF3 /* ProfileViewController.xib in Resources */,
 				579690041E215B140080DCF3 /* ContactViewController.xib in Resources */,
 				574D3D0F1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib in Resources */,
@@ -444,6 +462,7 @@
 				5713B8671E327A1600D9EC2C /* User.swift in Sources */,
 				5751D2661DEBA243009A4612 /* AboutViewController.swift in Sources */,
 				57EFC2931E0617DB006783D3 /* Animators.swift in Sources */,
+				5752967F1E47B2B000A84F16 /* ConfirmViewController.swift in Sources */,
 				5751D2591DEB9AC1009A4612 /* ServicesViewController.swift in Sources */,
 				57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */,
 				57DE02D91E36724200155BCD /* Stylist.swift in Sources */,
@@ -464,6 +483,7 @@
 				5781BA791E2AC9D100E0F7D2 /* AddCreditCardViewController.swift in Sources */,
 				57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */,
 				57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */,
+				575296821E47B52100A84F16 /* Appointment.swift in Sources */,
 				5779923A1E3E9E71000A3D52 /* ForgotPasswordViewController.swift in Sources */,
 				5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */,
 				57FF1DEA1E0F1126003D1686 /* BookAppointmentViewController.swift in Sources */,

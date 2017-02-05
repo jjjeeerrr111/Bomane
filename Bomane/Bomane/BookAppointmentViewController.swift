@@ -150,7 +150,11 @@ class BookAppointmentViewController: UIViewController {
             return
         }
         
-        print("Next button went through")
+        let app = Appointment(stylist: stylist, service: service, timeslot: time)
+        let confirmVC = ConfirmViewController()
+        confirmVC.appointment = app
+        self.navigationController?.pushViewController(confirmVC, animated: true)
+        
     }
     
     func menuButtonPressed(sender: UIBarButtonItem) {
