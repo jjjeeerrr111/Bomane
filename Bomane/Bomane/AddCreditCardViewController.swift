@@ -202,6 +202,8 @@ class AddCreditCardViewController: UIViewController {
         let creditCard = CreditCard(name: name, zip: billing, numbers: self.paymentField.cardParams.number!, cvv: self.paymentField.cardParams.cvc!, expDate: expirationDate, expDateString: expString, last4: self.paymentField.cardParams.last4()!)
         
         DatabaseController.shared.saveCard(card: creditCard)
+        NotificationCenter.default.post(name: Notifications.kCreditCardAdded, object: nil)
+        _ = self.navigationController?.popViewController(animated: true)
         
     }
     

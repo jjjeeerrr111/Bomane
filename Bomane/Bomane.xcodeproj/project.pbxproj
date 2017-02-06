@@ -45,6 +45,7 @@
 		579690031E215B140080DCF3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579690011E215B140080DCF3 /* ContactViewController.swift */; };
 		579690041E215B140080DCF3 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 579690021E215B140080DCF3 /* ContactViewController.xib */; };
 		57DB6A5A1E48C4BE0017649B /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB6A591E48C4BE0017649B /* CreditCard.swift */; };
+		57DB6A5C1E48D5970017649B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB6A5B1E48D5970017649B /* Constants.swift */; };
 		57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D851E05E8DD003207D2 /* LoginViewController.swift */; };
 		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
 		57DE02D71E352A6300155BCD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE02D61E352A6300155BCD /* NetworkController.swift */; };
@@ -98,6 +99,7 @@
 		579690021E215B140080DCF3 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
 		57B183B71E2ACB00003A066A /* Bomane-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bomane-Bridging-Header.h"; sourceTree = "<group>"; };
 		57DB6A591E48C4BE0017649B /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
+		57DB6A5B1E48D5970017649B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		57DE02D61E352A6300155BCD /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				5772315F1DEB563500A94A7B /* TableView+Extensions.swift */,
 				57DB7D881E05EF72003207D2 /* Extensions.swift */,
 				57EFC2921E0617DB006783D3 /* Animators.swift */,
+				57DB6A5B1E48D5970017649B /* Constants.swift */,
 			);
 			name = Helpers/Extensions;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				572E68841DEB3F2C001DB239 /* SignUpViewController.swift in Sources */,
+				57DB6A5C1E48D5970017649B /* Constants.swift in Sources */,
 				5751D2611DEB9E7C009A4612 /* Service.swift in Sources */,
 				5751D25E1DEB9D29009A4612 /* ServicesTableViewCell.swift in Sources */,
 				5713B8671E327A1600D9EC2C /* User.swift in Sources */,

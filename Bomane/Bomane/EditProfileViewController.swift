@@ -31,6 +31,12 @@ class EditProfileViewController: UIViewController {
             self.emailTextField.text = self.user!.email
             self.lastNameTextField.text = self.user!.lastName
         }
+        
+        if let card = DatabaseController.shared.loadCard() {
+            self.removeCardButton.isHidden = false
+        } else {
+            self.removeCardButton.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +54,10 @@ class EditProfileViewController: UIViewController {
     }
     
     @IBAction func removeCardButtonPressed(_ sender: UIButton) {
-        
+        guard let card = DatabaseController.shared.loadCard() else {return}
+        dump(card)
+        DatabaseController.shared.deleteCardFile()
+        NotificationCenter.default.post(name: Notifications.kCreditCardAdded, object: nil)
     }
     
     func saveButtonPressed(sender: UIBarButtonItem) {
@@ -63,26 +72,42 @@ class EditProfileViewController: UIViewController {
             return
         }
         
-        guard let aUser = self.user else {return}
+        guard let aUser = self.user, let pass = aUser.password else {return}
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        NetworkController.shared.updateUser(with: aUser.customerId!, firstName: newName, lastName: newLastName, email: newEmail, token: aUser.apiKey!) {
-            success in
+        NetworkController.shared.login(email: aUser.email, password: pass) {
+            user in
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            if success {
-                self.user!.firstName = newName
-                self.user!.lastName = newLastName
-                self.user!.email = newEmail
-                DatabaseController.shared.saveUser(user: self.user!)
-                self.delegate?.updateProfile(name: "\(newName) \(newLastName)", email: newEmail)
-                _ = self.navigationController?.popViewController(animated: true)
-            } else {
-                self.showErrorAlert(title: "Error", body: "Something went wrong, please try again.")
+            guard let unwrappedUser = user else {
+                self.showErrorAlert(title: "Failed", body: "Something went wrong please try again")
+                return}
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            NetworkController.shared.updateUser(with: aUser.customerId!, firstName: newName, lastName: newLastName, email: newEmail, token: unwrappedUser.apiKey!) {
+                success in
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                if success {
+                    self.user!.firstName = newName
+                    self.user!.lastName = newLastName
+                    self.user!.email = newEmail
+                    DatabaseController.shared.saveUser(user: self.user!)
+                    self.delegate?.updateProfile(name: "\(newName) \(newLastName)", email: newEmail)
+                    _ = self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.showErrorAlert(title: "Error", body: "Something went wrong, please try again.")
+                }
             }
         }
+
+        
+        
         
         
     }
+    
+    
     
     func setUpTapGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tap(sender:)))
@@ -98,6 +123,8 @@ class EditProfileViewController: UIViewController {
             nameTextField.resignFirstResponder()
         } else if emailTextField.isFirstResponder {
             emailTextField.resignFirstResponder()
+        } else if lastNameTextField.isFirstResponder {
+            lastNameTextField.resignFirstResponder()
         }
     }
 
@@ -106,6 +133,8 @@ class EditProfileViewController: UIViewController {
 extension EditProfileViewController:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if self.nameTextField.isFirstResponder {
+            self.lastNameTextField.becomeFirstResponder()
+        } else if self.lastNameTextField.isFirstResponder {
             self.emailTextField.becomeFirstResponder()
         } else if self.emailTextField.isFirstResponder {
             textField.resignFirstResponder()

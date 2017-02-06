@@ -20,6 +20,8 @@ class NetworkController {
     static let shared = NetworkController()
     
     func getBaseURL() -> String {
+        
+        //return "https://apicurrent-app.booker.ninja/App/Admin/Login.aspx/"
         return "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
     }
     
@@ -584,7 +586,7 @@ class NetworkController {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = [" CustomerID": id, "Email" : email, "Firstname":firstName, "LocationID" : 3749,"HomePhone" : "","LastName":lastName, "access_token": token]
+        let params:Parameters = ["CustomerID": id, "Email" : email, "FirstName":firstName, "LocationID" : 3749,"HomePhone" : "5678769807","LastName":lastName, "access_token": token]
         Alamofire.request(urlString, method: .put, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {

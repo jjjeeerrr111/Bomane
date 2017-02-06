@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
     var user:User?
-    
+    var creditCard:CreditCard?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,15 +27,28 @@ class ProfileViewController: UIViewController {
             self.nameLabel.text = self.user!.firstName + " " + self.user!.lastName
             self.emailLabel.text = self.user!.email
         }
+        
+        checkCreditCard()
+        
         setUpNavBar()
-        // Do any additional setup after loading the view.
-        creditCardLabel.text = ""
-        if (creditCardLabel.text?.isEmpty)! {
-            creditCardLabel.isHidden = true
-            addCreditCardButton.isHidden = false
-        } else {
-            creditCardLabel.isHidden = false
+
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.checkCreditCard), name: Notifications.kCreditCardAdded, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notifications.kCreditCardAdded, object: nil)
+    }
+    
+    func checkCreditCard() {
+        if let card = DatabaseController.shared.loadCard() {
+            self.creditCard = card
             addCreditCardButton.isHidden = true
+            creditCardLabel.isHidden = false
+            creditCardLabel.text = "XXXX XXXX XXXX " + card.last4
+        } else {
+            addCreditCardButton.isHidden = false
+            creditCardLabel.isHidden = true
         }
     }
     
