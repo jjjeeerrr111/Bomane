@@ -71,11 +71,28 @@ class ConfirmViewController: UIViewController {
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
         if sender.titleLabel?.text == "Confirm" {
-            print("confirm")
+            self.confirm()
         } else if sender.titleLabel?.text == "Add Credit Card" {
             print("add cc")
         }
         
+    }
+    
+    func confirm() {
+        
+        guard let card = self.creditCard else {return}
+        self.confirmButton.isEnabled = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        NetworkController.shared.confirmAppointment(appointment: self.appointment, user: self.user, card: card) {
+            success in
+            
+            self.confirmButton.isEnabled = true
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            if success {
+                self.showErrorAlert(title: "Appointment confirmed", body: "We will see you very soon!")
+                
+            }
+        }
     }
 
 }

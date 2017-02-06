@@ -20,8 +20,6 @@ class NetworkController {
     static let shared = NetworkController()
     
     func getBaseURL() -> String {
-        
-        //return "https://apicurrent-app.booker.ninja/App/Admin/Login.aspx/"
         return "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
     }
     
@@ -617,18 +615,18 @@ class NetworkController {
      {
      *****************************/
     
-    func confirmAppointment(appointment: Appointment, token: String, user: User, completion: @escaping (Bool) -> Void) {
+    func confirmAppointment(appointment: Appointment, user: User,card: CreditCard, completion: @escaping (Bool) -> Void) {
         let urlString = getBaseURL() + "appointment/create"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
         
-        let amount:[String:Any] = ["Amount":appointment.service.price ?? 0, "CurrencyCode" : "US"]
+        let amount:[String:Any] = ["Amount":appointment.service.price ?? 0, "CurrencyCode" : "USD"]
         let cardType:[String:Any] = ["ID":1,"Name":""]
-        let creditCard:[String:Any] = ["BillingZip" : "", "ExpirationDate" : "","NameOnCard":"","Number":"","SecurityCode":"","Type":cardType]
+        let creditCard:[String:Any] = ["BillingZip" : card.zipCode, "ExpirationDate" : card.expirationDateString,"NameOnCard":card.name,"Number":card.numbers,"SecurityCode":card.cvv,"Type":cardType]
         let paymentItem = ["Amount":amount,"CreditCard":creditCard]
         let appPayment:[String:Any] = ["PaymentItem":paymentItem, "CouponCode":""]
-        let customer:[String:Any] = ["FirstName": user.firstName, "LastName":user.lastName,"HomePhone":"", "MobilePhone":""]
+        let customer:[String:Any] = ["FirstName": user.firstName, "LastName":user.lastName,"HomePhone":"3212342345", "MobilePhone":"", "Email":user.email]
         
         //treatment time slots
         let treatment:[String:Any] = ["CurrentPrice":amount,"EmployeeID" : appointment.stylist.id, "StartDateTime" : appointment.timeslot.startDateTime!,"TreatmentID":appointment.service.id!,"EmployeeWasRequested":true]
@@ -636,7 +634,7 @@ class NetworkController {
         
         let itinerary:[String:Any] = ["StartDateTime":appointment.timeslot.startDateTime!, "TreatmentTimeSlots":treatmentTimeSlots, "IsPackage":false, "CurrentPackagePrice" : amount]
         
-        let params:Parameters = ["ItineraryTimeSlotList":[itinerary],"AppointmentPayment":appPayment, "Customer":customer, "LocationID" : 3749, "access_token": token]
+        let params:Parameters = ["ItineraryTimeSlotList":[itinerary],"AppointmentPayment":appPayment, "Customer":customer, "LocationID" : 3749, "access_token": user.apiKey!]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
