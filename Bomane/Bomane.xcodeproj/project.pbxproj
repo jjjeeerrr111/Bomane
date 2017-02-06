@@ -44,6 +44,7 @@
 		57968FFF1E214CD40080DCF3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */; };
 		579690031E215B140080DCF3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579690011E215B140080DCF3 /* ContactViewController.swift */; };
 		579690041E215B140080DCF3 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 579690021E215B140080DCF3 /* ContactViewController.xib */; };
+		57DB6A5A1E48C4BE0017649B /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB6A591E48C4BE0017649B /* CreditCard.swift */; };
 		57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D851E05E8DD003207D2 /* LoginViewController.swift */; };
 		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
 		57DE02D71E352A6300155BCD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE02D61E352A6300155BCD /* NetworkController.swift */; };
@@ -96,6 +97,7 @@
 		579690011E215B140080DCF3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		579690021E215B140080DCF3 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
 		57B183B71E2ACB00003A066A /* Bomane-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bomane-Bridging-Header.h"; sourceTree = "<group>"; };
+		57DB6A591E48C4BE0017649B /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		57DB7D851E05E8DD003207D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		57DE02D61E352A6300155BCD /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				5751D2601DEB9E7C009A4612 /* Service.swift */,
 				570E8EA61E3A51A200C7A8E1 /* TimeSlot.swift */,
 				575296811E47B52100A84F16 /* Appointment.swift */,
+				57DB6A591E48C4BE0017649B /* CreditCard.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				5781BA791E2AC9D100E0F7D2 /* AddCreditCardViewController.swift in Sources */,
 				57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */,
 				57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */,
+				57DB6A5A1E48C4BE0017649B /* CreditCard.swift in Sources */,
 				575296821E47B52100A84F16 /* Appointment.swift in Sources */,
 				5779923A1E3E9E71000A3D52 /* ForgotPasswordViewController.swift in Sources */,
 				5772315D1DEB523600A94A7B /* MenuTableViewCell.swift in Sources */,

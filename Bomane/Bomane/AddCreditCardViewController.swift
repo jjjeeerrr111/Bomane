@@ -15,6 +15,7 @@ class AddCreditCardViewController: UIViewController {
     var addCardButton:UIButton!
     var addCardButtonBottomConstant:NSLayoutConstraint!
     var paymentField:STPPaymentCardTextField!
+    var billingzipField:UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +88,14 @@ class AddCreditCardViewController: UIViewController {
         sep1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(sep1)
         
+        billingzipField = UITextField()
+        billingzipField.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(billingzipField)
+        
+        let sep3 = UIView()
+        sep3.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(sep3)
+        
         paymentField = STPPaymentCardTextField()
         paymentField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(paymentField)
@@ -104,23 +113,35 @@ class AddCreditCardViewController: UIViewController {
             sep1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             sep1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             sep1.heightAnchor.constraint(equalToConstant: 0.5),
+            billingzipField.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 16),
+            billingzipField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            billingzipField.heightAnchor.constraint(equalToConstant: 50),
+            billingzipField.topAnchor.constraint(equalTo: sep1.bottomAnchor,constant: 5),
+            sep2.topAnchor.constraint(equalTo: billingzipField.bottomAnchor),
+            sep2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            sep2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            sep2.heightAnchor.constraint(equalToConstant: 0.5),
             paymentField.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 16),
             paymentField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             paymentField.heightAnchor.constraint(equalToConstant: 50),
-            paymentField.topAnchor.constraint(equalTo: sep1.bottomAnchor,constant: 5),
-            sep2.topAnchor.constraint(equalTo: paymentField.bottomAnchor),
-            sep2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            sep2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            sep2.heightAnchor.constraint(equalToConstant: 0.5)
+            paymentField.topAnchor.constraint(equalTo: sep2.bottomAnchor,constant: 5),
+            sep3.topAnchor.constraint(equalTo: paymentField.bottomAnchor),
+            sep3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            sep3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            sep3.heightAnchor.constraint(equalToConstant: 0.5)
         ]
         NSLayoutConstraint.activate(const)
         
         sep1.backgroundColor = UIColor.black
         sep2.backgroundColor = UIColor.black
-        
+        sep3.backgroundColor = UIColor.black
         nameField.placeholder = "Name on card"
         nameField.placeholderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         nameField.font = UIFont(name: "AvenirNext-Regular", size: 18)
+        
+        billingzipField.placeholder = "Billing zip code"
+        billingzipField.placeholderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        billingzipField.font = UIFont(name: "AvenirNext-Regular", size: 18)
         
         paymentField.backgroundColor = UIColor.clear
         paymentField.textColor = UIColor.black
@@ -161,6 +182,26 @@ class AddCreditCardViewController: UIViewController {
     }
     
     func addCardButtonPressed(sender: UIButton) {
+        guard let billing = billingzipField.text, billing.replacingOccurrences(of: " ", with: "") != "" else {
+            self.showErrorAlert(title: "Empty zip code", body: "Please enter the zip code associated with this card.")
+            return
+        }
+        
+        guard let name = nameField.text, name.replacingOccurrences(of: " ", with: "") != "" else  {
+            self.showErrorAlert(title: "Name", body: "Please enter the name associated with this card.")
+            return
+        }
+        
+        guard let expirationDate = Date(year: Int(self.paymentField.cardParams.expYear), month: Int(self.paymentField.cardParams.expMonth)) else {return}
+        print("expiration date: ",expirationDate)
+        
+        var milliExp = expirationDate.timeIntervalSince1970
+        milliExp = milliExp * 1000
+        let expString = "/Date(\(Int(milliExp)))/"
+        
+        let creditCard = CreditCard(name: name, zip: billing, numbers: self.paymentField.cardParams.number!, cvv: self.paymentField.cardParams.cvc!, expDate: expirationDate, expDateString: expString, last4: self.paymentField.cardParams.last4()!)
+        
+        DatabaseController.shared.saveCard(card: creditCard)
         
     }
     

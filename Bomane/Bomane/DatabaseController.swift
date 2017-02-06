@@ -39,6 +39,7 @@ class DatabaseController {
     
     func logoutUser() {
         deleteUserFile()
+        deleteCardFile()
     }
     
     func deleteUserFile() {
@@ -46,6 +47,42 @@ class DatabaseController {
         if logout {
             do {
                 try FileManager.default.removeItem(atPath: User.ArchiveURL.path)
+            } catch {
+                print("Error deleting object from database")
+            }
+        }
+    }
+    
+    func saveCard(card: CreditCard) {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(card, toFile: CreditCard.ArchiveURL.path)
+        if !isSuccessfulSave {
+            print("Failed to save credit card...")
+        } else {
+            print("Successfully persisted card to disk!")
+        }
+    }
+    
+    func saveCard(card: CreditCard, completion: (Bool) -> Void) {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(card, toFile: CreditCard.ArchiveURL.path)
+        if !isSuccessfulSave {
+            print("Failed to save card...")
+            completion(false)
+        } else {
+            print("Successfully persisted card to disk!")
+            completion(true)
+        }
+    }
+    
+    func loadCard() -> CreditCard? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: CreditCard.ArchiveURL.path) as? CreditCard
+    }
+    
+    
+    func deleteCardFile() {
+        let logout = FileManager.default.fileExists(atPath: CreditCard.ArchiveURL.path)
+        if logout {
+            do {
+                try FileManager.default.removeItem(atPath: CreditCard.ArchiveURL.path)
             } catch {
                 print("Error deleting object from database")
             }

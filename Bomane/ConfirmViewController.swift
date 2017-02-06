@@ -17,6 +17,7 @@ class ConfirmViewController: UIViewController {
     @IBOutlet weak var serviceLabel: UILabel!
     @IBOutlet weak var stylistLabel: UILabel!
     
+    var creditCard:CreditCard?
     var user:User!
     var appointment:Appointment!
     
@@ -25,6 +26,16 @@ class ConfirmViewController: UIViewController {
         if let auser = DatabaseController.shared.loadUser() {
             self.user = auser
         }
+        
+        if let card = DatabaseController.shared.loadCard() {
+            self.addCreditCardLabel.isHidden = true
+            self.creditCard = card
+            self.confirmButton.setTitle("Confirm", for: .normal)
+        } else {
+            self.addCreditCardLabel.isHidden = false
+            self.confirmButton.setTitle("Add Credit Card", for: .normal)
+        }
+        
         setUpNavBar()
         self.stylistLabel.text = self.appointment.stylist.firstName + " " + self.appointment.stylist.lastName
         self.serviceLabel.text = self.appointment.service.name
@@ -59,6 +70,12 @@ class ConfirmViewController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Confirm" {
+            print("confirm")
+        } else if sender.titleLabel?.text == "Add Credit Card" {
+            print("add cc")
+        }
+        
     }
 
 }
