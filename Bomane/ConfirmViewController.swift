@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ConfirmAppointmentDelegate:class {
+    func confirmAppointment()
+}
+
 class ConfirmViewController: UIViewController {
 
     @IBOutlet weak var confirmButton: UIButton!
@@ -17,6 +21,7 @@ class ConfirmViewController: UIViewController {
     @IBOutlet weak var serviceLabel: UILabel!
     @IBOutlet weak var stylistLabel: UILabel!
     
+    weak var delegate:ConfirmAppointmentDelegate?
     var creditCard:CreditCard?
     var user:User!
     var appointment:Appointment!
@@ -27,6 +32,21 @@ class ConfirmViewController: UIViewController {
             self.user = auser
         }
         
+        updateButton()
+        
+        setUpNavBar()
+        self.stylistLabel.text = self.appointment.stylist.firstName + " " + self.appointment.stylist.lastName
+        self.serviceLabel.text = self.appointment.service.name
+        self.dateLabel.text = self.appointment.timeslot.startDate!.dateString(ofStyle: .full) + "\n" + self.appointment.timeslot.startDate!.timeString(ofStyle: .short) + "-" + self.appointment.timeslot.startDate!.adding(.minute, value: self.appointment.timeslot.duraton!).timeString(ofStyle: .short)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateButton), name: Notifications.kCreditCardAdded, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notifications.kCreditCardAdded, object: nil)
+    }
+    
+    func updateButton() {
         if let card = DatabaseController.shared.loadCard() {
             self.addCreditCardLabel.isHidden = true
             self.creditCard = card
@@ -35,12 +55,6 @@ class ConfirmViewController: UIViewController {
             self.addCreditCardLabel.isHidden = false
             self.confirmButton.setTitle("Add Credit Card", for: .normal)
         }
-        
-        setUpNavBar()
-        self.stylistLabel.text = self.appointment.stylist.firstName + " " + self.appointment.stylist.lastName
-        self.serviceLabel.text = self.appointment.service.name
-        self.dateLabel.text = self.appointment.timeslot.startDate!.dateString(ofStyle: .full) + "\n" + self.appointment.timeslot.startDate!.timeString(ofStyle: .short) + "-" + self.appointment.timeslot.startDate!.adding(.minute, value: self.appointment.timeslot.duraton!).timeString(ofStyle: .short)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,7 +87,8 @@ class ConfirmViewController: UIViewController {
         if sender.titleLabel?.text == "Confirm" {
             self.confirm()
         } else if sender.titleLabel?.text == "Add Credit Card" {
-            print("add cc")
+            let addVC = AddCreditCardViewController()
+            self.navigationController?.pushViewController(addVC, animated: true)
         }
         
     }
@@ -89,8 +104,11 @@ class ConfirmViewController: UIViewController {
             self.confirmButton.isEnabled = true
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if success {
-                self.showErrorAlert(title: "Appointment confirmed", body: "We will see you very soon!")
-                
+                self.navigationController?.popViewController() {
+                    self.delegate?.confirmAppointment()
+                }
+            } else {
+                self.showErrorAlert(title: "Error", body: "Could not confirm booking, please try again.")
             }
         }
     }

@@ -152,6 +152,7 @@ class BookAppointmentViewController: UIViewController {
         
         let app = Appointment(stylist: stylist, service: service, timeslot: time)
         let confirmVC = ConfirmViewController()
+        confirmVC.delegate = self
         confirmVC.appointment = app
         self.navigationController?.pushViewController(confirmVC, animated: true)
         
@@ -487,7 +488,7 @@ extension BookAppointmentViewController: CVCalendarViewAppearanceDelegate {
     }
 }
 
-extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionDelegate, StylistSelectionDelegate {
+extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionDelegate, StylistSelectionDelegate, ConfirmAppointmentDelegate {
     func getTimeSelection(time: TimeSlot) {
         self.selectedTimeSlot = time
         self.selectedTimeLabel.text = time.startDate!.timeString(ofStyle: .short)
@@ -501,6 +502,16 @@ extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionD
     func getStylistSelection(stylist: Stylist) {
         self.selectedStylist = stylist
         self.stylistLabel.text = stylist.firstName + " " + stylist.lastName
+    }
+    
+    func confirmAppointment() {
+        self.selectedStylist = nil
+        self.selectedService = nil
+        self.selectedTimeSlot = nil
+        self.stylistLabel.text = "Select Stylist"
+        self.serviceLabel.text = "Select Service"
+        self.selectedTimeLabel.text = ""
+        self.showErrorAlert(title: "Appointment confirmed", body: "We will see you very soon!")
     }
 }
 
