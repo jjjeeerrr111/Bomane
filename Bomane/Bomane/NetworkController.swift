@@ -53,7 +53,7 @@ class NetworkController {
                     //access token invalid
                     completion(false)
                 }
-            case .failure(let error):
+            case .failure:
                 completion(false)
             }
         }
@@ -316,7 +316,12 @@ class NetworkController {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749, "EmployeeID" : employeeId ?? nil]
+        
+        var params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749]
+        if let id = employeeId {
+            params = ["access_token":user.apiKey! , "LocationID" : 3749, "EmployeeID" : id]
+        }
+        
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {

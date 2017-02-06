@@ -249,10 +249,19 @@ extension ServiceSelectionViewController:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return services.count
+        return self.services.isEmpty ? 1:services.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if services.isEmpty {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "No available services"
+            cell.textLabel?.font = UIFont(name: "AvenirNext-Regular", size: 18)
+            cell.selectionStyle = .none
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AppoitmentTableViewCell
         cell.serviceLabel.text = services[indexPath.row].name
         if let serv = self.selectedService, serv.id == self.services[indexPath.row].id {
@@ -266,6 +275,10 @@ extension ServiceSelectionViewController:UITableViewDataSource {
 
 extension ServiceSelectionViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if services.isEmpty {
+            return
+        }
+        
         if let lastIndexPath = previouslySelectedIndexPath,let previousCell = tableView.cellForRow(at: lastIndexPath) as? AppoitmentTableViewCell {
             previousCell.configure(sender: false)
         }

@@ -261,6 +261,7 @@ extension TimeSelectionViewController:UITableViewDataSource {
             let cell = UITableViewCell()
             cell.textLabel?.text = "No available times"
             cell.textLabel?.font = UIFont(name: "AvenirNext-Regular", size: 18)
+            cell.selectionStyle = .none
             return cell
         }
         
@@ -279,6 +280,11 @@ extension TimeSelectionViewController:UITableViewDataSource {
 
 extension TimeSelectionViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if times.isEmpty {
+            return
+        }
+        
         if let lastIndexPath = previouslySelectedIndexPath,let previousCell = tableView.cellForRow(at: lastIndexPath) as? AppoitmentTableViewCell {
             previousCell.configure(sender: false)
         }

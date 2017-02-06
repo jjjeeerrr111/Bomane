@@ -33,6 +33,7 @@ class EditProfileViewController: UIViewController {
         }
         
         if let card = DatabaseController.shared.loadCard() {
+            print(card)
             self.removeCardButton.isHidden = false
         } else {
             self.removeCardButton.isHidden = true
