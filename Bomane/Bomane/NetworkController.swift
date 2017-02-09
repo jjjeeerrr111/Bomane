@@ -183,7 +183,7 @@ class NetworkController {
             completion(false,nil,"No API key")
             return}
         //location ID and home phone are required fields. lets just add wtvr
-        let params:Parameters = ["Email" : user.email, "FirstName" : user.firstName, "LastName" : user.lastName, "access_token":token, "Password":user.password!, "LocationID" : 3749, "HomePhone":"1234567890"]
+        let params:Parameters = ["Email" : user.email, "FirstName" : user.firstName, "LastName" : user.lastName, "access_token":token, "Password":user.password!, "LocationID" : 3749, "HomePhone":user.phoneNumber]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -584,12 +584,12 @@ class NetworkController {
      ....}}
      **************************/
     
-    func updateUser(with id: Int, firstName: String,lastName: String, email: String, token: String, completion: @escaping (Bool) -> Void) {
+    func updateUser(with id: Int, firstName: String,lastName: String, email: String,number: String, token: String, completion: @escaping (Bool) -> Void) {
         let urlString = getBaseURL() + "customer/\(id)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["CustomerID": id, "Email" : email, "FirstName":firstName, "LocationID" : 3749,"HomePhone" : "5678769807","LastName":lastName, "access_token": token]
+        let params:Parameters = ["CustomerID": id, "Email" : email, "FirstName":firstName, "LocationID" : 3749,"HomePhone" : number,"LastName":lastName, "access_token": token]
         Alamofire.request(urlString, method: .put, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -631,7 +631,7 @@ class NetworkController {
         let creditCard:[String:Any] = ["BillingZip" : card.zipCode, "ExpirationDate" : card.expirationDateString,"NameOnCard":card.name,"Number":card.numbers,"SecurityCode":card.cvv,"Type":cardType]
         let paymentItem = ["Amount":amount,"CreditCard":creditCard]
         let appPayment:[String:Any] = ["PaymentItem":paymentItem, "CouponCode":""]
-        let customer:[String:Any] = ["FirstName": user.firstName, "LastName":user.lastName,"HomePhone":"3212342345", "MobilePhone":"", "Email":user.email]
+        let customer:[String:Any] = ["FirstName": user.firstName, "LastName":user.lastName,"HomePhone":user.phoneNumber, "MobilePhone":"", "Email":user.email]
         
         //treatment time slots
         let treatment:[String:Any] = ["CurrentPrice":amount,"EmployeeID" : appointment.stylist.id, "StartDateTime" : appointment.timeslot.startDateTime!,"TreatmentID":appointment.service.id!,"EmployeeWasRequested":true]

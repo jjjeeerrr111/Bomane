@@ -85,7 +85,7 @@ class EditProfileViewController: UIViewController {
                 return}
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            NetworkController.shared.updateUser(with: aUser.customerId!, firstName: newName, lastName: newLastName, email: newEmail, token: unwrappedUser.apiKey!) {
+            NetworkController.shared.updateUser(with: aUser.customerId!, firstName: newName, lastName: newLastName, email: newEmail,number: aUser.phoneNumber, token: unwrappedUser.apiKey!) {
                 success in
                 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false

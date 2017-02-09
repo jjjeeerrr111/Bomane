@@ -14,6 +14,7 @@ class CreateAccountNameViewController: UIViewController {
     var firstName:UITextField!
     var lastName:UITextField!
     var email:UITextField!
+    var number:UITextField!
     var nextBottomConstraint:NSLayoutConstraint!
     var user:User?
     
@@ -131,6 +132,14 @@ class CreateAccountNameViewController: UIViewController {
         separator3.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(separator3)
         
+        number = UITextField()
+        number.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(number)
+        
+        let separator4 = UIView()
+        separator4.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(separator4)
+        
         let secConstraints:[NSLayoutConstraint] = [
             firstName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
             firstName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
@@ -156,6 +165,14 @@ class CreateAccountNameViewController: UIViewController {
             separator3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
             separator3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
             separator3.heightAnchor.constraint(equalToConstant: 0.5),
+            number.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
+            number.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
+            number.topAnchor.constraint(equalTo: separator3.bottomAnchor, constant: 10),
+            number.heightAnchor.constraint(equalToConstant: 40),
+            separator4.topAnchor.constraint(equalTo: number.bottomAnchor),
+            separator4.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27),
+            separator4.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27),
+            separator4.heightAnchor.constraint(equalToConstant: 0.5),
         ]
         
         NSLayoutConstraint.activate(secConstraints)
@@ -190,16 +207,29 @@ class CreateAccountNameViewController: UIViewController {
         email.textColor = UIColor.white
         email.delegate = self
         email.clearButtonMode = .whileEditing
-        email.returnKeyType = .done
+        email.returnKeyType = .next
         email.autocorrectionType = .no
         email.autocapitalizationType = .none
+        
+        number.placeholder = "Phone number"
+        number.placeholderColor = UIColor.white
+        number.font = UIFont(name: "AvenirNext-Regular", size: 18)
+        number.textColor = UIColor.white
+        number.delegate = self
+        number.keyboardType = .numberPad
+        number.clearButtonMode = .whileEditing
+        number.returnKeyType = .done
+        number.autocorrectionType = .no
+        number.autocapitalizationType = .none
         
         separator1.backgroundColor = UIColor.white
         separator2.backgroundColor = UIColor.white
         separator3.backgroundColor = UIColor.white
+        separator4.backgroundColor = UIColor.white
         separator1.alpha = 0.5
         separator2.alpha = 0.5
         separator3.alpha = 0.5
+        separator4.alpha = 0.5
         
         nextButton = UIButton()
         nextButton.translatesAutoresizingMaskIntoConstraints = false
@@ -233,14 +263,25 @@ class CreateAccountNameViewController: UIViewController {
         } else if (email.text?.isEmpty)! || !email.text!.isValidEmail() {
             self.showErrorAlert(title: "Email required", body: "Please enter a valid email to continue.")
             return
+        } else if (number.text?.isEmpty)! || !self.validate(phoneNumber: number.text!) || self.number.text?.characters.count != 10 {
+            self.showErrorAlert(title: "Phone number required", body: "Please enter a valid phone number and area code to continue.")
+            return
         }
         resignKeyboard()
         
-        self.user = User(first: firstName.text!, last: lastName.text!, email: email.text!)
+        self.user = User(first: firstName.text!, last: lastName.text!, email: email.text!, phone: number.text!)
         
         let passVC = CreateAccountPasswordViewController()
         passVC.user = self.user
         navigationController?.pushViewController(passVC, animated: true)
+    }
+    
+    
+    func validate(phoneNumber: String) -> Bool {
+        let charcterSet  = NSCharacterSet(charactersIn: "+0123456789").inverted
+        let inputString = phoneNumber.components(separatedBy: charcterSet)
+        let filtered = inputString.joined(separator: "")
+        return  phoneNumber == filtered
     }
     
     func setUpTapGesture() {
