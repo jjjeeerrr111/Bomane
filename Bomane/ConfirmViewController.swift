@@ -15,7 +15,6 @@ protocol ConfirmAppointmentDelegate:class {
 class ConfirmViewController: UIViewController {
 
     @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var addServiceButton: UIButton!
     @IBOutlet weak var addCreditCardLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var serviceLabel: UILabel!
@@ -25,6 +24,7 @@ class ConfirmViewController: UIViewController {
     var creditCard:CreditCard?
     var user:User!
     var appointment:Appointment!
+    var activity:UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +33,26 @@ class ConfirmViewController: UIViewController {
         }
         
         updateButton()
-        
+        setUpActivityIndicator()
         setUpNavBar()
         self.stylistLabel.text = self.appointment.stylist.firstName + " " + self.appointment.stylist.lastName
         self.serviceLabel.text = self.appointment.service.name
         self.dateLabel.text = self.appointment.timeslot.startDate!.dateString(ofStyle: .full) + "\n" + self.appointment.timeslot.startDate!.timeString(ofStyle: .short) + "-" + self.appointment.timeslot.startDate!.adding(.minute, value: self.appointment.timeslot.duraton!).timeString(ofStyle: .short)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateButton), name: Notifications.kCreditCardAdded, object: nil)
+    }
+    
+    func setUpActivityIndicator() {
+        activity = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activity)
+        
+        let const:[NSLayoutConstraint] = [
+            activity.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activity.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(const)
+
     }
     
     deinit {
@@ -94,13 +107,13 @@ class ConfirmViewController: UIViewController {
     }
     
     func confirm() {
-        
+        self.activity.startAnimating()
         guard let card = self.creditCard else {return}
         self.confirmButton.isEnabled = false
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         NetworkController.shared.confirmAppointment(appointment: self.appointment, user: self.user, card: card) {
             success in
-            
+            self.activity.stopAnimating()
             self.confirmButton.isEnabled = true
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if success {

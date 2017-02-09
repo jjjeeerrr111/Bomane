@@ -29,8 +29,9 @@ class ScreenMenuViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Baskerville", size: 20)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "ProximaNova-Bold", size: 20)!]
         navigationController?.navigationBar.isTranslucent = false
+        navigationItem.title = "BOMANE"
     }
     
     func setUpLogOutButton() {

@@ -8,11 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Proxima Nova Bold.otf">
-            <string>ProximaNova-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -26,25 +21,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOMANE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPC-Kd-SXO">
-                                <rect key="frame" x="110.5" y="312" width="154.5" height="44"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOS ANGELES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJm-8T-bCc">
-                                <rect key="frame" x="138" y="356" width="99" height="19"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bomaneLA" translatesAutoresizingMaskIntoConstraints="NO" id="a65-JX-1VY">
+                                <rect key="frame" x="99" y="306" width="177" height="55"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RPC-Kd-SXO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4Kb-cO-RsS"/>
-                            <constraint firstItem="RPC-Kd-SXO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DpX-hi-2vH"/>
-                            <constraint firstItem="xJm-8T-bCc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HCT-Ur-bv3"/>
-                            <constraint firstItem="xJm-8T-bCc" firstAttribute="top" secondItem="RPC-Kd-SXO" secondAttribute="bottom" id="Z2V-Iz-6GN"/>
+                            <constraint firstItem="a65-JX-1VY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8mp-eb-ggc"/>
+                            <constraint firstItem="a65-JX-1VY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="gAJ-0q-Sow"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -53,4 +37,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bomaneLA" width="177" height="55"/>
+    </resources>
 </document>
