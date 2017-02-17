@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import WebKit
 
 class ProtfolioViewController: UIViewController {
-    
-//    static let shared = ProtfolioViewController()
     
     var activityIndicator:UIActivityIndicatorView!
 
@@ -52,7 +51,7 @@ class ProtfolioViewController: UIViewController {
     }
     
     func setUpUI() {
-        let webview = UIWebView()
+        let webview = WKWebView()
         webview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(webview)
         
@@ -73,23 +72,14 @@ class ProtfolioViewController: UIViewController {
         guard let url = URL(string: "https://instagram.com/Bomanesalon/") else {return}
        
         let request = URLRequest(url: url)
-        webview.loadRequest(request)
-        webview.delegate = self
-        
+        webview.load(request)
+        webview.navigationDelegate = self
     }
     
 }
 
-extension ProtfolioViewController:UIWebViewDelegate {
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        activityIndicator.startAnimating()
-    }
+extension ProtfolioViewController:WKNavigationDelegate {
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        activityIndicator.stopAnimating()
-    }
 }
 
 extension ProtfolioViewController:UIViewControllerTransitioningDelegate {

@@ -222,10 +222,11 @@ class LoginViewController: UIViewController {
             user in
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            guard let unwrappedUser = user else {
+            guard var unwrappedUser = user else {
                 
                 self.showErrorAlert(title: "Login failed", body: "The email or password you entered is incorrect, please try again.")
                 return}
+            unwrappedUser.password = self.passwordField.text!
             DatabaseController.shared.saveUser(user: unwrappedUser)
             AppDelegate.shared().checkIfUserExists()
         }

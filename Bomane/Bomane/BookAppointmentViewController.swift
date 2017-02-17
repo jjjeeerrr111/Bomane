@@ -27,7 +27,7 @@ class BookAppointmentViewController: UIViewController {
     @IBOutlet weak var serviceLabel: UILabel!
     @IBOutlet weak var stylistLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet var calendarView: CVCalendarView!
+    @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet var menuView: CVCalendarMenuView!
 
     @IBOutlet weak var selectedDateLabel: UILabel!
