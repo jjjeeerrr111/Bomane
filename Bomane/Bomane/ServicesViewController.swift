@@ -149,7 +149,6 @@ extension ServicesViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ServicesTableViewCell
         cell.titleLabel.text = services[indexPath.row].name
-        cell.subtitleLabel.text = services[indexPath.row].description ?? "N/A"
         return cell
     }
 }
