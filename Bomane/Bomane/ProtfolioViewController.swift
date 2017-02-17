@@ -74,6 +74,7 @@ class ProtfolioViewController: UIViewController {
         let request = URLRequest(url: url)
         webview.load(request)
         webview.navigationDelegate = self
+        webview.allowsBackForwardNavigationGestures = true
     }
     
 }
