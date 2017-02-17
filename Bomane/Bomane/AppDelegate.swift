@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let aboutVC = AboutViewController()
+    //let aboutVC = AboutViewController()
     let servicesVC = ServicesViewController()
     let portfolioVC = ProtfolioViewController()
     let bookVC = BookAppointmentViewController()
@@ -43,8 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initWindow(controller: String) {
-        
-        let controllerDic = ["About" : aboutVC, "Services":servicesVC, "Portfolio" : portfolioVC, "Book Appointment" : bookVC, "Profile" : profileVC, "Contact" : contactVC]
+        //"About" : aboutVC, 
+        let controllerDic = ["Services":servicesVC, "Portfolio" : portfolioVC, "Book Appointment" : bookVC, "Profile" : profileVC, "Contact" : contactVC]
         
         if controller == "Book Appointment" || controller == "Services" || controller == "Portfolio" || controller == "Profile" {
             UIApplication.shared.statusBarStyle = .default

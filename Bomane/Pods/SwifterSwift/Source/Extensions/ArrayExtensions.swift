@@ -14,17 +14,8 @@ public extension Array {
 	
 	/// SwifterSwift: Random item from array.
 	public var randomItem: Element {
-		let index = Int(arc4random_uniform(UInt32(self.count)))
+		let index = Int(arc4random_uniform(UInt32(count)))
 		return self[index]
-	}
-	
-	/// SwifterSwift: Shuffled version of array.
-	public var shuffled: [Element] {
-		var arr = self
-		for _ in 0..<10 {
-			arr.sort { (_,_) in arc4random() < arc4random() }
-		}
-		return arr
 	}
 	
 }
@@ -75,6 +66,13 @@ public extension Array where Element: FloatingPoint {
 // MARK: - Properties (Equatable)
 public extension Array where Element: Equatable {
 	
+	/// SwifterSwift: Shuffled version of array.
+	public var shuffled: [Element] {
+		var arr = self
+		arr.shuffle()
+		return arr
+	}
+	
 	/// SwifterSwift: Array with all duplicates removed from it.
 	public var withoutDuplicates: [Element] {
 		// Thanks to https://github.com/sairamkotha for improving the preperty
@@ -92,7 +90,7 @@ public extension Array {
 	/// - Parameter index: index of element.
 	/// - Returns: optional element (if exists).
 	public func item(at index: Int) -> Element? {
-		guard index >= 0 && index < count else { return nil }
+		guard 0..<count ~= index else { return nil }
 		return self[index]
 	}
 	
@@ -102,7 +100,7 @@ public extension Array {
 	/// - Returns: first index of item in array (if exists).
 	public func firstIndex <Item: Equatable> (of item: Item) -> Int? {
 		if item is Element {
-			for (index, value) in self.lazy.enumerated() {
+			for (index, value) in lazy.enumerated() {
 				if value as! Item == item {
 					return index
 				}
@@ -118,7 +116,7 @@ public extension Array {
 	/// - Returns: last index of item in array (if exists).
 	public func lastIndex <Item: Equatable> (of item: Item) -> Int? {
 		if item is Element {
-			for (index, value) in self.reversed().lazy.enumerated() {
+			for (index, value) in reversed().lazy.enumerated() {
 				if value as! Item == item {
 					return count - 1 - index
 				}
@@ -130,11 +128,9 @@ public extension Array {
 	
 	/// SwifterSwift: Remove last element from array and return it.
 	///
-	/// - Returns: last elemets in array (if applicable).
+	/// - Returns: last element in array (if applicable).
 	@discardableResult public mutating func pop() -> Element? {
-		guard self.count > 0 else {
-			return nil
-		}
+		guard !isEmpty else { return nil }
 		return removeLast()
 	}
 	
@@ -142,22 +138,14 @@ public extension Array {
 	///
 	/// - Parameter newElement: element to insert.
 	public mutating func prepend(_ newElement: Element) {
-		self.insert(newElement, at: 0)
+		insert(newElement, at: 0)
 	}
 	
 	/// SwifterSwift: Insert an element to the end of array.
 	///
 	/// - Parameter newElement: element to insert.
 	public mutating func push(_ newElement: Element) {
-		return append(newElement)
-	}
-	
-	/// SwifterSwift: Shuffle array.
-	public mutating func shuffle() {
-		// https://gist.github.com/ijoshsmith/5e3c7d8c2099a3fe8dc3
-		for _ in 0..<10 {
-			sort { (_,_) in arc4random() < arc4random() }
-		}
+		append(newElement)
 	}
 	
 }
@@ -166,13 +154,25 @@ public extension Array {
 // MARK: - Methods (Equatable)
 public extension Array where Element: Equatable {
 	
+	/// SwifterSwift: Shuffle array.
+	public mutating func shuffle() {
+		// https://gist.github.com/ijoshsmith/5e3c7d8c2099a3fe8dc3
+		let arr = self
+		for _ in 0..<10 {
+			sort { (_,_) in arc4random() < arc4random() }
+		}
+		if self == arr {
+			shuffle()
+		}
+	}
+	
 	/// SwifterSwift: Check if array contains an array of elements.
 	///
 	/// - Parameter elements: array of elements to check.
 	/// - Returns: true if array contains all given items.
 	public func contains(_ elements: [Element]) -> Bool {
 		guard !elements.isEmpty else { // elements array is empty
-			return false
+			return true
 		}
 		var found = true
 		for element in elements {
@@ -189,7 +189,7 @@ public extension Array where Element: Equatable {
 	/// - Returns: an array with all indexes of the given item.
 	public func indexes(of item: Element) -> [Int] {
 		var indexes: [Int] = []
-		for index in 0..<self.count {
+		for index in 0..<count {
 			if self[index] == item {
 				indexes.append(index)
 			}
@@ -201,7 +201,7 @@ public extension Array where Element: Equatable {
 	///
 	/// - Parameter item: item to remove.
 	public mutating func removeAll(_ item: Element) {
-		self = self.filter { $0 != item }
+		self = filter { $0 != item }
 	}
 	
 	/// SwifterSwift: Remove all duplicates from array.
