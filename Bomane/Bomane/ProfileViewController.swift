@@ -61,7 +61,7 @@ class ProfileViewController: UIViewController {
 
     func setUpNavBar() {
         navigationController?.navigationBar.barTintColor = UIColor.white
-        navigationItem.title = "PROFILE"
+        navigationItem.title = "ACCOUNT"
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black, NSFontAttributeName:UIFont(name: "Baskerville", size: 20)!]
         navigationController?.navigationBar.isTranslucent = false
         

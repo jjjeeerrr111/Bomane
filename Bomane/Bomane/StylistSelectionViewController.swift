@@ -99,8 +99,8 @@ class StylistSelectionViewController: UIViewController {
         
         let constraints:[NSLayoutConstraint] = [
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7)
+            containerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9)
         ]
         
         NSLayoutConstraint.activate(constraints)
@@ -163,6 +163,7 @@ class StylistSelectionViewController: UIViewController {
         tableView.delegate = self
         tableView.separatorColor = UIColor.clear
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 65.0
         
     }
     
@@ -251,6 +252,7 @@ extension StylistSelectionViewController:UITableViewDataSource {
         }
         return cell
     }
+    
 }
 
 extension StylistSelectionViewController:UITableViewDelegate {

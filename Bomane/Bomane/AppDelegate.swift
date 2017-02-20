@@ -44,9 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initWindow(controller: String) {
         //"About" : aboutVC, 
-        let controllerDic = ["Services":servicesVC, "Portfolio" : portfolioVC, "Book Appointment" : bookVC, "Profile" : profileVC, "Contact" : contactVC]
+        let controllerDic = ["Services":servicesVC, "Portfolio" : portfolioVC, "Book Appointment" : bookVC, "Account" : profileVC, "Contact" : contactVC]
         
-        if controller == "Book Appointment" || controller == "Services" || controller == "Portfolio" || controller == "Profile" {
+        if controller == "Book Appointment" || controller == "Services" || controller == "Portfolio" || controller == "Account" {
             UIApplication.shared.statusBarStyle = .default
         } else {
             UIApplication.shared.statusBarStyle = .lightContent
