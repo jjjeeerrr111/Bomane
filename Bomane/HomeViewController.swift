@@ -1,37 +1,38 @@
 //
-//  ContactViewController.swift
+//  HomeViewController.swift
 //  Bomane
 //
-//  Created by Jeremy Sharvit on 2017-01-07.
+//  Created by Jeremy Sharvit on 2017-03-05.
 //  Copyright © 2017 com.bomane. All rights reserved.
 //
 
 import UIKit
-import MessageUI
 
-class ContactViewController: UIViewController {
-    
-//    static let shared = ContactViewController()
+class HomeViewController: UIViewController {
 
-    @IBOutlet weak var emailButton: UIButton!
-    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet weak var portfolioView: UIView!
+    @IBOutlet weak var callView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
         // Do any additional setup after loading the view.
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Baskerville", size: 20)!]
-        navigationController?.navigationBar.isTranslucent = false
+        callView.backgroundColor = UIColor.white.withAlphaComponent(0.25)
+        portfolioView.backgroundColor = UIColor.white.withAlphaComponent(0.25)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+    }
+
     func setUpNavBar() {
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationItem.title = "CONTACT"
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Baskerville", size: 20)!]
-        navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         //This line sets the back button title to "" so that it doesnt show up at < Messages when pushing
         //the next view controller
@@ -48,38 +49,24 @@ class ContactViewController: UIViewController {
         navVC.modalPresentationStyle = .overFullScreen
         self.present(navVC, animated: true, completion: nil)
     }
-
-    @IBAction func bookAppointmentButtonPressed(_ sender: UIButton) {
+    
+    @IBAction func bookAppointmentPressed(_ sender: UIButton) {
         AppDelegate.shared().initWindow(controller: "Book Appointment")
     }
 
+    @IBAction func portfolioButtonPressed(_ sender: UIButton) {
+        AppDelegate.shared().initWindow(controller: "Portfolio")
+    }
 
     @IBAction func callButtonPressed(_ sender: UIButton) {
+        //dont have the number to call
         if let url = URL(string:"tel://4247770638"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-
-    @IBAction func emailButtonPressed(_ sender: UIButton) {
-        composeEmailWith(title: "Inquiry", body: "")
-    }
-    
-    func composeEmailWith(title: String, body: String) {
-        
-        //TODO: find correct email for bomane
-        if MFMailComposeViewController.canSendMail() {
-            let mailVC = MFMailComposeViewController()
-            mailVC.mailComposeDelegate = self
-            mailVC.setToRecipients(["support@bomane.com"])
-            mailVC.setSubject(title)
-            mailVC.setMessageBody(body, isHTML: true)
-            self.present(mailVC, animated: true, completion: nil)
-        }
-    }
-
 }
 
-extension ContactViewController:UIViewControllerTransitioningDelegate {
+extension HomeViewController:UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = SlideAnimator()
         animator.presenting = false
@@ -89,12 +76,4 @@ extension ContactViewController:UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SlideAnimator()
     }
-}
-
-extension ContactViewController:MFMailComposeViewControllerDelegate {
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }

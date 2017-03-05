@@ -44,6 +44,8 @@
 		57968FFF1E214CD40080DCF3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */; };
 		579690031E215B140080DCF3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579690011E215B140080DCF3 /* ContactViewController.swift */; };
 		579690041E215B140080DCF3 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 579690021E215B140080DCF3 /* ContactViewController.xib */; };
+		57AC1D881E6C99DE000647D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AC1D861E6C99DE000647D8 /* HomeViewController.swift */; };
+		57AC1D891E6C99DE000647D8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57AC1D871E6C99DE000647D8 /* HomeViewController.xib */; };
 		57DB6A5A1E48C4BE0017649B /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB6A591E48C4BE0017649B /* CreditCard.swift */; };
 		57DB6A5C1E48D5970017649B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB6A5B1E48D5970017649B /* Constants.swift */; };
 		57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D851E05E8DD003207D2 /* LoginViewController.swift */; };
@@ -97,6 +99,8 @@
 		57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		579690011E215B140080DCF3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		579690021E215B140080DCF3 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
+		57AC1D861E6C99DE000647D8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		57AC1D871E6C99DE000647D8 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		57B183B71E2ACB00003A066A /* Bomane-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bomane-Bridging-Header.h"; sourceTree = "<group>"; };
 		57DB6A591E48C4BE0017649B /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		57DB6A5B1E48D5970017649B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		572E68641DEB3EE7001DB239 = {
 			isa = PBXGroup;
 			children = (
+				57AC1D8A1E6C99E3000647D8 /* Home VC */,
 				5752967C1E47B2A000A84F16 /* Confirm VC */,
 				575296791E47A88400A84F16 /* Fonts */,
 				572E686F1DEB3EE7001DB239 /* Bomane */,
@@ -275,6 +280,15 @@
 				5781BA781E2AC9D100E0F7D2 /* AddCreditCardViewController.swift */,
 			);
 			name = "Profile VCs";
+			sourceTree = "<group>";
+		};
+		57AC1D8A1E6C99E3000647D8 /* Home VC */ = {
+			isa = PBXGroup;
+			children = (
+				57AC1D861E6C99DE000647D8 /* HomeViewController.swift */,
+				57AC1D871E6C99DE000647D8 /* HomeViewController.xib */,
+			);
+			name = "Home VC";
 			sourceTree = "<group>";
 		};
 		57DB7D841E05E8C5003207D2 /* Login VC */ = {
@@ -396,6 +410,7 @@
 				579690041E215B140080DCF3 /* ContactViewController.xib in Resources */,
 				574D3D0F1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib in Resources */,
 				572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */,
+				57AC1D891E6C99DE000647D8 /* HomeViewController.xib in Resources */,
 				572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */,
 				5721091B1E229AD600E253AC /* EditProfileViewController.xib in Resources */,
 				5751D25F1DEB9D29009A4612 /* ServicesTableViewCell.xib in Resources */,
@@ -467,6 +482,7 @@
 				5751D2611DEB9E7C009A4612 /* Service.swift in Sources */,
 				5751D25E1DEB9D29009A4612 /* ServicesTableViewCell.swift in Sources */,
 				5713B8671E327A1600D9EC2C /* User.swift in Sources */,
+				57AC1D881E6C99DE000647D8 /* HomeViewController.swift in Sources */,
 				5751D2661DEBA243009A4612 /* AboutViewController.swift in Sources */,
 				57EFC2931E0617DB006783D3 /* Animators.swift in Sources */,
 				5752967F1E47B2B000A84F16 /* ConfirmViewController.swift in Sources */,

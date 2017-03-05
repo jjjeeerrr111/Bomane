@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let bookVC = BookAppointmentViewController()
     let profileVC = ProfileViewController()
     let contactVC = ContactViewController()
+    let homeVC = HomeViewController()
     
     class func shared() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
@@ -36,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkIfUserExists() {
         if DatabaseController.shared.loadUser() != nil {
             dump(DatabaseController.shared.loadUser()!)
-            initWindow(controller: "Book Appointment")
+            initWindow(controller: "Home")
         } else {
             self.showLogin()
         }
@@ -44,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initWindow(controller: String) {
         //"About" : aboutVC, 
-        let controllerDic = ["Services":servicesVC, "Portfolio" : portfolioVC, "Book Appointment" : bookVC, "Account" : profileVC, "Contact" : contactVC]
+        let controllerDic = ["Services":servicesVC, "Portfolio" : portfolioVC, "Book Appointment" : bookVC, "Account" : profileVC, "Contact" : contactVC, "Home" : homeVC]
         
         if controller == "Book Appointment" || controller == "Services" || controller == "Portfolio" || controller == "Account" {
             UIApplication.shared.statusBarStyle = .default
