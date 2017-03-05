@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PopupDialog
 
 protocol ConfirmAppointmentDelegate:class {
     func confirmAppointment()
@@ -61,11 +62,11 @@ class ConfirmViewController: UIViewController {
     
     func updateButton() {
         if let card = DatabaseController.shared.loadCard() {
-            self.addCreditCardLabel.isHidden = true
+            self.addCreditCardLabel.text = "By reserving a stylist's time please note you will be charged in full for no show appointments or if less than 24 notice given prior to appointment."
             self.creditCard = card
             self.confirmButton.setTitle("Confirm", for: .normal)
         } else {
-            self.addCreditCardLabel.isHidden = false
+            self.addCreditCardLabel.text = "**You will need to add a credit card to book an appointment."
             self.confirmButton.setTitle("Add Credit Card", for: .normal)
         }
     }
@@ -117,13 +118,30 @@ class ConfirmViewController: UIViewController {
             self.confirmButton.isEnabled = true
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if success {
-                self.navigationController?.popViewController() {
-                    self.delegate?.confirmAppointment()
-                }
+                self.addServiceOrHome()
             } else {
                 self.showErrorAlert(title: "Error", body: "Could not confirm booking, please try again.")
             }
         }
+    }
+    
+    func addServiceOrHome() {
+        let alert = PopupDialog(title: "Appointment Confirmed", message: "We will see you very soon!")
+        alert.buttonAlignment = .horizontal
+        let buttonOne = DefaultButton(title: "Add a service?") {
+            self.navigationController?.popViewController()
+        }
+        
+        let buttonTwo = CancelButton(title: "Home") {
+            AppDelegate.shared().initWindow(controller: "Home")
+            self.navigationController?.popViewController() 
+        }
+        
+        NotificationCenter.default.post(name: Notifications.kClearAllBookingData, object: nil)
+        alert.addButtons([buttonTwo, buttonOne])
+        alert.transitionStyle = .zoomIn
+        // Present dialog
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

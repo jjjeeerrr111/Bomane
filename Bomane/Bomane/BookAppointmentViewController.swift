@@ -8,6 +8,7 @@
 
 import UIKit
 import CVCalendar
+import PopupDialog
 
 class BookAppointmentViewController: UIViewController {
     
@@ -84,6 +85,21 @@ class BookAppointmentViewController: UIViewController {
             valid in
             self.updateUserToken()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.clearBookingData), name: Notifications.kClearAllBookingData, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notifications.kClearAllBookingData, object: nil)
+    }
+    
+    func clearBookingData() {
+        self.selectedStylist = nil
+        self.selectedService = nil
+        self.selectedTimeSlot = nil
+        self.stylistLabel.text = "Select Stylist"
+        self.serviceLabel.text = "Select Service"
+        self.selectedTimeLabel.text = ""
     }
     
     func updateUserToken() {
@@ -127,35 +143,39 @@ class BookAppointmentViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "hamburgerIcon"), style: .plain, target: self, action: #selector(self.menuButtonPressed(sender:)))
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
-        let rightButton = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(self.nextButtonPressed(sender:)))
-        self.navigationItem.rightBarButtonItem = rightButton
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.black, NSFontAttributeName:UIFont(name: "AvenirNext-Regular", size: 15)!], for: .normal)
+        
     }
-    
-    func nextButtonPressed(sender: UIBarButtonItem) {
-        if self.selectedStylist == nil || self.selectedTimeSlot == nil || self.selectedService == nil {
-            self.showErrorAlert(title: "Missing info", body: "Make sure to select all appointment information before continuing.")
-            return
+        
+    func nextOrEdit() {
+        let alert = PopupDialog(title: "Go to confirm screen?", message: "")
+        alert.buttonAlignment = .horizontal
+        let buttonOne = DefaultButton(title: "Next") {
+            guard let stylist = self.selectedStylist, let service = self.selectedService, let time = self.selectedTimeSlot else {return}
+            
+            if time.employeeId! != stylist.id {
+                self.showErrorAlert(title: "Error", body: "The time you selected conflicts with the selected stylist.")
+                return
+            }
+            
+            if time.treatmentId! != service.id! {
+                self.showErrorAlert(title: "Error", body: "The service you selected is not available at this time.")
+                return
+            }
+            
+            let app = Appointment(stylist: stylist, service: service, timeslot: time)
+            let confirmVC = ConfirmViewController()
+            confirmVC.appointment = app
+            self.navigationController?.pushViewController(confirmVC, animated: true)
         }
         
-        guard let stylist = self.selectedStylist, let service = self.selectedService, let time = self.selectedTimeSlot else {return}
-        
-        if time.employeeId! != stylist.id {
-            self.showErrorAlert(title: "Error", body: "The time you selected conflicts with the selected stylist.")
-            return
+        let buttonTwo = CancelButton(title: "Edit") {
+            
         }
         
-        if time.treatmentId! != service.id! {
-            self.showErrorAlert(title: "Error", body: "The service you selected is not available at this time.")
-            return
-        }
-        
-        let app = Appointment(stylist: stylist, service: service, timeslot: time)
-        let confirmVC = ConfirmViewController()
-        confirmVC.delegate = self
-        confirmVC.appointment = app
-        self.navigationController?.pushViewController(confirmVC, animated: true)
-        
+        alert.addButtons([buttonTwo, buttonOne])
+        alert.transitionStyle = .zoomIn
+        // Present dialog
+        self.present(alert, animated: true, completion: nil)
     }
     
     func menuButtonPressed(sender: UIBarButtonItem) {
@@ -488,10 +508,14 @@ extension BookAppointmentViewController: CVCalendarViewAppearanceDelegate {
     }
 }
 
-extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionDelegate, StylistSelectionDelegate, ConfirmAppointmentDelegate {
+extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionDelegate, StylistSelectionDelegate {
     func getTimeSelection(time: TimeSlot) {
         self.selectedTimeSlot = time
         self.selectedTimeLabel.text = time.startDate!.timeString(ofStyle: .short)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.nextOrEdit()
+        }
     }
     
     func getServiceSelection(service: Service) {
@@ -504,14 +528,5 @@ extension BookAppointmentViewController:TimeSelectionDelegate, ServiceSelectionD
         self.stylistLabel.text = stylist.firstName + " " + stylist.lastName
     }
     
-    func confirmAppointment() {
-        self.selectedStylist = nil
-        self.selectedService = nil
-        self.selectedTimeSlot = nil
-        self.stylistLabel.text = "Select Stylist"
-        self.serviceLabel.text = "Select Service"
-        self.selectedTimeLabel.text = ""
-        self.showErrorAlert(title: "Appointment confirmed", body: "We will see you very soon!")
-    }
 }
 

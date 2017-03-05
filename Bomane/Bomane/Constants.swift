@@ -12,5 +12,5 @@ import Foundation
 struct Notifications {
     //When adding a new credit card
     static let kCreditCardAdded = Notification.Name("CreditCardAdded")
-    
+    static let kClearAllBookingData = Notification.Name("ClearAllBookingData")
 }
