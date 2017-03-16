@@ -39,6 +39,8 @@
 		577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5772315F1DEB563500A94A7B /* TableView+Extensions.swift */; };
 		5779923A1E3E9E71000A3D52 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577992391E3E9E71000A3D52 /* ForgotPasswordViewController.swift */; };
 		5781BA791E2AC9D100E0F7D2 /* AddCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5781BA781E2AC9D100E0F7D2 /* AddCreditCardViewController.swift */; };
+		578E09BD1E7ABE55005986CA /* BomanePrivacy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 578E09BB1E7ABE55005986CA /* BomanePrivacy.pdf */; };
+		578E09BE1E7ABE55005986CA /* BomaneTerms.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 578E09BC1E7ABE55005986CA /* BomaneTerms.pdf */; };
 		578F22191E07174200CBF23C /* ProtfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578F22181E07174200CBF23C /* ProtfolioViewController.swift */; };
 		57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */; };
 		57968FFF1E214CD40080DCF3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */; };
@@ -52,6 +54,8 @@
 		57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB7D881E05EF72003207D2 /* Extensions.swift */; };
 		57DE02D71E352A6300155BCD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE02D61E352A6300155BCD /* NetworkController.swift */; };
 		57DE02D91E36724200155BCD /* Stylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE02D81E36724200155BCD /* Stylist.swift */; };
+		57E0770B1E7AC15C00E4B589 /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E077091E7AC15C00E4B589 /* FileViewController.swift */; };
+		57E0770C1E7AC15C00E4B589 /* FileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E0770A1E7AC15C00E4B589 /* FileViewController.xib */; };
 		57EFC28F1E060D8A006783D3 /* CreateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */; };
 		57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */; };
 		57EFC2931E0617DB006783D3 /* Animators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFC2921E0617DB006783D3 /* Animators.swift */; };
@@ -94,6 +98,8 @@
 		5772315F1DEB563500A94A7B /* TableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView+Extensions.swift"; sourceTree = "<group>"; };
 		577992391E3E9E71000A3D52 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5781BA781E2AC9D100E0F7D2 /* AddCreditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewController.swift; sourceTree = "<group>"; };
+		578E09BB1E7ABE55005986CA /* BomanePrivacy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BomanePrivacy.pdf; sourceTree = "<group>"; };
+		578E09BC1E7ABE55005986CA /* BomaneTerms.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BomaneTerms.pdf; sourceTree = "<group>"; };
 		578F22181E07174200CBF23C /* ProtfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtfolioViewController.swift; sourceTree = "<group>"; };
 		57968FFC1E214CD40080DCF3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		57968FFD1E214CD40080DCF3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -108,6 +114,8 @@
 		57DB7D881E05EF72003207D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		57DE02D61E352A6300155BCD /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		57DE02D81E36724200155BCD /* Stylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylist.swift; sourceTree = "<group>"; };
+		57E077091E7AC15C00E4B589 /* FileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
+		57E0770A1E7AC15C00E4B589 /* FileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileViewController.xib; sourceTree = "<group>"; };
 		57EFC28E1E060D8A006783D3 /* CreateAccountNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountNameViewController.swift; sourceTree = "<group>"; };
 		57EFC2901E06133B006783D3 /* CreateAccountPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPasswordViewController.swift; sourceTree = "<group>"; };
 		57EFC2921E0617DB006783D3 /* Animators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animators.swift; sourceTree = "<group>"; };
@@ -163,6 +171,8 @@
 		572E68641DEB3EE7001DB239 = {
 			isa = PBXGroup;
 			children = (
+				57E0770D1E7AC32600E4B589 /* file viewer VC */,
+				578E09BA1E7ABE0C005986CA /* PDFs */,
 				57AC1D8A1E6C99E3000647D8 /* Home VC */,
 				5752967C1E47B2A000A84F16 /* Confirm VC */,
 				575296791E47A88400A84F16 /* Fonts */,
@@ -262,6 +272,15 @@
 			name = "Confirm VC";
 			sourceTree = "<group>";
 		};
+		578E09BA1E7ABE0C005986CA /* PDFs */ = {
+			isa = PBXGroup;
+			children = (
+				578E09BB1E7ABE55005986CA /* BomanePrivacy.pdf */,
+				578E09BC1E7ABE55005986CA /* BomaneTerms.pdf */,
+			);
+			name = PDFs;
+			sourceTree = "<group>";
+		};
 		578F22171E07172D00CBF23C /* Portfolio VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +328,15 @@
 				57DB6A5B1E48D5970017649B /* Constants.swift */,
 			);
 			name = Helpers/Extensions;
+			sourceTree = "<group>";
+		};
+		57E0770D1E7AC32600E4B589 /* file viewer VC */ = {
+			isa = PBXGroup;
+			children = (
+				57E077091E7AC15C00E4B589 /* FileViewController.swift */,
+				57E0770A1E7AC15C00E4B589 /* FileViewController.xib */,
+			);
+			name = "file viewer VC";
 			sourceTree = "<group>";
 		};
 		57EFC28D1E060D66006783D3 /* Create Account VCs */ = {
@@ -407,13 +435,16 @@
 			files = (
 				575296801E47B2B000A84F16 /* ConfirmViewController.xib in Resources */,
 				57968FFF1E214CD40080DCF3 /* ProfileViewController.xib in Resources */,
+				578E09BD1E7ABE55005986CA /* BomanePrivacy.pdf in Resources */,
 				579690041E215B140080DCF3 /* ContactViewController.xib in Resources */,
+				578E09BE1E7ABE55005986CA /* BomaneTerms.pdf in Resources */,
 				574D3D0F1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib in Resources */,
 				572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */,
 				57AC1D891E6C99DE000647D8 /* HomeViewController.xib in Resources */,
 				572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */,
 				5721091B1E229AD600E253AC /* EditProfileViewController.xib in Resources */,
 				5751D25F1DEB9D29009A4612 /* ServicesTableViewCell.xib in Resources */,
+				57E0770C1E7AC15C00E4B589 /* FileViewController.xib in Resources */,
 				5772315E1DEB523600A94A7B /* MenuTableViewCell.xib in Resources */,
 				5751D2671DEBA243009A4612 /* AboutViewController.xib in Resources */,
 				5752967B1E47A8C000A84F16 /* Proxima Nova Bold.otf in Resources */,
@@ -495,6 +526,7 @@
 				570E8EA71E3A51A200C7A8E1 /* TimeSlot.swift in Sources */,
 				5721091A1E229AD600E253AC /* EditProfileViewController.swift in Sources */,
 				5713B8691E327F1F00D9EC2C /* DatabaseController.swift in Sources */,
+				57E0770B1E7AC15C00E4B589 /* FileViewController.swift in Sources */,
 				57EFC2911E06133B006783D3 /* CreateAccountPasswordViewController.swift in Sources */,
 				574D3D111E10332B00D0D2C2 /* StylistSelectionViewController.swift in Sources */,
 				577231601DEB563500A94A7B /* TableView+Extensions.swift in Sources */,

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FileViewController" customModule="Bomane" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="tx0-xs-Xta" id="EaM-zW-jAJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMt-Tk-Vog">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="RnZ-qy-NPy"/>
+                    </constraints>
+                    <state key="normal" title="Close">
+                        <color key="titleColor" red="0.82352941180000006" green="0.72941176470000002" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="close:" destination="-1" eventType="touchUpInside" id="oGk-1x-f55"/>
+                    </connections>
+                </button>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tx0-xs-Xta">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="EMt-Tk-Vog" secondAttribute="bottom" id="AaC-SA-vKC"/>
+                <constraint firstItem="EMt-Tk-Vog" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="C0P-Q0-jUW"/>
+                <constraint firstItem="tx0-xs-Xta" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LEt-8V-gbG"/>
+                <constraint firstAttribute="trailing" secondItem="tx0-xs-Xta" secondAttribute="trailing" id="Lhg-wm-eCM"/>
+                <constraint firstAttribute="trailing" secondItem="EMt-Tk-Vog" secondAttribute="trailing" id="fre-uP-kgq"/>
+                <constraint firstItem="tx0-xs-Xta" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ohy-ip-ffL"/>
+                <constraint firstItem="EMt-Tk-Vog" firstAttribute="top" secondItem="tx0-xs-Xta" secondAttribute="bottom" id="omg-v9-dlF"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="133.5"/>
+        </view>
+    </objects>
+</document>

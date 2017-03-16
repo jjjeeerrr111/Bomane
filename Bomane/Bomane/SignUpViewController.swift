@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class SignUpViewController: UIViewController {
 
@@ -21,6 +22,29 @@ class SignUpViewController: UIViewController {
 
     }
 
+    @IBAction func termsOfServicePressed(_ sender: UIButton) {
+        
+        if let pdf = Bundle.main.url(forResource: "BomaneTerms", withExtension: "pdf", subdirectory: nil, localization: nil)  {
+            let vc = FileViewController()
+            vc.url = pdf
+            self.present(vc, animated: true, completion: nil)
+        } else {
+            print("cannot find terms")
+        }
+        
+    }
+    
+    
+    @IBAction func privacyPolicyPressed(_ sender: UIButton) {
+        if let pdf = Bundle.main.url(forResource: "BomanePrivacy", withExtension: "pdf", subdirectory: nil, localization: nil)  {
+            let vc = FileViewController()
+            vc.url = pdf
+            self.present(vc, animated: true, completion: nil)
+        } else {
+            print("cannot find privacy")
+        }
+    }
+    
     func setUpNavBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

@@ -18,9 +18,17 @@ struct Constants {
 class NetworkController {
     
     static let shared = NetworkController()
-    
+    let development = false
+    //DEV API: "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
+    //PROD API: ""
     func getBaseURL() -> String {
-        return "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
+        if development {
+            //dev
+            return "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
+        } else {
+            //prod
+            return "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
+        }
     }
     
     //MARK: Check if access token is valid
