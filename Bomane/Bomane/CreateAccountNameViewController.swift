@@ -209,6 +209,7 @@ class CreateAccountNameViewController: UIViewController {
         email.clearButtonMode = .whileEditing
         email.returnKeyType = .next
         email.autocorrectionType = .no
+        email.keyboardType = .emailAddress
         email.autocapitalizationType = .none
         
         number.placeholder = "Phone number"
