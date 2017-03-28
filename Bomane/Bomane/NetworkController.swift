@@ -20,14 +20,14 @@ class NetworkController {
     static let shared = NetworkController()
     let development = false
     //DEV API: "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
-    //PROD API: ""
+    //PROD API: "https://app.secure-booker.com/webservice4/json/CustomerService.svc"
     func getBaseURL() -> String {
         if development {
             //dev
             return "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
         } else {
             //prod
-            return "https://apicurrent-app.booker.ninja/WebService4/json/CustomerService.svc/"
+            return "https://app.secure-booker.com/webservice4/json/CustomerService.svc/"
         }
     }
     
@@ -191,7 +191,7 @@ class NetworkController {
             completion(false,nil,"No API key")
             return}
         //location ID and home phone are required fields. lets just add wtvr
-        let params:Parameters = ["Email" : user.email, "FirstName" : user.firstName, "LastName" : user.lastName, "access_token":token, "Password":user.password!, "LocationID" : 3749, "HomePhone":user.phoneNumber]
+        let params:Parameters = ["Email" : user.email, "FirstName" : user.firstName, "LastName" : user.lastName, "access_token":token, "Password":user.password!, "LocationID" : 37514, "HomePhone":user.phoneNumber]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -240,7 +240,7 @@ class NetworkController {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["Email" : email, "Password":password,"client_id":Constants.clientId, "client_secret":Constants.clientSecret, "LocationID" : 3749]
+        let params:Parameters = ["Email" : email, "Password":password,"client_id":Constants.clientId, "client_secret":Constants.clientSecret, "LocationID" : 37514]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -325,9 +325,9 @@ class NetworkController {
             "Content-Type": "application/json",
             ]
         
-        var params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749]
+        var params:Parameters = ["access_token":user.apiKey! , "LocationID" : 37514]
         if let id = employeeId {
-            params = ["access_token":user.apiKey! , "LocationID" : 3749, "EmployeeID" : id]
+            params = ["access_token":user.apiKey! , "LocationID" : 37514, "EmployeeID" : id]
         }
         
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
@@ -399,7 +399,7 @@ class NetworkController {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749]
+        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 37514]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -488,7 +488,7 @@ class NetworkController {
         let treatmentId = service.id!
         let treatments = [["TreatmentID" : treatmentId, "EmployeeID":employeeId]]
         let itinerary = [["Treatments":treatments]]
-        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 3749, "Itineraries":itinerary, "StartDateTime":startDate, "EndDateTime":endDate]
+        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 37514, "Itineraries":itinerary, "StartDateTime":startDate, "EndDateTime":endDate]
         dump(params)
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
@@ -555,7 +555,7 @@ class NetworkController {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["Email" : email, "Firstname":name, "LocationID" : 3749, "access_token": token]
+        let params:Parameters = ["Email" : email, "Firstname":name, "LocationID" : 37514, "access_token": token]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -597,7 +597,7 @@ class NetworkController {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["CustomerID": id, "Email" : email, "FirstName":firstName, "LocationID" : 3749,"HomePhone" : number,"LastName":lastName, "access_token": token]
+        let params:Parameters = ["CustomerID": id, "Email" : email, "FirstName":firstName, "LocationID" : 37514,"HomePhone" : number,"LastName":lastName, "access_token": token]
         Alamofire.request(urlString, method: .put, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -647,7 +647,7 @@ class NetworkController {
         
         let itinerary:[String:Any] = ["StartDateTime":appointment.timeslot.startDateTime!, "TreatmentTimeSlots":treatmentTimeSlots, "IsPackage":false, "CurrentPackagePrice" : amount]
         
-        let params:Parameters = ["ItineraryTimeSlotList":[itinerary],"AppointmentPayment":appPayment, "Customer":customer, "LocationID" : 3749, "access_token": user.apiKey!]
+        let params:Parameters = ["ItineraryTimeSlotList":[itinerary],"AppointmentPayment":appPayment, "Customer":customer, "LocationID" : 37514, "access_token": user.apiKey!]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
