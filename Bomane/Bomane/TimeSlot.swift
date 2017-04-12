@@ -28,14 +28,18 @@ struct TimeSlot {
         dateString = dateString.replacingOccurrences(of: "/", with: "")
         dateString = dateString.replacingOccurrences(of: "(", with: "")
         dateString = dateString.replacingOccurrences(of: ")", with: "")
-        dateString = dateString.replacingOccurrences(of: "-0500", with: "")
+        let endIndex = dateString.index(dateString.endIndex, offsetBy: -5)
+        let truncated = dateString.substring(to: endIndex)
         
-        if let dateInt = Int(dateString) {
+        if let dateInt = Int(truncated) {
             let secondsInt = dateInt/1000
             
-            self.startDate = Date(timeIntervalSince1970: Double(secondsInt))
-            
+            let date = Date(timeIntervalSince1970: Double(secondsInt))
+            let calendar = NSCalendar.autoupdatingCurrent
+            let newDate = calendar.date(byAdding:.hour, value: -3, to: date)
+            self.startDate = newDate
         }
+        
         
     }
 }
