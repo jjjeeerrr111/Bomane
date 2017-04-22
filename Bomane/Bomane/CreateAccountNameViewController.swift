@@ -212,7 +212,7 @@ class CreateAccountNameViewController: UIViewController {
         email.keyboardType = .emailAddress
         email.autocapitalizationType = .none
         
-        number.placeholder = "Phone number"
+        number.placeholder = "Phone number (Optional)"
         number.placeholderColor = UIColor.white
         number.font = UIFont(name: "AvenirNext-Regular", size: 18)
         number.textColor = UIColor.white
@@ -264,13 +264,18 @@ class CreateAccountNameViewController: UIViewController {
         } else if (email.text?.isEmpty)! || !email.text!.isValidEmail() {
             self.showErrorAlert(title: "Email required", body: "Please enter a valid email to continue.")
             return
-        } else if (number.text?.isEmpty)! || !self.validate(phoneNumber: number.text!) || self.number.text?.characters.count != 10 {
-            self.showErrorAlert(title: "Phone number required", body: "Please enter a valid phone number and area code to continue.")
-            return
         }
         resignKeyboard()
         
-        self.user = User(first: firstName.text!, last: lastName.text!, email: email.text!, phone: number.text!)
+        var numberString = "4247770638"
+        if !(number.text?.isEmpty)! && number.text! != "Phone number (Optional)" {
+            if !self.validate(phoneNumber: number.text!) || self.number.text?.characters.count != 10 {
+                self.showErrorAlert(title: "Phone number invalid", body: "Please enter a valid phone number and area code to continue.")
+                return
+            }
+            numberString = number.text!
+        }
+        self.user = User(first: firstName.text!, last: lastName.text!, email: email.text!, phone: numberString)
         
         let passVC = CreateAccountPasswordViewController()
         passVC.user = self.user
@@ -313,6 +318,8 @@ extension CreateAccountNameViewController:UITextFieldDelegate {
         } else if lastName.isFirstResponder {
             email.becomeFirstResponder()
         } else if email.isFirstResponder {
+            number.becomeFirstResponder()
+        } else if number.isFirstResponder {
             resignKeyboard()
             nextButtonPressed()
         }

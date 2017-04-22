@@ -34,10 +34,9 @@ struct TimeSlot {
         if let dateInt = Int(truncated) {
             let secondsInt = dateInt/1000
             
-            let date = Date(timeIntervalSince1970: Double(secondsInt))
-            let calendar = NSCalendar.autoupdatingCurrent
-            let newDate = calendar.date(byAdding:.hour, value: -3, to: date)
-            self.startDate = newDate
+            self.startDate = Date(timeIntervalSince1970: Double(secondsInt))
+            
+            
         }
         
         

@@ -26,6 +26,7 @@ class ConfirmViewController: UIViewController {
     var user:User!
     var appointment:Appointment!
     var activity:UIActivityIndicatorView!
+    var inputTextField:UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +109,11 @@ class ConfirmViewController: UIViewController {
     }
     
     func confirm() {
+        guard let user = DatabaseController.shared.loadUser(), user.phoneNumber != "4247770638" else {
+            self.getPhoneNumber()
+            return
+        }
+        
         self.activity.startAnimating()
         guard let card = self.creditCard else {return}
         self.confirmButton.isEnabled = false
@@ -122,6 +128,76 @@ class ConfirmViewController: UIViewController {
             } else {
                 self.showErrorAlert(title: "Error", body: "Could not confirm booking, please try again.")
             }
+        }
+    }
+    
+    func validate(phoneNumber: String) -> Bool {
+        let charcterSet  = NSCharacterSet(charactersIn: "+0123456789").inverted
+        let inputString = phoneNumber.components(separatedBy: charcterSet)
+        let filtered = inputString.joined(separator: "")
+        return  phoneNumber == filtered
+    }
+    
+    func getPhoneNumber() {
+        let alert = UIAlertController(title: "Enter Number", message: "You need to provide a valid phone number to book an appointment.", preferredStyle:
+            UIAlertControllerStyle.alert)
+        
+        alert.addTextField(configurationHandler: textFieldHandler)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:{ _ in
+            
+            guard let input = self.inputTextField?.text else {return}
+            
+            if input.isEmpty || !self.validate(phoneNumber: input) || input.characters.count != 10 {
+                self.showErrorAlert(title: "Invalid Phone Number", body: "You need to provide a valid phone number to book an appointment.")
+                return
+            } else {
+                self.updateAccount(phoneNumber: input)
+            }
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:  {
+            _ in
+            
+            
+        }))
+        
+        self.present(alert, animated: true, completion:nil)
+    }
+    
+    func updateAccount(phoneNumber: String) {
+        guard let aUser = DatabaseController.shared.loadUser(), let pass = aUser.password else {return}
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        NetworkController.shared.login(email: aUser.email, password: pass) {
+            user in
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            guard let unwrappedUser = user else {
+                self.showErrorAlert(title: "Failed", body: "Something went wrong please try again")
+                return}
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            NetworkController.shared.updateUser(with: aUser.customerId!, firstName: aUser.firstName, lastName: aUser.lastName, email: aUser.email,number: phoneNumber, token: unwrappedUser.apiKey!) {
+                success in
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                if success {
+                    self.user.phoneNumber = phoneNumber
+                    DatabaseController.shared.saveUser(user: self.user!)
+                } else {
+                    self.showErrorAlert(title: "Error", body: "Something went wrong, please try again.")
+                }
+            }
+        }
+    }
+    
+    func textFieldHandler(textField: UITextField!) {
+        
+        if (textField) != nil {
+            textField.text = ""
+            self.inputTextField = textField
         }
     }
     

@@ -223,7 +223,6 @@ class LoginViewController: UIViewController {
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             guard var unwrappedUser = user else {
-                
                 self.showErrorAlert(title: "Login failed", body: "The email or password you entered is incorrect, please try again.")
                 return}
             unwrappedUser.password = self.passwordField.text!
