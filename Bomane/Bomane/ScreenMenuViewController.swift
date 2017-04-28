@@ -15,6 +15,7 @@ class ScreenMenuViewController: UIViewController {
     var closeButton:UIButton!
     var tableView:UITableView!
     var logOutButton:UIButton!
+    var logOutTitle = "Log out"
     //"About"
     var menuTitles:[String] = ["Home", "Book Appointment","Services","Portfolio","Account","Contact"]
 
@@ -23,8 +24,10 @@ class ScreenMenuViewController: UIViewController {
         view.backgroundColor = UIColor.black
         if DatabaseController.shared.loadUser() != nil {
             self.menuTitles = ["Home", "Book Appointment","Services","Portfolio","Account","Contact"]
+            self.logOutTitle = "Log out"
         } else {
             self.menuTitles = ["Home", "Book Appointment","Services","Portfolio","Contact"]
+            self.logOutTitle = "Create account"
         }
         setUpNavBar()
         setUpLogOutButton()
@@ -52,7 +55,7 @@ class ScreenMenuViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
         
-        logOutButton.setTitle("Log out", for: .normal)
+        logOutButton.setTitle(self.logOutTitle, for: .normal)
         logOutButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 20)
         logOutButton.contentHorizontalAlignment = .left
         logOutButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0)
