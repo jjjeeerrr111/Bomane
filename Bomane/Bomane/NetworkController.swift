@@ -366,6 +366,54 @@ class NetworkController {
     }
     
     
+    func getServicesAsGuest(employeeId: Int? = nil,token:String, completion: @escaping ([Service]?) -> Void) {
+
+        let urlString = getBaseURL() + "treatments"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        
+        var params:Parameters = ["access_token":token , "LocationID" : 37514]
+        if let id = employeeId {
+            params = ["access_token":token , "LocationID" : 37514, "EmployeeID" : id]
+        }
+        
+        Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                print("SUCESS LOADING SERVICES: ", json)
+                let status = json["IsSuccess"].stringValue
+                if status == "true" {
+                    var services:[Service] = []
+                    let array = json["Treatments"].arrayValue
+                    for item in array {
+                        guard let dic = item.dictionaryObject else {continue}
+                        if let service = Service(dic: dic) {
+                            services.append(service)
+                        }
+                    }
+                    completion(services)
+                } else {
+                    let msg = json["ErrorMessage"].stringValue
+                    if msg == "invalid access token" {
+                        DatabaseController.shared.logoutUser()
+                        AppDelegate.shared().showLogin()
+                    }
+                    completion(nil)
+                }
+                
+                
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR LOADING SERVICES: ", json)
+                print("ERROR: ",error.localizedDescription)
+            }
+        }
+    }
+    
+    
     
     //MARK: GET EMPLOYESS
     /*********************************
@@ -400,6 +448,49 @@ class NetworkController {
             "Content-Type": "application/json",
             ]
         let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 37514]
+        Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                print("SUCESS LOADING EMPLOYEES: ", json)
+                let status = json["IsSuccess"].stringValue
+                if status == "true" {
+                    var stylists:[Stylist] = []
+                    let array = json["Results"].arrayValue
+                    for item in array {
+                        guard let dic = item.dictionaryObject else {continue}
+                        if let stylist = Stylist(dic: dic) {
+                            stylists.append(stylist)
+                        }
+                    }
+                    completion(stylists)
+                } else {
+                    let errorMsg = json["ErrorMessage"].stringValue
+                    if errorMsg == "invalid access token" {
+                        DatabaseController.shared.logoutUser()
+                        AppDelegate.shared().showLogin()
+                    }
+                    completion(nil)
+                }
+                
+                
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR LOADING EMPLOYEES: ", json)
+                print("ERROR: ",error.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
+    func getEmployeesAsGuest(token: String, completion: @escaping ([Stylist]?) -> Void) {
+
+        let urlString = getBaseURL() + "employees"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        let params:Parameters = ["access_token":token, "LocationID" : 37514]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -534,6 +625,71 @@ class NetworkController {
             }
         }
 
+    }
+    
+    func getAvailableTimeslotsAsGuest(stylist: Stylist, service: Service,token:String, date: Date, completion: @escaping ([TimeSlot]?) -> Void) {
+
+        let urlString = getBaseURL() + "availability/multiservice"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        
+        var milliStart = date.startOfDay.timeIntervalSince1970
+        milliStart = milliStart * 1000
+        var milliEnd = date.endOfDay!.timeIntervalSince1970
+        milliEnd = milliEnd * 1000
+        let startDate = "/Date(\(Int(milliStart)))/"
+        let endDate = "/Date(\(Int(milliEnd)))/"
+        let employeeId = stylist.id!
+        let treatmentId = service.id!
+        let treatments = [["TreatmentID" : treatmentId, "EmployeeID":employeeId]]
+        let itinerary = [["Treatments":treatments]]
+        let params:Parameters = ["access_token":token , "LocationID" : 37514, "Itineraries":itinerary, "StartDateTime":startDate, "EndDateTime":endDate]
+        dump(params)
+        Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                print("SUCESS LOADING AVAILABLE TIMES: ", json)
+                let status = json["IsSuccess"].stringValue
+                if status == "true" {
+                    var timeslots:[TimeSlot] = []
+                    let array = json["ItineraryTimeSlotsLists"].arrayValue
+                    guard let dicItem = array.first?.dictionary, let dicArray = dicItem["ItineraryTimeSlots"]?.arrayValue else {
+                        completion(nil)
+                        return
+                    }
+                    for item in dicArray {
+                        let treatmentSlot = item["TreatmentTimeSlots"].arrayValue
+                        guard let treatment = treatmentSlot.first?.dictionaryObject else {
+                            completion(nil)
+                            return
+                        }
+                        if let time = TimeSlot(dic: treatment) {
+                            timeslots.append(time)
+                        }
+                    }
+                    
+                    completion(timeslots)
+                } else {
+                    let errorMsg = json["ErrorMessage"].stringValue
+                    if errorMsg == "invalid access token" {
+                        DatabaseController.shared.logoutUser()
+                        AppDelegate.shared().showLogin()
+                    }
+                    completion(nil)
+                }
+                
+                
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR LOADING AVAILABLE TIMES: ", json)
+                print("ERROR: ",error.localizedDescription)
+                completion(nil)
+            }
+        }
+        
     }
     
     //MARK: FORGOT PASSWORD

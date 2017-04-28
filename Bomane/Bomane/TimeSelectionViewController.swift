@@ -27,6 +27,7 @@ class TimeSelectionViewController: UIViewController {
     var service:Service?
     var selectedDate:Date?
     var selectedTimeSlot:TimeSlot?
+    var token:String?
     
     var times:[TimeSlot] = []
     var activityIndicator:UIActivityIndicatorView!
@@ -40,9 +41,32 @@ class TimeSelectionViewController: UIViewController {
         setUpApplyButton()
         setUpTableView()
         setUpActivityIndicator()
+        
+        guard DatabaseController.shared.loadUser() != nil else {
+            fetchTimeSlotsWithoutUser()
+            return
+        }
         fetchTimeSlots()
         
         
+    }
+    
+    func fetchTimeSlotsWithoutUser() {
+        guard let sty = stylist, let serv = service, let date = selectedDate, let tok = self.token else {return}
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        activityIndicator.startAnimating()
+        NetworkController.shared.getAvailableTimeslotsAsGuest(stylist: sty, service: serv,token:tok, date: date) {
+            optionalTimes in
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            guard let times = optionalTimes else {return}
+            self.times = times
+            self.tableView.reloadData()
+            
+        }
     }
     
     func setUpActivityIndicator() {

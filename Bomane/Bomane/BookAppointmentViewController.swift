@@ -38,6 +38,7 @@ class BookAppointmentViewController: UIViewController {
     var selectedTimeSlot:TimeSlot?
     var shouldShowDaysOut = true
     var animationFinished = true
+    var token:String?
     
     var selectedDay:DayView! {
         didSet {
@@ -79,7 +80,11 @@ class BookAppointmentViewController: UIViewController {
         let monthName = DateFormatter().monthSymbols[components - 1]
         monthLabel.text = monthName
         
-        guard let user = DatabaseController.shared.loadUser(), let token = user.apiKey else {return}
+        guard let user = DatabaseController.shared.loadUser(), let token = user.apiKey else {
+            self.getToken()
+            return
+        
+        }
         //check if the users access token is still valid
         NetworkController.shared.checkIfTokenValid(token: token) {
             valid in
@@ -91,6 +96,14 @@ class BookAppointmentViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notifications.kClearAllBookingData, object: nil)
+    }
+    
+    func getToken() {
+        NetworkController.shared.getAccessToken() {
+            token in
+            
+            self.token = token
+        }
     }
     
     func clearBookingData() {
@@ -162,6 +175,11 @@ class BookAppointmentViewController: UIViewController {
                 return
             }
             
+            guard DatabaseController.shared.loadUser() != nil else {
+                self.addAccountFailedAlert(title: "Account Required", body: "You need to create an account before booking an appoitnment.")
+                return
+            }
+            
             let app = Appointment(stylist: stylist, service: service, timeslot: time)
             let confirmVC = ConfirmViewController()
             confirmVC.appointment = app
@@ -178,6 +196,24 @@ class BookAppointmentViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func addAccountFailedAlert(title: String, body: String) {
+        let alert = PopupDialog(title: title, message: body, gestureDismissal: false)
+        
+        let buttonOne = CancelButton(title: "OK") {
+            //self.pageDelegate?.goBack(to: "instagramLogin")
+        }
+        
+        let change = DefaultButton(title: "Create Account") {
+            AppDelegate.shared().checkIfUserExists()
+        }
+        
+        alert.addButtons([change, buttonOne])
+        alert.transitionStyle = .zoomIn
+        alert.buttonAlignment = .horizontal
+        // Present dialog
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func menuButtonPressed(sender: UIBarButtonItem) {
         let menu = ScreenMenuViewController.shared
         let navVC = UINavigationController(rootViewController: menu)
@@ -189,6 +225,7 @@ class BookAppointmentViewController: UIViewController {
     @IBAction func selectStylistPressed(_ sender: UIButton) {
         let stylistVC = StylistSelectionViewController()
         stylistVC.delegate = self
+        stylistVC.token = self.token
         stylistVC.transitioningDelegate = self
         stylistVC.modalPresentationStyle = .overFullScreen
         self.present(stylistVC, animated: true, completion: nil)
@@ -197,6 +234,7 @@ class BookAppointmentViewController: UIViewController {
     @IBAction func selectServiceTapped(_ sender: UIButton) {
         let serviceVC = ServiceSelectionViewController()
         serviceVC.delegate = self
+        serviceVC.token = self.token
         if let sty = self.selectedStylist {
             serviceVC.stylist = sty
         }
@@ -227,6 +265,7 @@ class BookAppointmentViewController: UIViewController {
         timeVC.stylist = self.selectedStylist
         timeVC.service = self.selectedService
         timeVC.selectedDate = self.selectedDay.date.date
+        timeVC.token = self.token
         timeVC.transitioningDelegate = self
         timeVC.modalPresentationStyle = .overFullScreen
         self.present(timeVC, animated: true, completion: nil)

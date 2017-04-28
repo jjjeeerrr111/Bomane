@@ -21,6 +21,11 @@ class ScreenMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
+        if DatabaseController.shared.loadUser() != nil {
+            self.menuTitles = ["Home", "Book Appointment","Services","Portfolio","Account","Contact"]
+        } else {
+            self.menuTitles = ["Home", "Book Appointment","Services","Portfolio","Contact"]
+        }
         setUpNavBar()
         setUpLogOutButton()
         setUpTableView()

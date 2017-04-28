@@ -17,6 +17,8 @@ class ServicesViewController: UIViewController {
     
     var services:[Service] = []
     
+    var token:String?
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(ServicesViewController.handleRefresh(sender:)), for: .valueChanged)
@@ -29,7 +31,22 @@ class ServicesViewController: UIViewController {
         setUpNavBar()
         setUpBookButton()
         setUpTableView()
+        
+        guard DatabaseController.shared.loadUser() != nil else {
+            self.getToken()
+            return
+            
+        }
         fetchServices()
+    }
+    
+    func getToken() {
+        NetworkController.shared.getAccessToken() {
+            token in
+            
+            self.token = token
+            self.fetchServicesAsGuest()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,7 +57,25 @@ class ServicesViewController: UIViewController {
     }
     
     func handleRefresh(sender: UIRefreshControl) {
-        fetchServices()
+        if self.token != nil {
+            fetchServicesAsGuest()
+        } else {
+            fetchServices()
+        }
+    }
+    
+    func fetchServicesAsGuest() {
+        guard let tok = self.token else {return}
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        NetworkController.shared.getServicesAsGuest(token: tok) {
+            optionalServices in
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            self.refreshControl.endRefreshing()
+            guard let services = optionalServices else {return}
+            self.services = services
+            self.tableView.reloadData()
+        }
     }
     
     func fetchServices() {

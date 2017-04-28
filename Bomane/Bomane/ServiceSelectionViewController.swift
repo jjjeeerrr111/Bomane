@@ -26,6 +26,7 @@ class ServiceSelectionViewController: UIViewController {
     var activityIndicator:UIActivityIndicatorView!
     
     var stylist:Stylist?
+    var token:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,11 @@ class ServiceSelectionViewController: UIViewController {
         setUpApplyButton()
         setUpTableView()
         setUpActivityIndicator()
+        
+        guard DatabaseController.shared.loadUser() != nil else {
+            fetchServicesWithoutUser()
+            return
+        }
         fetchServices()
     }
     
@@ -49,6 +55,37 @@ class ServiceSelectionViewController: UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ]
         NSLayoutConstraint.activate(const)
+    }
+    
+    func fetchServicesWithoutUser() {
+        guard let tok = self.token else {return}
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        activityIndicator.startAnimating()
+        
+        if let sty = stylist {
+            NetworkController.shared.getServicesAsGuest(employeeId: sty.id!,token: tok) {
+                optionalServices in
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                guard let servs = optionalServices else {return}
+                self.services = servs
+                self.tableView.reloadData()
+                
+            }
+        } else {
+            NetworkController.shared.getServicesAsGuest(token: tok) {
+                optionalServices in
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                guard let servs = optionalServices else {return}
+                self.services = servs
+                self.tableView.reloadData()
+                
+            }
+        }
+        
     }
     
     func fetchServices() {

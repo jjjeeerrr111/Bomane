@@ -25,6 +25,7 @@ class StylistSelectionViewController: UIViewController {
     
     var selectedStylist:Stylist?
     var stylists:[Stylist] = []
+    var token:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,11 @@ class StylistSelectionViewController: UIViewController {
         setUpApplyButton()
         setUpTableView()
         setUpActivityIndicator()
+        
+        guard DatabaseController.shared.loadUser() != nil else {
+            fetchStylistsWithoutUser()
+            return
+        }
         fetchStylists()
     }
     
@@ -48,6 +54,22 @@ class StylistSelectionViewController: UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ]
         NSLayoutConstraint.activate(const)
+    }
+    
+    func fetchStylistsWithoutUser() {
+        guard let tok = self.token else {return}
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        activityIndicator.startAnimating()
+        NetworkController.shared.getEmployeesAsGuest(token: tok) {
+            optionalStylists in
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            guard let theStylists = optionalStylists else {return}
+            self.stylists = theStylists
+            self.tableView.reloadData()
+            
+        }
     }
     
     func fetchStylists() {
