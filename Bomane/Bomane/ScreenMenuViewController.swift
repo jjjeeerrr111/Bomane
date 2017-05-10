@@ -10,7 +10,7 @@ import UIKit
 
 class ScreenMenuViewController: UIViewController {
     
-    static let shared = ScreenMenuViewController()
+//    static let shared = ScreenMenuViewController()
     
     var closeButton:UIButton!
     var tableView:UITableView!
@@ -32,6 +32,7 @@ class ScreenMenuViewController: UIViewController {
         setUpNavBar()
         setUpLogOutButton()
         setUpTableView()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +41,7 @@ class ScreenMenuViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "ProximaNova-Bold", size: 20)!]
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.title = "BOMANE"
+        dump(DatabaseController.shared.loadUser())
     }
     
     func setUpLogOutButton() {

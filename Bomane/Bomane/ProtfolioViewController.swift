@@ -43,7 +43,7 @@ class ProtfolioViewController: UIViewController {
     }
     
     func menuButtonPressed(sender: UIBarButtonItem) {
-        let menu = ScreenMenuViewController.shared
+        let menu = ScreenMenuViewController()
         let navVC = UINavigationController(rootViewController: menu)
         navVC.transitioningDelegate = self
         navVC.modalPresentationStyle = .overFullScreen

@@ -33,7 +33,7 @@ struct TimeSlot {
         
         if let dateInt = Int(truncated) {
             let secondsInt = dateInt/1000
-            
+            print("DATE: \(secondsInt)")
             self.startDate = Date(timeIntervalSince1970: Double(secondsInt))
             
             

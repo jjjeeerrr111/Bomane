@@ -22,6 +22,11 @@ class SignUpViewController: UIViewController {
 
     }
 
+    @IBAction func guestButtonPressed(_ sender: UIButton) {
+        print("pressed")
+        AppDelegate.shared().initWindow(controller: "Home")
+    }
+    
     @IBAction func termsOfServicePressed(_ sender: UIButton) {
         
         if let pdf = Bundle.main.url(forResource: "BomaneTerms", withExtension: "pdf", subdirectory: nil, localization: nil)  {

@@ -426,6 +426,7 @@ public extension Date {
 		let dateFormatter = DateFormatter()
 		dateFormatter.timeStyle = style
 		dateFormatter.dateStyle = .none
+        dateFormatter.timeZone = TimeZone(abbreviation: "EDT")
 		return dateFormatter.string(from: self)
 	}
 	
