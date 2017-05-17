@@ -192,14 +192,43 @@ class AddCreditCardViewController: UIViewController {
             return
         }
         
-        guard let expirationDate = Date(year: Int(self.paymentField.cardParams.expYear), month: Int(self.paymentField.cardParams.expMonth)) else {return}
+        let year = "20" + self.paymentField.cardParams.expYear.description
+        print("YEAR: \(year), \(self.paymentField.cardParams.expYear)")
+        guard let expirationDate = Date(year: Int(year), month: Int(self.paymentField.cardParams.expMonth)) else {return}
         print("expiration date: ",expirationDate)
         
         var milliExp = expirationDate.timeIntervalSince1970
         milliExp = milliExp * 1000
         let expString = "/Date(\(Int(milliExp)))/"
+        var type = "Visa"
+        var typeID = 2
+        let brand = STPCardValidator.brand(forNumber: self.paymentField.cardParams.number!)
         
-        let creditCard = CreditCard(name: name, zip: billing, numbers: self.paymentField.cardParams.number!, cvv: self.paymentField.cardParams.cvc!, expDate: expirationDate, expDateString: expString, last4: self.paymentField.cardParams.last4()!)
+        switch brand {
+            case .visa:
+                type = "Visa"
+                typeID = 2
+            case .amex:
+                type = "AmericanExpress"
+                typeID = 1
+            case .dinersClub:
+                type = "DinersClub"
+                typeID = 6
+            case .discover:
+                type = "Discover"
+                typeID = 4
+            case.JCB:
+                type = "JCB"
+                typeID = 5
+            case .masterCard:
+                type = "MasterCard"
+                typeID = 3
+            case .unknown:
+                type = "Unknown"
+                typeID = 2
+        }
+        
+        let creditCard = CreditCard(name: name, zip: billing, numbers: self.paymentField.cardParams.number!, cvv: self.paymentField.cardParams.cvc!, expDate: expirationDate, expDateString: expString, last4: self.paymentField.cardParams.last4()!, type: type, typeID: typeID)
         
         DatabaseController.shared.saveCard(card: creditCard)
         NotificationCenter.default.post(name: Notifications.kCreditCardAdded, object: nil)

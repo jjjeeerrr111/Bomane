@@ -18,9 +18,10 @@ class CreditCard: NSObject, NSCoding {
     var expirationDate:Date!
     var expirationDateString:String!
     var last4:String!
+    var type:String!
+    var typeID:Int!
     
-    
-    init(name: String,zip:String,numbers:String,cvv:String,expDate:Date,expDateString:String, last4:String) {
+    init(name: String,zip:String,numbers:String,cvv:String,expDate:Date,expDateString:String, last4:String, type: String, typeID: Int) {
         self.name = name
         self.zipCode = zip
         self.numbers = numbers
@@ -28,6 +29,8 @@ class CreditCard: NSObject, NSCoding {
         self.expirationDate = expDate
         self.expirationDateString = expDateString
         self.last4 = last4
+        self.type = type
+        self.typeID = typeID
         super.init()
     }
     
@@ -42,6 +45,8 @@ class CreditCard: NSObject, NSCoding {
         aCoder.encode(expirationDate, forKey: CardKey.expirationDate)
         aCoder.encode(expirationDateString, forKey: CardKey.expirationString)
         aCoder.encode(last4, forKey: CardKey.last4)
+        aCoder.encode(type, forKey: CardKey.type)
+        aCoder.encode(typeID, forKey: CardKey.typeID)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -53,8 +58,10 @@ class CreditCard: NSObject, NSCoding {
         let expDate = aDecoder.decodeObject(forKey: CardKey.expirationDate) as! Date
         let expString = aDecoder.decodeObject(forKey: CardKey.expirationString) as! String
         let last4 = aDecoder.decodeObject(forKey: CardKey.last4) as! String
+        let type = aDecoder.decodeObject(forKey: CardKey.type) as! String
+        let typeID = aDecoder.decodeObject(forKey: CardKey.typeID) as! Int
         
-        self.init(name: name, zip: zipCode, numbers:numbers,cvv:cvv,expDate: expDate, expDateString: expString, last4: last4)
+        self.init(name: name, zip: zipCode, numbers:numbers,cvv:cvv,expDate: expDate, expDateString: expString, last4: last4, type: type, typeID: typeID)
         
     }
     
@@ -72,4 +79,6 @@ struct CardKey {
     static let expirationDate = "expirationDate"
     static let expirationString = "expirationString"
     static let last4 = "last4"
+    static let type = "type"
+    static let typeID = "typeID"
 }

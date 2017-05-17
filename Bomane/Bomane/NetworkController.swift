@@ -791,9 +791,11 @@ class NetworkController {
             ]
         
         let amount:[String:Any] = ["Amount":appointment.service.price ?? 0, "CurrencyCode" : "USD"]
-        let cardType:[String:Any] = ["ID":1,"Name":""]
+        let cardType:[String:Any] = ["ID":card.typeID,"Name":card.type]
         let creditCard:[String:Any] = ["BillingZip" : card.zipCode, "ExpirationDate" : card.expirationDateString,"NameOnCard":card.name,"Number":card.numbers,"SecurityCode":card.cvv,"Type":cardType]
-        let paymentItem = ["Amount":amount,"CreditCard":creditCard]
+        dump(creditCard)
+        let method:[String:Any] = ["ID": 1, "Name": "method"]
+        let paymentItem = ["Amount":amount,"CreditCard":creditCard, "Method":method]
         let appPayment:[String:Any] = ["PaymentItem":paymentItem, "CouponCode":""]
         let customer:[String:Any] = ["FirstName": user.firstName, "LastName":user.lastName,"HomePhone":user.phoneNumber, "MobilePhone":"", "Email":user.email]
         
