@@ -26,6 +26,7 @@ class StylistSelectionViewController: UIViewController {
     var selectedStylist:Stylist?
     var stylists:[Stylist] = []
     var token:String?
+    var treatmentId:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,7 @@ class StylistSelectionViewController: UIViewController {
         guard let tok = self.token else {return}
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         activityIndicator.startAnimating()
-        NetworkController.shared.getEmployeesAsGuest(token: tok) {
+        NetworkController.shared.getEmployeesAsGuest(token: tok, treatmentId: self.treatmentId) {
             optionalStylists in
             
             self.activityIndicator.stopAnimating()
@@ -75,7 +76,7 @@ class StylistSelectionViewController: UIViewController {
     func fetchStylists() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         activityIndicator.startAnimating()
-        NetworkController.shared.getEmployees() {
+        NetworkController.shared.getEmployees(treatmentId: self.treatmentId) {
             optionalStylists in
             
             self.activityIndicator.stopAnimating()

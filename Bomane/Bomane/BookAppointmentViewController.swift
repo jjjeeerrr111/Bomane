@@ -223,7 +223,14 @@ class BookAppointmentViewController: UIViewController {
     }
     
     @IBAction func selectStylistPressed(_ sender: UIButton) {
+        
+        guard let treatment = self.selectedService, let id = treatment.id else {
+            self.showErrorAlert(title: "Select a service", body: "Please select a service before selecting a stylist.")
+            return
+        }
+        
         let stylistVC = StylistSelectionViewController()
+        stylistVC.treatmentId = id
         stylistVC.delegate = self
         stylistVC.token = self.token
         stylistVC.transitioningDelegate = self

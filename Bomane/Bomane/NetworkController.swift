@@ -438,7 +438,7 @@ class NetworkController {
      }
     **********************************/
     
-    func getEmployees(completion: @escaping ([Stylist]?) -> Void) {
+    func getEmployees(treatmentId: Int, completion: @escaping ([Stylist]?) -> Void) {
         guard let user = DatabaseController.shared.loadUser() else {
             completion(nil)
             return
@@ -447,7 +447,7 @@ class NetworkController {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 37514]
+        let params:Parameters = ["access_token":user.apiKey! , "LocationID" : 37514, "TreatmentID" : treatmentId]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
@@ -484,13 +484,13 @@ class NetworkController {
         }
     }
     
-    func getEmployeesAsGuest(token: String, completion: @escaping ([Stylist]?) -> Void) {
+    func getEmployeesAsGuest(token: String,treatmentId:Int, completion: @escaping ([Stylist]?) -> Void) {
 
         let urlString = getBaseURL() + "employees"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             ]
-        let params:Parameters = ["access_token":token, "LocationID" : 37514]
+        let params:Parameters = ["access_token":token, "LocationID" : 37514, "TreatmentID": treatmentId]
         Alamofire.request(urlString, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
             
             switch response.result {
