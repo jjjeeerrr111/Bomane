@@ -67,7 +67,7 @@ class ConfirmViewController: UIViewController {
             self.creditCard = card
             self.confirmButton.setTitle("Confirm", for: .normal)
         } else {
-            self.addCreditCardLabel.text = "**You will need to add a credit card to book an appointment. You can add services after you add a credit card."
+            self.addCreditCardLabel.text = "**You will need to add a credit card to book an appointment. You can add more services after you add a credit card."
             self.confirmButton.setTitle("Add Credit Card", for: .normal)
         }
     }
