@@ -827,4 +827,68 @@ class NetworkController {
             }
         }
     }
+    
+    
+    //MARK: GET UPCOMING APPOINTMENTS
+    
+    func getUpcomingAppointments(completion: @escaping ([UpcomingAppointment]?) -> Void) {
+        guard let user = DatabaseController.shared.loadUser(), let customerID = user.customerId, let token = user.apiKey else {
+            completion(nil)
+            return
+        }
+        let urlString = getBaseURL() + "customer/\(customerID)/appointments?access_token=\(token)"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            ]
+        
+        Alamofire.request(urlString, method: .get, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{ response in
+            
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
+                print("SUCESS LOADING UPCOMING APPOINTMENTS: ", json)
+                let status = json["IsSuccess"].stringValue
+                if status == "true" {
+                    var appointments:[UpcomingAppointment] = []
+                    let apps = json["Appointments"].arrayValue
+                    for item in apps {
+                        guard let dic = item.dictionaryObject, let startTime = dic["StartDateTime"] as? String, let endTime = dic["EndDateTime"] as? String, let treatment = dic["Treatment"] as? [String: Any], let service = treatment["Name"] as? String else {
+                            print("failed to parse")
+                            continue
+                        }
+                        
+                        guard let appTreamtDic = item["AppointmentTreatments"].arrayObject else {continue}
+                        
+                        guard let appTreamt = appTreamtDic[0] as? [String: Any] else {continue}
+                        
+                        guard let employee = appTreamt["Employee"] as? [String:Any] else {continue}
+                        guard let firstName = employee["FirstName"] as? String else {continue}
+                        guard let lastName = employee["LastName"] as? String else {continue}
+                        
+                        
+                        let upcoming = UpcomingAppointment(startDateTime: startTime, endDateTime: endTime, service: service, firstName: firstName, lastName: lastName)
+                        print(upcoming)
+                        appointments.append(upcoming)
+                        
+                    }
+                    print(appointments)
+                    completion(appointments)
+                } else {
+                    let errorMsg = json["ErrorMessage"].stringValue
+                    if errorMsg.contain("you are not authorized to peform this action.") {
+                        DatabaseController.shared.logoutUser()
+                        AppDelegate.shared().showLogin()
+                    }
+                    completion(nil)
+                }
+                
+                
+            case .failure(let error):
+                let json = JSON(data: response.data!)
+                print("ERROR LOADING UPCOMING APPOINTMENTS: ", json)
+                print("ERROR: ",error.localizedDescription)
+            
+            }
+        }
+    }
 }

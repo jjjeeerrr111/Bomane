@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UpcomingAppointmentCell" rowHeight="180" id="KGk-i7-Jjw" customClass="UpcomingAppointmentCell" customModule="Bomane" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="180.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Zed-Xj-Mp1">
+                        <rect key="frame" x="16" y="16" width="58" height="148"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIk-z6-FKb">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="25"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysk-z3-mcl">
+                                <rect key="frame" x="0.0" y="41" width="36.5" height="25"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stylist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Z5-fr-dNH">
+                                <rect key="frame" x="0.0" y="82" width="45.5" height="25"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhO-qR-4YB">
+                                <rect key="frame" x="0.0" y="123" width="57.5" height="25"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="57.5" id="hRi-JD-Q2x"/>
+                        </constraints>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="xyJ-bI-DWa">
+                        <rect key="frame" x="137.5" y="16" width="45.5" height="148.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fz9-rq-cel">
+                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="25.5"/>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CPY-Nu-si6">
+                                <rect key="frame" x="0.0" y="43.5" width="45.5" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="21e-xf-2Nr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rwz-6A-ZQe">
+                                <rect key="frame" x="0.0" y="84.5" width="45.5" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="kzW-K5-uv6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9c7-qD-qbV">
+                                <rect key="frame" x="0.0" y="125.5" width="45.5" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="wJV-6K-TCA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Zed-Xj-Mp1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="7v5-7a-bwu"/>
+                    <constraint firstAttribute="bottom" secondItem="xyJ-bI-DWa" secondAttribute="bottom" constant="16" id="Q9F-GA-RZd"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="xyJ-bI-DWa" secondAttribute="trailing" constant="8" id="dXb-pf-bO4"/>
+                    <constraint firstItem="xyJ-bI-DWa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zed-Xj-Mp1" secondAttribute="trailing" constant="8" id="eW2-Au-0SI"/>
+                    <constraint firstItem="Zed-Xj-Mp1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="ir5-0I-GIo"/>
+                    <constraint firstItem="xyJ-bI-DWa" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="rYK-Bp-r2E"/>
+                    <constraint firstItem="xyJ-bI-DWa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="t0E-zC-CFP"/>
+                    <constraint firstAttribute="bottom" secondItem="Zed-Xj-Mp1" secondAttribute="bottom" constant="16" id="x7h-c0-48U"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dayLabel" destination="Fz9-rq-cel" id="5qI-W7-HKq"/>
+                <outlet property="serviceLabel" destination="9c7-qD-qbV" id="MLH-rm-KHt"/>
+                <outlet property="stylistLabel" destination="Rwz-6A-ZQe" id="v70-tB-4gh"/>
+                <outlet property="timeLabel" destination="CPY-Nu-si6" id="t2e-8b-EBn"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="-61"/>
+        </tableViewCell>
+    </objects>
+</document>

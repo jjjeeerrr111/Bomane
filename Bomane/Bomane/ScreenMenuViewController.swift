@@ -17,13 +17,13 @@ class ScreenMenuViewController: UIViewController {
     var logOutButton:UIButton!
     var logOutTitle = "Log out"
     //"About"
-    var menuTitles:[String] = ["Home", "Book Appointment","Services","Portfolio","Account","Contact"]
+    var menuTitles:[String] = ["Home", "Book Appointment","Upcoming Appointments", "Services","Portfolio","Account","Contact"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         if DatabaseController.shared.loadUser() != nil {
-            self.menuTitles = ["Home", "Book Appointment","Services","Portfolio","Account","Contact"]
+            self.menuTitles = ["Home", "Book Appointment","Upcoming Appointments","Services","Portfolio","Account","Contact"]
             self.logOutTitle = "Log out"
         } else {
             self.menuTitles = ["Home", "Book Appointment","Services","Portfolio","Contact"]

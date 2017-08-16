@@ -11,6 +11,10 @@
 		570E8EA71E3A51A200C7A8E1 /* TimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570E8EA61E3A51A200C7A8E1 /* TimeSlot.swift */; };
 		5713B8671E327A1600D9EC2C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B8661E327A1600D9EC2C /* User.swift */; };
 		5713B8691E327F1F00D9EC2C /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713B8681E327F1F00D9EC2C /* DatabaseController.swift */; };
+		571DECE61F44A15400F36352 /* UpcomingAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DECE51F44A15400F36352 /* UpcomingAppointmentsViewController.swift */; };
+		571DECE91F44A2D100F36352 /* UpcomingAppointmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DECE71F44A2D100F36352 /* UpcomingAppointmentCell.swift */; };
+		571DECEA1F44A2D100F36352 /* UpcomingAppointmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571DECE81F44A2D100F36352 /* UpcomingAppointmentCell.xib */; };
+		571DECEC1F44BB6500F36352 /* UpcomingAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DECEB1F44BB6500F36352 /* UpcomingAppointment.swift */; };
 		5721091A1E229AD600E253AC /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572109181E229AD600E253AC /* EditProfileViewController.swift */; };
 		5721091B1E229AD600E253AC /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 572109191E229AD600E253AC /* EditProfileViewController.xib */; };
 		572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572E68701DEB3EE7001DB239 /* AppDelegate.swift */; };
@@ -68,6 +72,10 @@
 		570E8EA61E3A51A200C7A8E1 /* TimeSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlot.swift; sourceTree = "<group>"; };
 		5713B8661E327A1600D9EC2C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5713B8681E327F1F00D9EC2C /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		571DECE51F44A15400F36352 /* UpcomingAppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpcomingAppointmentsViewController.swift; path = ../UpcomingAppointmentsViewController.swift; sourceTree = "<group>"; };
+		571DECE71F44A2D100F36352 /* UpcomingAppointmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingAppointmentCell.swift; sourceTree = "<group>"; };
+		571DECE81F44A2D100F36352 /* UpcomingAppointmentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpcomingAppointmentCell.xib; sourceTree = "<group>"; };
+		571DECEB1F44BB6500F36352 /* UpcomingAppointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingAppointment.swift; sourceTree = "<group>"; };
 		572109181E229AD600E253AC /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		572109191E229AD600E253AC /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		572E686D1DEB3EE7001DB239 /* Bomane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bomane.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +172,7 @@
 				570E8EA61E3A51A200C7A8E1 /* TimeSlot.swift */,
 				575296811E47B52100A84F16 /* Appointment.swift */,
 				57DB6A591E48C4BE0017649B /* CreditCard.swift */,
+				571DECEB1F44BB6500F36352 /* UpcomingAppointment.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -197,6 +206,9 @@
 				572E68701DEB3EE7001DB239 /* AppDelegate.swift */,
 				5713B8681E327F1F00D9EC2C /* DatabaseController.swift */,
 				57DE02D61E352A6300155BCD /* NetworkController.swift */,
+				571DECE51F44A15400F36352 /* UpcomingAppointmentsViewController.swift */,
+				571DECE71F44A2D100F36352 /* UpcomingAppointmentCell.swift */,
+				571DECE81F44A2D100F36352 /* UpcomingAppointmentCell.xib */,
 				5713B8651E327A0900D9EC2C /* Models */,
 				5713B8641E3279E400D9EC2C /* Contact VCs */,
 				579690001E215AF90080DCF3 /* Profile VCs */,
@@ -400,7 +412,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = com.bomane;
 				TargetAttributes = {
 					572E686C1DEB3EE7001DB239 = {
@@ -440,6 +452,7 @@
 				578E09BE1E7ABE55005986CA /* BomaneTerms.pdf in Resources */,
 				574D3D0F1E102BE000D0D2C2 /* AppoitmentTableViewCell.xib in Resources */,
 				572E687B1DEB3EE7001DB239 /* LaunchScreen.storyboard in Resources */,
+				571DECEA1F44A2D100F36352 /* UpcomingAppointmentCell.xib in Resources */,
 				57AC1D891E6C99DE000647D8 /* HomeViewController.xib in Resources */,
 				572E68851DEB3F2C001DB239 /* SignUpViewController.xib in Resources */,
 				5721091B1E229AD600E253AC /* EditProfileViewController.xib in Resources */,
@@ -515,6 +528,7 @@
 				5713B8671E327A1600D9EC2C /* User.swift in Sources */,
 				57AC1D881E6C99DE000647D8 /* HomeViewController.swift in Sources */,
 				5751D2661DEBA243009A4612 /* AboutViewController.swift in Sources */,
+				571DECE91F44A2D100F36352 /* UpcomingAppointmentCell.swift in Sources */,
 				57EFC2931E0617DB006783D3 /* Animators.swift in Sources */,
 				5752967F1E47B2B000A84F16 /* ConfirmViewController.swift in Sources */,
 				5751D2591DEB9AC1009A4612 /* ServicesViewController.swift in Sources */,
@@ -533,8 +547,10 @@
 				574D3D151E10336200D0D2C2 /* TimeSelectionViewController.swift in Sources */,
 				5772315A1DEB4DF900A94A7B /* ScreenMenuViewController.swift in Sources */,
 				572E68711DEB3EE7001DB239 /* AppDelegate.swift in Sources */,
+				571DECE61F44A15400F36352 /* UpcomingAppointmentsViewController.swift in Sources */,
 				57DB7D861E05E8DD003207D2 /* LoginViewController.swift in Sources */,
 				579690031E215B140080DCF3 /* ContactViewController.swift in Sources */,
+				571DECEC1F44BB6500F36352 /* UpcomingAppointment.swift in Sources */,
 				5781BA791E2AC9D100E0F7D2 /* AddCreditCardViewController.swift in Sources */,
 				57DB7D891E05EF72003207D2 /* Extensions.swift in Sources */,
 				57968FFE1E214CD40080DCF3 /* ProfileViewController.swift in Sources */,

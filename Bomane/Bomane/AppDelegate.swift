@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let profileVC = ProfileViewController()
     let contactVC = ContactViewController()
     let homeVC = HomeViewController()
+    let upcoming = UpcomingAppointmentsViewController()
     
     class func shared() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
@@ -45,9 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initWindow(controller: String) {
         //"About" : aboutVC, 
-        let controllerDic = ["Services":servicesVC, "Portfolio" : portfolioVC, "Book Appointment" : bookVC, "Account" : profileVC, "Contact" : contactVC, "Home" : homeVC]
+        let controllerDic:[String:UIViewController] = ["Services":servicesVC, "Portfolio" : portfolioVC, "Book Appointment" : bookVC, "Account" : profileVC, "Contact" : contactVC, "Home" : homeVC, "Upcoming Appointments":upcoming]
         
-        if controller == "Book Appointment" || controller == "Services" || controller == "Portfolio" || controller == "Account" {
+        if controller == "Book Appointment" || controller == "Services" || controller == "Portfolio" || controller == "Account" || controller == "Upcoming Appointments" {
             UIApplication.shared.statusBarStyle = .default
         } else {
             UIApplication.shared.statusBarStyle = .lightContent

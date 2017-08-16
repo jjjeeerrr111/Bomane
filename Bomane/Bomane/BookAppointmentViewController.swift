@@ -88,7 +88,11 @@ class BookAppointmentViewController: UIViewController {
         //check if the users access token is still valid
         NetworkController.shared.checkIfTokenValid(token: token) {
             valid in
-            self.updateUserToken()
+            
+            if !valid {
+                self.updateUserToken()
+            }
+            
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.clearBookingData), name: Notifications.kClearAllBookingData, object: nil)
